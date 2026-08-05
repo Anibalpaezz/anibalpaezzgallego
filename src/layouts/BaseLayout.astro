@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
-import { seoMeta, canonicalUrl, routeKeyFromPath } from "@/lib/t";
+import { seoMeta, canonicalUrl, routeKeyFromPath, t } from "@/lib/t";
 
 export interface Props {
   title?: string;
@@ -105,6 +105,12 @@ const websiteLd = JSON.stringify({
     <slot name="head" />
   </head>
   <body class="min-h-screen bg-background text-foreground antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+    >
+      {t(lang, "accessibility.skipToContent")}
+    </a>
     <slot name="nav" />
     <main id="main-content">
       <slot />

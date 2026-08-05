@@ -16,14 +16,15 @@
   };
 })();
 
-// ── Language ──
+// ── Language (always matches the current route, not localStorage) ──
 (function () {
-  const stored = localStorage.getItem("language") || "es";
-  document.documentElement.lang = stored;
-  window.__lang = stored;
+  const m = window.location.pathname.match(/^\/(en|fr|de|zh)\b/);
+  const lang = m ? m[1] : "es";
+  document.documentElement.lang = lang;
+  window.__lang = lang;
 
-  window.__setLang = function (lang: string) {
-    localStorage.setItem("language", lang);
+  window.__setLang = function (next: string) {
+    localStorage.setItem("language", next);
     window.location.reload();
   };
 })();
@@ -76,7 +77,8 @@
   }, { passive: true });
 
   btn.addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   });
 })();
 

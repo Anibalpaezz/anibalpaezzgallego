@@ -30,6 +30,9 @@ export const translations = {
         description: "La página que buscas no existe.",
       },
     },
+    accessibility: {
+      skipToContent: "Saltar al contenido",
+    },
     navBar: {
       home: "Inicio",
       about: "Sobre mi",
@@ -234,6 +237,9 @@ export const translations = {
         description: "The page you are looking for does not exist.",
       },
     },
+    accessibility: {
+      skipToContent: "Skip to content",
+    },
     navBar: {
       home: "Home",
       about: "About Me",
@@ -436,6 +442,9 @@ export const translations = {
         title: "Page introuvable | Aníbal Páez Gallego",
         description: "La page que vous recherchez n'existe pas.",
       },
+    },
+    accessibility: {
+      skipToContent: "Aller au contenu",
     },
     navBar: {
       home: "Accueil",
@@ -640,6 +649,9 @@ export const translations = {
         description: "Die gesuchte Seite existiert nicht.",
       },
     },
+    accessibility: {
+      skipToContent: "Zum Inhalt springen",
+    },
     navBar: {
       home: "Startseite",
       about: "Über mich",
@@ -843,6 +855,9 @@ export const translations = {
         title: "页面未找到 | Aníbal Páez Gallego",
         description: "您查找的页面不存在。",
       },
+    },
+    accessibility: {
+      skipToContent: "跳到主要内容",
     },
     navBar: {
       home: "首页",

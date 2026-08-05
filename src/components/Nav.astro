@@ -64,20 +64,28 @@ function isActive(itemPath: string): boolean {
           </svg>
         </button>
 
-        <div class="relative group">
+        <div class="relative group" id="lang-menu-wrap">
           <button
+            id="lang-menu-btn"
             class="p-2 rounded-lg hover:bg-secondary transition-colors flex items-center gap-1"
             aria-label="Change language"
+            aria-haspopup="menu"
+            aria-expanded="false"
           >
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </button>
-          <div class="absolute right-0 mt-1 w-40 rounded-lg border border-border bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+          <div
+            id="lang-menu"
+            role="menu"
+            class="absolute right-0 mt-1 w-40 rounded-lg border border-border bg-card shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50"
+          >
             <div class="py-1">
               {allLangs().map((l) => (
                 <a
                   href={l === "es" ? "/" : `/${l}${cleanPath === "/" ? "" : cleanPath}`}
+                  role="menuitem"
                   class:list={[
                     "block px-4 py-2 text-sm transition-colors",
                     l === lang ? "bg-primary/10 text-primary font-medium" : "hover:bg-secondary",
@@ -155,3 +163,26 @@ function isActive(itemPath: string): boolean {
     </div>
   </div>
 </nav>
+
+<script>
+  (function () {
+    const wrap = document.getElementById("lang-menu-wrap");
+    const btn = document.getElementById("lang-menu-btn");
+    const menu = document.getElementById("lang-menu");
+    if (!wrap || !btn || !menu) return;
+
+    const setOpen = (open: boolean) => btn.setAttribute("aria-expanded", String(open));
+
+    wrap.addEventListener("focusin", () => setOpen(true));
+    wrap.addEventListener("focusout", (e: FocusEvent) => {
+      if (!wrap.contains(e.relatedTarget as Node)) setOpen(false);
+    });
+
+    document.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "Escape" && !menu.classList.contains("invisible")) {
+        setOpen(false);
+        btn.blur();
+      }
+    });
+  })();
+</script>

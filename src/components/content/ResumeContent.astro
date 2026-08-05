@@ -64,12 +64,15 @@ const education = [
 
       <div
         id="captcha-modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="captcha-title"
         class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in"
-        onclick="if (event.target === event.currentTarget) document.getElementById('captcha-modal-container').classList.add('hidden')"
+        onclick="if (event.target === event.currentTarget) window.__closeCaptcha()"
       >
         <div class="relative bg-background border rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4">
           <button
-            onclick="document.getElementById('captcha-modal-container').classList.add('hidden')"
+            onclick="window.__closeCaptcha()"
             class="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Cerrar"
           >
@@ -80,7 +83,7 @@ const education = [
             <div class="p-3 bg-primary/10 rounded-full mb-3">
               <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
             </div>
-            <h2 class="text-xl font-bold">Verificación rápida</h2>
+            <h2 id="captcha-title" class="text-xl font-bold">Verificación rápida</h2>
             <p class="text-sm text-muted-foreground mt-1">Resuelve el siguiente cálculo para descargar el CV</p>
           </div>
 
@@ -128,6 +131,7 @@ const education = [
       </div>
 
       <button
+        id="captcha-trigger"
         onclick="window.__openCaptcha()"
         class="inline-flex items-center justify-center rounded-lg bg-gradient-primary hover:opacity-90 transition-opacity px-8 py-3 text-sm font-medium text-white"
       >
@@ -214,6 +218,7 @@ const education = [
   let challenge = { a: 0, b: 0, answer: 0, op: "+" };
   let attempts = 0;
   let locked = false;
+  let lastFocused: HTMLElement | null = null;
 
   function generate() {
     const ops = ["+", "-", "*"];
@@ -246,6 +251,7 @@ const education = [
     if (!container) return;
     attempts = 0;
     locked = false;
+    lastFocused = document.activeElement as HTMLElement | null;
     if (lockedEl) lockedEl.classList.add("hidden");
     if (body) body.classList.remove("hidden");
     container.classList.remove("hidden");
@@ -255,6 +261,42 @@ const education = [
       if (input) input.focus();
     }, 100);
   };
+
+  window.__closeCaptcha = function () {
+    const container = document.getElementById("captcha-modal-container");
+    if (container) container.classList.add("hidden");
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+  };
+
+  // Focus trap + Escape while the dialog is open.
+  document.addEventListener("keydown", function (e: KeyboardEvent) {
+    const container = document.getElementById("captcha-modal-container");
+    if (!container || container.classList.contains("hidden")) return;
+
+    if (e.key === "Escape") {
+      e.preventDefault();
+      window.__closeCaptcha();
+      return;
+    }
+
+    if (e.key === "Tab") {
+      const focusable = Array.from(
+        container.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
 
   window.__refreshCaptcha = refresh;
 
