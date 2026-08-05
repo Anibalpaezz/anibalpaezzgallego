@@ -70,6 +70,10 @@ export const translations = {
       viewProject: "Ver Proyecto",
       viewCode: "Ver Código",
       featured: "Proyecto Destacado",
+      totalAccumulated: "Total acumulado",
+      averagePerShift: "Media / turno",
+      shifts: "Turnos",
+      liveData: "● Live data",
     },
     resume: {
       title: "Currículum",
@@ -77,6 +81,19 @@ export const translations = {
       download: "Descargar PDF",
       experience: "Experiencia Laboral",
       education: "Educación",
+      captcha: {
+        title: "Verificación rápida",
+        instructions: "Resuelve el siguiente cálculo para descargar el CV",
+        close: "Cerrar",
+        answerPlaceholder: "Tu respuesta...",
+        incorrect: "Respuesta incorrecta.",
+        attemptsRemainingOne: "{n} intento restante",
+        attemptsRemainingMany: "{n} intentos restantes",
+        lockedTitle: "Demasiados intentos fallidos.",
+        lockedHint: "Recarga la página para volver a intentarlo.",
+        newCalculation: "Otro cálculo",
+        verify: "Verificar",
+      },
     },
     blog: {
       title: "Blog",
@@ -155,17 +172,44 @@ export const translations = {
         title: "Generador de Portafolios",
         description: "Crea un portafolio impresionante en minutos.",
       },
+      project4: {
+        title: "Golden Bucket Movies",
+        description:
+          "Proyecto desde cero usando HTML, CSS y JavaScript. Catálogo de películas con búsqueda, filtros y detalles.",
+      },
+      project5: {
+        title: "Proyectos varios",
+        description: "Diferentes proyectos personales y colaborativos en GitHub.",
+      },
+      project6: {
+        title: "Tip Tracker",
+        description:
+          "App de seguimiento de propinas por turno. Registra cantidad, método de pago, clima y más.",
+      },
+      project7: {
+        title: "Master Calendar Hub",
+        description: "Aplicación de calendario moderno.",
+      },
     },
     work_experience1: {
       title: "Repartidor en Moto",
+      period: "Junio 2023 - Junio 2026",
       description:
         "Repartidor en moto para Telepizza, encargado de entregar pedidos a los clientes.",
       achievements: {},
     },
     work_experience2: {
       title: "Desarrollador Full-Stack",
+      period: "Febrero 2024 - Julio 2024",
       description:
         "Desarrollador full-stack con tecnologías como React, Node.js, PostgreSQL y Supabase, desarrollando aplicaciones completas de principio a fin.",
+      achievements: {},
+    },
+    work_experience3: {
+      title: "Desarrollador Junior — BBVA CIB",
+      period: "Junio 2026 - Actualidad",
+      description:
+        "Desarrollador full-stack en Banco BBVA, trabajando con React, TypeScript, Node.js y PostgreSQL en un entorno corporativo de alto volumen.",
       achievements: {},
     },
     education: {
@@ -182,6 +226,13 @@ export const translations = {
         period: "2022 - 2024",
         description:
           "Cursé el grado superior en Desarrollo de Aplicaciones Web en el IES Domenico Scarlatti, adquiriendo conocimientos en programación, diseño web y desarrollo de aplicaciones.",
+      },
+      degree3: {
+        title: "Bachillerato Biológico",
+        institution: "IES Alpajkes",
+        period: "2020 - 2022",
+        description:
+          "Bachillerato en la modalidad de Ciencias, rama Biológica.",
       },
     },
     blogs: {
@@ -276,6 +327,10 @@ export const translations = {
       viewProject: "View Project",
       viewCode: "View Code",
       featured: "Featured Project",
+      totalAccumulated: "Total accumulated",
+      averagePerShift: "Average / shift",
+      shifts: "Shifts",
+      liveData: "● Live data",
     },
     resume: {
       title: "Resume",
@@ -283,6 +338,19 @@ export const translations = {
       download: "Download PDF",
       experience: "Work Experience",
       education: "Education",
+      captcha: {
+        title: "Quick verification",
+        instructions: "Solve the following calculation to download the CV",
+        close: "Close",
+        answerPlaceholder: "Your answer...",
+        incorrect: "Incorrect answer.",
+        attemptsRemainingOne: "{n} attempt remaining",
+        attemptsRemainingMany: "{n} attempts remaining",
+        lockedTitle: "Too many failed attempts.",
+        lockedHint: "Reload the page to try again.",
+        newCalculation: "Another calculation",
+        verify: "Verify",
+      },
     },
     blog: {
       title: "Blog",
@@ -361,17 +429,44 @@ export const translations = {
         title: "Portfolio Generator",
         description: "Create an impressive portfolio in minutes.",
       },
+      project4: {
+        title: "Golden Bucket Movies",
+        description:
+          "A from-scratch project using HTML, CSS and JavaScript. Movie catalog with search, filters and details.",
+      },
+      project5: {
+        title: "Various projects",
+        description: "Different personal and collaborative projects on GitHub.",
+      },
+      project6: {
+        title: "Tip Tracker",
+        description:
+          "Shift-based tip tracking app. Records amount, payment method, weather and more.",
+      },
+      project7: {
+        title: "Master Calendar Hub",
+        description: "A modern calendar application.",
+      },
     },
     work_experience1: {
       title: "Motorcycle Delivery Driver",
+      period: "June 2023 - June 2026",
       description:
         "Motorcycle delivery driver for Telepizza, responsible for delivering orders to customers.",
       achievements: {},
     },
     work_experience2: {
       title: "Full-Stack Developer",
+      period: "February 2024 - July 2024",
       description:
         "Full-Stack developer with technologies like React, Node.js, PostgreSQL and Supabase, developing complete applications from start to finish.",
+      achievements: {},
+    },
+    work_experience3: {
+      title: "Junior Developer — BBVA CIB",
+      period: "June 2026 - Present",
+      description:
+        "Full-stack developer at Banco BBVA, working with React, TypeScript, Node.js and PostgreSQL in a high-volume corporate environment.",
       achievements: {},
     },
     education: {
@@ -388,6 +483,13 @@ export const translations = {
         period: "2022 - 2024",
         description:
           "Completed the Higher Degree in Web Application Development at IES Domenico Scarlatti, acquiring knowledge in programming, web design, and application development.",
+      },
+      degree3: {
+        title: "Biological Baccalaureate",
+        institution: "IES Alpajkes",
+        period: "2020 - 2022",
+        description:
+          "Baccalaureate in the Sciences track, Biology branch.",
       },
     },
     blogs: {
@@ -482,6 +584,10 @@ export const translations = {
       viewProject: "Voir Projet",
       viewCode: "Voir Code",
       featured: "Projet Vedette",
+      totalAccumulated: "Total accumulé",
+      averagePerShift: "Moyenne / service",
+      shifts: "Services",
+      liveData: "● Données en direct",
     },
     resume: {
       title: "Currículum",
@@ -489,6 +595,19 @@ export const translations = {
       download: "Dechargez PDF",
       experience: "Expérience Professionnelle",
       education: "Éducation",
+      captcha: {
+        title: "Vérification rapide",
+        instructions: "Résolvez le calcul suivant pour télécharger le CV",
+        close: "Fermer",
+        answerPlaceholder: "Votre réponse...",
+        incorrect: "Réponse incorrecte.",
+        attemptsRemainingOne: "{n} tentative restante",
+        attemptsRemainingMany: "{n} tentatives restantes",
+        lockedTitle: "Trop de tentatives échouées.",
+        lockedHint: "Rechargez la page pour réessayer.",
+        newCalculation: "Autre calcul",
+        verify: "Vérifier",
+      },
     },
     blog: {
       title: "Blog",
@@ -567,17 +686,44 @@ export const translations = {
         title: "Générateur de Portfolios",
         description: "Créez un portfolio impressionnant en quelques minutes.",
       },
+      project4: {
+        title: "Golden Bucket Movies",
+        description:
+          "Un projet créé de zéro avec HTML, CSS et JavaScript. Catalogue de films avec recherche, filtres et détails.",
+      },
+      project5: {
+        title: "Projets divers",
+        description: "Différents projets personnels et collaboratifs sur GitHub.",
+      },
+      project6: {
+        title: "Tip Tracker",
+        description:
+          "Application de suivi des pourboires par service. Enregistre le montant, le mode de paiement, la météo et plus.",
+      },
+      project7: {
+        title: "Master Calendar Hub",
+        description: "Une application de calendrier moderne.",
+      },
     },
     work_experience1: {
       title: "Livreur à Moto",
+      period: "Juin 2023 - Juin 2026",
       description:
         "Livreur à moto pour Telepizza, chargé de livrer les commandes aux clients.",
       achievements: {},
     },
     work_experience2: {
       title: "Développeur Full-Stack",
+      period: "Février 2024 - Juillet 2024",
       description:
         "Développeur full-stack utilisant des technologies telles que React, Node.js, PostgreSQL et Supabase, développant des applications complètes de bout en bout.",
+      achievements: {},
+    },
+    work_experience3: {
+      title: "Développeur Junior — BBVA CIB",
+      period: "Juin 2026 - Présent",
+      description:
+        "Développeur full-stack à la Banco BBVA, travaillant avec React, TypeScript, Node.js et PostgreSQL dans un environnement d'entreprise à fort volume.",
       achievements: {},
     },
     education: {
@@ -594,6 +740,13 @@ export const translations = {
         period: "2022 - 2024",
         description:
           "J'ai suivi le diplôme de Technicien Supérieur en Développement d'Applications Web à l'IES Domenico Scarlatti, acquérant des connaissances en programmation, design web et développement d'applications.",
+      },
+      degree3: {
+        title: "Baccalauréat Biologique",
+        institution: "IES Alpajkes",
+        period: "2020 - 2022",
+        description:
+          "Baccalauréat dans la filière Sciences, branche Biologie.",
       },
     },
     blogs: {
@@ -688,6 +841,10 @@ export const translations = {
       viewProject: "Projekt Ansehen",
       viewCode: "Code Ansehen",
       featured: "Hervorgehobenes Projekt",
+      totalAccumulated: "Gesamtsumme",
+      averagePerShift: "Durchschnitt / Schicht",
+      shifts: "Schichten",
+      liveData: "● Live-Daten",
     },
     resume: {
       title: "Lebenslauf",
@@ -695,6 +852,19 @@ export const translations = {
       download: "PDF Herunterladen",
       experience: "Berufserfahrung",
       education: "Bildung",
+      captcha: {
+        title: "Schnelle Verifizierung",
+        instructions: "Lösen Sie die folgende Rechenaufgabe, um den Lebenslauf herunterzuladen",
+        close: "Schließen",
+        answerPlaceholder: "Ihre Antwort...",
+        incorrect: "Falsche Antwort.",
+        attemptsRemainingOne: "{n} Versuch übrig",
+        attemptsRemainingMany: "{n} Versuche übrig",
+        lockedTitle: "Zu viele fehlgeschlagene Versuche.",
+        lockedHint: "Laden Sie die Seite neu, um es erneut zu versuchen.",
+        newCalculation: "Andere Rechenaufgabe",
+        verify: "Verifizieren",
+      },
     },
     blog: {
       title: "Blog",
@@ -774,17 +944,44 @@ export const translations = {
         description:
           "Erstellen Sie in wenigen Minuten ein beeindruckendes Portfolio.",
       },
+      project4: {
+        title: "Golden Bucket Movies",
+        description:
+          "Ein Projekt von Grund auf mit HTML, CSS und JavaScript. Filmkatalog mit Suche, Filtern und Details.",
+      },
+      project5: {
+        title: "Verschiedene Projekte",
+        description: "Verschiedene persönliche und kollaborative Projekte auf GitHub.",
+      },
+      project6: {
+        title: "Tip Tracker",
+        description:
+          "Trinkgeld-Tracker-App pro Schicht. Erfasst Betrag, Zahlungsmethode, Wetter und mehr.",
+      },
+      project7: {
+        title: "Master Calendar Hub",
+        description: "Eine moderne Kalenderanwendung.",
+      },
     },
     work_experience1: {
       title: "Motorradkurier",
+      period: "Juni 2023 - Juni 2026",
       description:
         "Motorradkurier für Telepizza, verantwortlich für die Auslieferung von Bestellungen an Kunden.",
       achievements: {},
     },
     work_experience2: {
       title: "Full-Stack-Entwickler",
+      period: "Februar 2024 - Juli 2024",
       description:
         "Full-Stack-Entwickler mit Technologien wie React, Node.js, PostgreSQL und Supabase, mit denen vollständige Anwendungen von Grund auf entwickelt wurden.",
+      achievements: {},
+    },
+    work_experience3: {
+      title: "Junior-Entwickler — BBVA CIB",
+      period: "Juni 2026 - Heute",
+      description:
+        "Full-Stack-Entwickler bei Banco BBVA, der mit React, TypeScript, Node.js und PostgreSQL in einer stark frequentierten Unternehmensumgebung arbeitet.",
       achievements: {},
     },
     education: {
@@ -801,6 +998,13 @@ export const translations = {
         period: "2022 - 2024",
         description:
           "Ich habe das Diplom als Techniker für die Entwicklung von Webanwendungen am IES Domenico Scarlatti absolviert und Kenntnisse in Programmierung, Webdesign und Anwendungsentwicklung erworben.",
+      },
+      degree3: {
+        title: "Biologisches Abitur",
+        institution: "IES Alpajkes",
+        period: "2020 - 2022",
+        description:
+          "Abitur im naturwissenschaftlichen Zweig, Fachrichtung Biologie.",
       },
     },
     blogs: {
@@ -895,6 +1099,10 @@ export const translations = {
       viewProject: "查看项目",
       viewCode: "查看代码",
       featured: "精选项目",
+      totalAccumulated: "累计总额",
+      averagePerShift: "平均 / 班次",
+      shifts: "班次",
+      liveData: "● 实时数据",
     },
     resume: {
       title: "简历",
@@ -902,6 +1110,19 @@ export const translations = {
       download: "下载PDF",
       experience: "工作经验",
       education: "教育背景",
+      captcha: {
+        title: "快速验证",
+        instructions: "解答以下算式以下载简历",
+        close: "关闭",
+        answerPlaceholder: "您的答案...",
+        incorrect: "答案错误。",
+        attemptsRemainingOne: "剩余 {n} 次机会",
+        attemptsRemainingMany: "剩余 {n} 次机会",
+        lockedTitle: "失败次数过多。",
+        lockedHint: "请刷新页面重试。",
+        newCalculation: "换一题",
+        verify: "验证",
+      },
     },
     blog: {
       title: "博客",
@@ -976,16 +1197,41 @@ export const translations = {
         title: "作品集生成器",
         description: "几分钟内创建令人印象深刻的个人作品集",
       },
+      project4: {
+        title: "Golden Bucket Movies",
+        description: "使用HTML、CSS和JavaScript从零开始的项目。电影目录，支持搜索、筛选和详情。",
+      },
+      project5: {
+        title: "各类项目",
+        description: "GitHub上的各种个人和协作项目。",
+      },
+      project6: {
+        title: "Tip Tracker",
+        description: "按班次记录小费的应用程序。记录金额、支付方式、天气等。",
+      },
+      project7: {
+        title: "Master Calendar Hub",
+        description: "现代日历应用程序。",
+      },
     },
     work_experience1: {
       title: "機車外送員",
+      period: "2023年6月 - 2026年6月",
       description: "擔任 Telepizza 機車外送員，負責將訂單送達客戶手中。",
       achievements: {},
     },
     work_experience2: {
       title: "全端開發者",
+      period: "2024年2月 - 2024年7月",
       description:
         "使用 React、Node.js、PostgreSQL 及 Supabase 等技術的全端開發者，獨立開發完整應用程式。",
+      achievements: {},
+    },
+    work_experience3: {
+      title: "初级开发人员 — BBVA CIB",
+      period: "2026年6月 - 至今",
+      description:
+        "BBVA 银行的全端开发人员，在高流量企业环境中使用 React、TypeScript、Node.js 和 PostgreSQL。",
       achievements: {},
     },
     education: {
@@ -1001,6 +1247,12 @@ export const translations = {
         period: "2022-2024年",
         description:
           "获得多米尼科·斯卡拉蒂中学颁发的Web应用开发技术专家文凭，掌握了编程、网页设计和应用开发知识",
+      },
+      degree3: {
+        title: "生物学高中毕业证书",
+        institution: "IES Alpajkes",
+        period: "2020 - 2022",
+        description: "科学方向的高中毕业证书，生物学科。",
       },
     },
     blogs: {

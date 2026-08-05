@@ -20,8 +20,8 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Golden Bucket Movies",
-    description: "Proyecto desde cero usando HTML, CSS y JavaScript. Catálogo de películas con búsqueda, filtros y detalles.",
+    title: t(lang, "myprojects.project4.title"),
+    description: t(lang, "myprojects.project4.description"),
     image: "/photos/GBM-logo.avif",
     tags: ["HTML", "JavaScript", "CSS", "PostgreSQL"],
     liveUrl: "https://github.com/Anibalpaezz/Golden-Bucket-Movies",
@@ -29,8 +29,8 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Proyectos varios",
-    description: "Diferentes proyectos personales y colaborativos en GitHub.",
+    title: t(lang, "myprojects.project5.title"),
+    description: t(lang, "myprojects.project5.description"),
     image: "/photos/projects.avif",
     tags: ["PHP", "JavaScript", "HTML", "CSS"],
     liveUrl: "https://github.com/Anibalpaezz/master-calendar-hub",
@@ -56,8 +56,8 @@ const projects: Project[] = [
     featured: false,
   },
   {
-    title: "Tip Tracker",
-    description: "App de seguimiento de propinas por turno. Registra cantidad, método de pago, clima y más.",
+    title: t(lang, "myprojects.project6.title"),
+    description: t(lang, "myprojects.project6.description"),
     image: "/photos/GBM-logo.avif",
     tags: ["Supabase", "PostgreSQL"],
     liveUrl: "#",
@@ -66,8 +66,8 @@ const projects: Project[] = [
     isLive: true,
   },
   {
-    title: "Master Calendar Hub",
-    description: "Aplicación de calendario moderno.",
+    title: t(lang, "myprojects.project7.title"),
+    description: t(lang, "myprojects.project7.description"),
     image: "/photos/master_calendar_logo.avif",
     tags: ["React", "Supabase", "PostgreSQL"],
     liveUrl: "https://github.com/Anibalpaezz/master-calendar-hub",
@@ -97,19 +97,19 @@ const projects: Project[] = [
               <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex flex-col items-center justify-center gap-4 p-4">
                 <div class="text-center">
                   <p class="text-3xl font-bold gradient-text" data-total>—</p>
-                  <p class="text-xs text-muted-foreground mt-0.5">Total acumulado</p>
+                  <p class="text-xs text-muted-foreground mt-0.5">{t(lang, "projects.totalAccumulated")}</p>
                 </div>
                 <div class="flex gap-6">
                   <div class="text-center">
                     <p class="text-xl font-semibold" data-avg>—</p>
-                    <p class="text-xs text-muted-foreground">Media / turno</p>
+                    <p class="text-xs text-muted-foreground">{t(lang, "projects.averagePerShift")}</p>
                   </div>
                   <div class="text-center">
                     <p class="text-xl font-semibold" data-count>—</p>
-                    <p class="text-xs text-muted-foreground">Turnos</p>
+                    <p class="text-xs text-muted-foreground">{t(lang, "projects.shifts")}</p>
                   </div>
                 </div>
-                <span data-live-badge class="hidden inline-flex items-center rounded-full bg-green-500 px-2.5 py-0.5 text-xs font-medium text-white animate-pulse">● Live data</span>
+                <span data-live-badge class="hidden inline-flex items-center rounded-full bg-green-500 px-2.5 py-0.5 text-xs font-medium text-white animate-pulse">{t(lang, "projects.liveData")}</span>
               </div>
             ) : project.image ? (
               <>
