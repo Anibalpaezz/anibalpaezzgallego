@@ -92,7 +92,7 @@ const Contact = () => {
     const remaining = getRemainingCooldown();
     if (remaining > 0) {
       toast({
-        title: `Please wait ${remaining}s before sending another message.`,
+        title: t("contact.cooldown").replace("{n}", String(remaining)),
         variant: "destructive",
         duration: 4000,
       });

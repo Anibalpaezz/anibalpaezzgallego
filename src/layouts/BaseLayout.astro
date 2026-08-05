@@ -119,16 +119,16 @@ const websiteLd = JSON.stringify({
     <div id="cookie-banner" class="hidden fixed bottom-0 left-0 right-0 z-50 p-4 animate-slide-up">
       <div class="max-w-3xl mx-auto bg-card border border-border rounded-xl shadow-lg px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <p class="text-sm text-muted-foreground flex-1 leading-relaxed">
-          Usamos cookies para guardar tus preferencias de idioma y tema. No se comparten datos con terceros.
+          {t(lang, "cookieBanner.text")}
         </p>
         <div class="flex gap-2 shrink-0">
-          <button id="cookie-decline" class="rounded-lg border border-border px-4 py-1.5 text-xs font-medium hover:bg-secondary transition-colors">Rechazar</button>
-          <button id="cookie-accept" class="rounded-lg bg-gradient-primary text-white px-4 py-1.5 text-xs font-medium hover:opacity-90 transition-opacity">Aceptar</button>
+          <button id="cookie-decline" class="rounded-lg border border-border px-4 py-1.5 text-xs font-medium hover:bg-secondary transition-colors">{t(lang, "cookieBanner.decline")}</button>
+          <button id="cookie-accept" class="rounded-lg bg-gradient-primary text-white px-4 py-1.5 text-xs font-medium hover:opacity-90 transition-opacity">{t(lang, "cookieBanner.accept")}</button>
         </div>
       </div>
     </div>
 
-    <button id="scroll-top" class="hidden fixed bottom-6 right-6 z-50 items-center justify-center rounded-full bg-primary hover:bg-primary/90 shadow-lg transition-all animate-fade-in w-10 h-10" aria-label="Volver arriba">
+    <button id="scroll-top" class="hidden fixed bottom-6 right-6 z-50 items-center justify-center rounded-full bg-primary hover:bg-primary/90 shadow-lg transition-all animate-fade-in w-10 h-10" aria-label={t(lang, "accessibility.scrollTop")}>
       <svg class="h-5 w-5 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
     </button>
 

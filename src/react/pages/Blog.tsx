@@ -173,7 +173,7 @@ const Blog = () => {
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Rss className="h-4 w-4 text-primary" />
             <span>
-              Powered by{" "}
+              {t("blog.poweredBy")}{" "}
               <a
                 href="https://dev.to"
                 target="_blank"

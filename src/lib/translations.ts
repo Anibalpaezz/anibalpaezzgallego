@@ -38,8 +38,17 @@ export const translations = {
     },
     accessibility: {
       skipToContent: "Saltar al contenido",
+      scrollTop: "Volver arriba",
+      toggleTheme: "Cambiar tema",
+      changeLanguage: "Cambiar idioma",
+      toggleMenu: "Abrir menú",
+    },
+    notFound: {
+      message: "¡Ups! Página no encontrada",
+      returnHome: "Volver al inicio",
     },
     navBar: {
+      brand: "Portfolio",
       home: "Inicio",
       about: "Sobre mi",
       projects: "Proyectos",
@@ -107,6 +116,7 @@ export const translations = {
       subtitle: "Reflexiones sobre desarrollo, tecnología y más",
       readMore: "Leer Más",
       minutes: "min de lectura",
+      poweredBy: "Funciona con",
     },
     contact: {
       title: "Ponte en Contacto",
@@ -123,6 +133,7 @@ export const translations = {
       sending: "Enviando...",
       success: "¡Mensaje enviado con éxito! Te responderé pronto.",
       error: "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+      cooldown: "Espera {n}s antes de enviar otro mensaje.",
       validation: {
         nameRequired: "El nombre es obligatorio",
         nameMax: "El nombre debe tener menos de 100 caracteres",
@@ -303,8 +314,17 @@ export const translations = {
     },
     accessibility: {
       skipToContent: "Skip to content",
+      scrollTop: "Back to top",
+      toggleTheme: "Toggle theme",
+      changeLanguage: "Change language",
+      toggleMenu: "Toggle menu",
+    },
+    notFound: {
+      message: "Oops! Page not found",
+      returnHome: "Return to Home",
     },
     navBar: {
+      brand: "Portfolio",
       home: "Home",
       about: "About Me",
       projects: "Projects",
@@ -371,6 +391,7 @@ export const translations = {
       subtitle: "Thoughts on development, technology, and more",
       readMore: "Read More",
       minutes: "min read",
+      poweredBy: "Powered by",
     },
     contact: {
       title: "Get In Touch",
@@ -387,6 +408,7 @@ export const translations = {
       sending: "Sending...",
       success: "Message sent successfully! I'll get back to you soon.",
       error: "Failed to send message. Please try again.",
+      cooldown: "Please wait {n}s before sending another message.",
       validation: {
         nameRequired: "Name is required",
         nameMax: "Name must be less than 100 characters",
@@ -566,8 +588,17 @@ export const translations = {
     },
     accessibility: {
       skipToContent: "Aller au contenu",
+      scrollTop: "Remonter en haut",
+      toggleTheme: "Changer de thème",
+      changeLanguage: "Changer de langue",
+      toggleMenu: "Ouvrir le menu",
+    },
+    notFound: {
+      message: "Oups ! Page introuvable",
+      returnHome: "Retour à l'accueil",
     },
     navBar: {
+      brand: "Portfolio",
       home: "Accueil",
       about: "À propos",
       projects: "Projets",
@@ -634,6 +665,7 @@ export const translations = {
       subtitle: "Réflexions sur le développement, la technologie et plus",
       readMore: "Lire Plus",
       minutes: "min de lecture",
+      poweredBy: "Propulsé par",
     },
     contact: {
       title: "Contact",
@@ -650,6 +682,7 @@ export const translations = {
       sending: "Envoi en cours...",
       success: "Message envoyé avec succès! Je vous répondrai bientôt.",
       error: "Échec de l'envoi. Veuillez réessayer.",
+      cooldown: "Veuillez patienter {n}s avant d'envoyer un autre message.",
       validation: {
         nameRequired: "Le nom est obligatoire",
         nameMax: "Le nom doit comporter moins de 100 caractères",
@@ -832,8 +865,17 @@ export const translations = {
     },
     accessibility: {
       skipToContent: "Zum Inhalt springen",
+      scrollTop: "Nach oben",
+      toggleTheme: "Design wechseln",
+      changeLanguage: "Sprache ändern",
+      toggleMenu: "Menü öffnen",
+    },
+    notFound: {
+      message: "Hoppla! Seite nicht gefunden",
+      returnHome: "Zurück zur Startseite",
     },
     navBar: {
+      brand: "Portfolio",
       home: "Startseite",
       about: "Über mich",
       projects: "Projekte",
@@ -902,6 +944,7 @@ export const translations = {
       subtitle: "Reflexionen über Entwicklung, Technologie und mehr",
       readMore: "Mehr Lesen",
       minutes: "min Lesezeit",
+      poweredBy: "Unterstützt durch",
     },
     contact: {
       title: "Kontakt",
@@ -919,6 +962,8 @@ export const translations = {
       success:
         "Nachricht erfolgreich gesendet! Ich werde Ihnen bald antworten.",
       error: "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut.",
+      cooldown:
+        "Bitte warten Sie {n}s, bevor Sie eine weitere Nachricht senden.",
       validation: {
         nameRequired: "Der Name ist erforderlich",
         nameMax: "Der Name muss weniger als 100 Zeichen enthalten",
@@ -1097,8 +1142,17 @@ export const translations = {
     },
     accessibility: {
       skipToContent: "跳到主要内容",
+      scrollTop: "返回顶部",
+      toggleTheme: "切换主题",
+      changeLanguage: "切换语言",
+      toggleMenu: "打开菜单",
+    },
+    notFound: {
+      message: "哎呀！页面未找到",
+      returnHome: "返回首页",
     },
     navBar: {
+      brand: "作品集",
       home: "首页",
       about: "关于我",
       projects: "项目",
@@ -1165,6 +1219,7 @@ export const translations = {
       subtitle: "关于开发、技术等的反思",
       readMore: "阅读更多",
       minutes: "分钟阅读时间",
+      poweredBy: "由以下提供",
     },
     contact: {
       title: "联系",
@@ -1181,6 +1236,7 @@ export const translations = {
       sending: "正在发送消息...",
       success: "消息发送成功！我会尽快回复您。",
       error: "发送消息时出错。请再试一次。",
+      cooldown: "请在 {n} 秒后再发送一条消息。",
       validation: {
         nameRequired: "姓名是必填项",
         nameMax: "姓名必须少于100个字符",

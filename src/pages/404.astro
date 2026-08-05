@@ -1,14 +1,19 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { t } from "@/lib/t";
+
+const match = Astro.url.pathname.match(/^\/(en|fr|de|zh)\b/);
+const lang = (match ? match[1] : "es") as "es" | "en" | "fr" | "de" | "zh";
+const homeHref = lang === "es" ? "/" : `/${lang}/`;
 ---
 
-<BaseLayout seoKey="404" lang="es">
+<BaseLayout seoKey="404" lang={lang}>
   <div class="flex min-h-screen items-center justify-center">
     <div class="text-center">
       <h1 class="mb-4 text-4xl font-bold">404</h1>
-      <p class="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-      <a href="/" class="text-primary underline hover:text-primary/80 transition-colors">
-        Return to Home
+      <p class="mb-4 text-xl text-muted-foreground">{t(lang, "notFound.message")}</p>
+      <a href={homeHref} class="text-primary underline hover:text-primary/80 transition-colors">
+        {t(lang, "notFound.returnHome")}
       </a>
     </div>
   </div>
