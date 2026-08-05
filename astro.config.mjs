@@ -16,7 +16,11 @@ export default defineConfig({
   integrations: [
     react(),
     // Generates sitemap-0.xml + sitemap-index.xml from the built pages.
-    sitemap(),
+    // The default locale (es) is served at bare paths (/, /about, ...), so the
+    // duplicated /es/ variants are excluded to avoid duplicate URLs in the index.
+    sitemap({
+      filter: (page) => !page.includes("/es/"),
+    }),
   ],
 
   build: {
