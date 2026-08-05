@@ -83,8 +83,8 @@ const websiteLd = JSON.stringify({
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <script type="application/ld+json" set:html={personLd}></script>
-    <script type="application/ld+json" set:html={websiteLd}></script>
+    <script type="application/ld+json" is:inline set:html={personLd}></script>
+    <script type="application/ld+json" is:inline set:html={websiteLd}></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />

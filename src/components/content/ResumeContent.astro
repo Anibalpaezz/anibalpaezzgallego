@@ -215,7 +215,7 @@ const education = [
 <script>
 (function () {
   const MAX_ATTEMPTS = 5;
-  let challenge = { a: 0, b: 0, answer: 0, op: "+" };
+  let challenge: { a: number; b: number; answer: number; op: string; question: string } = { a: 0, b: 0, answer: 0, op: "+", question: "" };
   let attempts = 0;
   let locked = false;
   let lastFocused: HTMLElement | null = null;
@@ -223,14 +223,14 @@ const education = [
   function generate() {
     const ops = ["+", "-", "*"];
     const op = ops[Math.floor(Math.random() * ops.length)];
-    let a, b, answer;
+    let a = 0, b = 0, answer = 0;
     switch (op) {
       case "+": a = Math.floor(Math.random() * 20) + 1; b = Math.floor(Math.random() * 20) + 1; answer = a + b; break;
       case "-": a = Math.floor(Math.random() * 20) + 10; b = Math.floor(Math.random() * 10) + 1; answer = a - b; break;
       case "*": a = Math.floor(Math.random() * 9) + 2; b = Math.floor(Math.random() * 9) + 2; answer = a * b; break;
     }
     const symbols: Record<string, string> = { "+": "+", "-": "−", "*": "×" };
-    return { a, b, answer, question: `${a} ${symbols[op]} ${b}` };
+    return { a, b, answer, op, question: `${a} ${symbols[op]} ${b}` };
   }
 
   function refresh() {
