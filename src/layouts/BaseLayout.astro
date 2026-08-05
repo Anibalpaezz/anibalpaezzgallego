@@ -2,14 +2,60 @@
 import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import { seoMeta, canonicalUrl, routeKeyFromPath } from "@/lib/t";
 
 export interface Props {
   title?: string;
   description?: string;
   lang?: "es" | "en" | "fr" | "de" | "zh";
+  seoKey?: "home" | "about" | "projects" | "resume" | "blog" | "contact" | "404";
 }
 
-const { lang = "es" } = Astro.props;
+const { lang = "es", seoKey, title, description } = Astro.props;
+
+const site = (Astro.site?.toString() ?? "https://anibalpaezzgallego.vercel.app").replace(/\/+$/, "");
+
+const key = seoKey ?? (routeKeyFromPath(Astro.url.pathname) as NonNullable<Props["seoKey"]>);
+const meta = seoMeta(lang, key);
+const pageTitle = title ?? meta.title;
+const pageDescription = description ?? meta.description;
+
+const is404 = key === "404";
+const canonical = is404 ? undefined : canonicalUrl(lang, Astro.url.pathname, site);
+const ogImageUrl = new URL("/photos/og-image.png", site).toString();
+
+const ogLocale: Record<NonNullable<Props["lang"]>, string> = {
+  es: "es_ES",
+  en: "en_US",
+  fr: "fr_FR",
+  de: "de_DE",
+  zh: "zh_CN",
+};
+
+const personLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Aníbal Páez Gallego",
+  url: `${site}/`,
+  jobTitle: "Full-Stack Developer",
+  worksFor: { "@type": "Organization", name: "Arktic" },
+  knowsAbout: ["React", "TypeScript", "Node.js", "PostgreSQL", "SQL", "Supabase", "Tailwind CSS", "Python"],
+  sameAs: [
+    "https://github.com/Anibalpaezz",
+    "https://www.linkedin.com/in/anibalpg/",
+    "https://t.me/anibalpaezzg",
+  ],
+  nationality: "ES",
+});
+
+const websiteLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Aníbal Páez Gallego — Portfolio",
+  url: `${site}/`,
+  inLanguage: lang,
+  description: pageDescription,
+});
 ---
 
 <!doctype html>
@@ -17,16 +63,28 @@ const { lang = "es" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{Astro.props.title || "Aníbal Páez Gallego — Full-Stack Developer"}</title>
-    <meta name="description" content={Astro.props.description || "Portfolio de Aníbal Páez Gallego, desarrollador web full-stack especializado en React, TypeScript, Node.js y PostgreSQL."} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
     <meta name="author" content="Aníbal Páez Gallego" />
 
-    <meta property="og:title" content={Astro.props.title || "Aníbal Páez Gallego — Full-Stack Developer"} />
-    <meta property="og:description" content={Astro.props.description || "Desarrollador full-stack especializado en React, TypeScript, Node.js y PostgreSQL."} />
+    {is404 && <meta name="robots" content="noindex" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=630&fit=crop" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Aníbal Páez Gallego — Portfolio" />
+    <meta property="og:locale" content={ogLocale[lang]} />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={personLd}></script>
+    <script type="application/ld+json" set:html={websiteLd}></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -39,8 +97,6 @@ const { lang = "es" } = Astro.props;
         var theme = localStorage.getItem("theme") || "dark";
         document.documentElement.classList.remove("light", "dark");
         document.documentElement.classList.add(theme);
-        var lang = localStorage.getItem("language") || "es";
-        document.documentElement.lang = lang;
       })();
     </script>
 

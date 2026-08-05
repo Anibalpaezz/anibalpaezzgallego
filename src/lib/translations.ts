@@ -1,5 +1,35 @@
 export const translations = {
   es: {
+    seo: {
+      home: {
+        title: "Aníbal Páez Gallego — Desarrollador Full-Stack",
+        description: "Portfolio de Aníbal Páez Gallego, desarrollador web full-stack especializado en React, TypeScript, Node.js y PostgreSQL.",
+      },
+      about: {
+        title: "Sobre Mí | Aníbal Páez Gallego",
+        description: "Conoce más sobre Aníbal Páez Gallego: experiencia como desarrollador full-stack, especialización en bases de datos y formación.",
+      },
+      projects: {
+        title: "Proyectos | Aníbal Páez Gallego",
+        description: "Selección de proyectos de Aníbal Páez Gallego: aplicaciones web, herramientas de automatización y más.",
+      },
+      resume: {
+        title: "Currículum | Aníbal Páez Gallego",
+        description: "Experiencia laboral, educación y CV descargable de Aníbal Páez Gallego.",
+      },
+      blog: {
+        title: "Blog | Aníbal Páez Gallego",
+        description: "Artículos y reflexiones sobre desarrollo, tecnología y bases de datos.",
+      },
+      contact: {
+        title: "Contacto | Aníbal Páez Gallego",
+        description: "Ponte en contacto con Aníbal Páez Gallego para proyectos, colaboraciones o consultas.",
+      },
+      "404": {
+        title: "Página no encontrada | Aníbal Páez Gallego",
+        description: "La página que buscas no existe.",
+      },
+    },
     navBar: {
       home: "Inicio",
       about: "Sobre mi",
@@ -174,6 +204,36 @@ export const translations = {
   },
 
   en: {
+    seo: {
+      home: {
+        title: "Aníbal Páez Gallego — Full-Stack Developer",
+        description: "Portfolio of Aníbal Páez Gallego, full-stack web developer specialized in React, TypeScript, Node.js and PostgreSQL.",
+      },
+      about: {
+        title: "About Me | Aníbal Páez Gallego",
+        description: "Learn more about Aníbal Páez Gallego: full-stack development experience, database specialization and education.",
+      },
+      projects: {
+        title: "Projects | Aníbal Páez Gallego",
+        description: "A selection of projects by Aníbal Páez Gallego: web apps, automation tools and more.",
+      },
+      resume: {
+        title: "Resume | Aníbal Páez Gallego",
+        description: "Work experience, education and downloadable CV of Aníbal Páez Gallego.",
+      },
+      blog: {
+        title: "Blog | Aníbal Páez Gallego",
+        description: "Articles and thoughts about development, technology and databases.",
+      },
+      contact: {
+        title: "Contact | Aníbal Páez Gallego",
+        description: "Get in touch with Aníbal Páez Gallego for projects, collaborations or enquiries.",
+      },
+      "404": {
+        title: "Page not found | Aníbal Páez Gallego",
+        description: "The page you are looking for does not exist.",
+      },
+    },
     navBar: {
       home: "Home",
       about: "About Me",
@@ -347,6 +407,36 @@ export const translations = {
   },
 
   fr: {
+    seo: {
+      home: {
+        title: "Aníbal Páez Gallego — Développeur Full-Stack",
+        description: "Portfolio d'Aníbal Páez Gallego, développeur web full-stack spécialisé en React, TypeScript, Node.js et PostgreSQL.",
+      },
+      about: {
+        title: "À propos | Aníbal Páez Gallego",
+        description: "En savoir plus sur Aníbal Páez Gallego : expérience en développement full-stack, spécialisation en bases de données et formation.",
+      },
+      projects: {
+        title: "Projets | Aníbal Páez Gallego",
+        description: "Une sélection de projets d'Aníbal Páez Gallego : applications web, outils d'automatisation et plus.",
+      },
+      resume: {
+        title: "CV | Aníbal Páez Gallego",
+        description: "Expérience professionnelle, formation et CV téléchargeable d'Aníbal Páez Gallego.",
+      },
+      blog: {
+        title: "Blog | Aníbal Páez Gallego",
+        description: "Articles et réflexions sur le développement, la technologie et les bases de données.",
+      },
+      contact: {
+        title: "Contact | Aníbal Páez Gallego",
+        description: "Contactez Aníbal Páez Gallego pour des projets, collaborations ou demandes.",
+      },
+      "404": {
+        title: "Page introuvable | Aníbal Páez Gallego",
+        description: "La page que vous recherchez n'existe pas.",
+      },
+    },
     navBar: {
       home: "Accueil",
       about: "À propos",
@@ -520,6 +610,36 @@ export const translations = {
   },
 
   de: {
+    seo: {
+      home: {
+        title: "Aníbal Páez Gallego — Full-Stack-Entwickler",
+        description: "Portfolio von Aníbal Páez Gallego, Full-Stack-Webentwickler spezialisiert auf React, TypeScript, Node.js und PostgreSQL.",
+      },
+      about: {
+        title: "Über mich | Aníbal Páez Gallego",
+        description: "Mehr über Aníbal Páez Gallego: Full-Stack-Entwicklerfahrung, Datenbank-Spezialisierung und Ausbildung.",
+      },
+      projects: {
+        title: "Projekte | Aníbal Páez Gallego",
+        description: "Eine Auswahl von Projekten von Aníbal Páez Gallego: Webanwendungen, Automatisierungswerkzeuge und mehr.",
+      },
+      resume: {
+        title: "Lebenslauf | Aníbal Páez Gallego",
+        description: "Berufserfahrung, Ausbildung und herunterladbarer Lebenslauf von Aníbal Páez Gallego.",
+      },
+      blog: {
+        title: "Blog | Aníbal Páez Gallego",
+        description: "Artikel und Gedanken über Entwicklung, Technologie und Datenbanken.",
+      },
+      contact: {
+        title: "Kontakt | Aníbal Páez Gallego",
+        description: "Kontaktieren Sie Aníbal Páez Gallego für Projekte, Zusammenarbeit oder Anfragen.",
+      },
+      "404": {
+        title: "Seite nicht gefunden | Aníbal Páez Gallego",
+        description: "Die gesuchte Seite existiert nicht.",
+      },
+    },
     navBar: {
       home: "Startseite",
       about: "Über mich",
@@ -694,6 +814,36 @@ export const translations = {
   },
 
   zh: {
+    seo: {
+      home: {
+        title: "Aníbal Páez Gallego — 全栈开发者",
+        description: "Aníbal Páez Gallego 的作品集，专注于 React、TypeScript、Node.js 和 PostgreSQL 的全栈网页开发者。",
+      },
+      about: {
+        title: "关于我 | Aníbal Páez Gallego",
+        description: "了解更多关于 Aníbal Páez Gallego：全栈开发经验、数据库专长与教育背景。",
+      },
+      projects: {
+        title: "项目 | Aníbal Páez Gallego",
+        description: "Aníbal Páez Gallego 的项目精选：Web 应用、自动化工具等。",
+      },
+      resume: {
+        title: "简历 | Aníbal Páez Gallego",
+        description: "Aníbal Páez Gallego 的工作经历、教育背景与可下载简历。",
+      },
+      blog: {
+        title: "博客 | Aníbal Páez Gallego",
+        description: "关于开发、技术与数据库的文章与思考。",
+      },
+      contact: {
+        title: "联系 | Aníbal Páez Gallego",
+        description: "就项目、合作或咨询联系 Aníbal Páez Gallego。",
+      },
+      "404": {
+        title: "页面未找到 | Aníbal Páez Gallego",
+        description: "您查找的页面不存在。",
+      },
+    },
     navBar: {
       home: "首页",
       about: "关于我",
