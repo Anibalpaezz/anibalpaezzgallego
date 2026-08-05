@@ -3,27 +3,33 @@ export const translations = {
     seo: {
       home: {
         title: "Aníbal Páez Gallego — Desarrollador Full-Stack",
-        description: "Portfolio de Aníbal Páez Gallego, desarrollador web full-stack especializado en React, TypeScript, Node.js y PostgreSQL.",
+        description:
+          "Portfolio de Aníbal Páez Gallego, desarrollador web full-stack especializado en React, TypeScript, Node.js y PostgreSQL.",
       },
       about: {
         title: "Sobre Mí | Aníbal Páez Gallego",
-        description: "Conoce más sobre Aníbal Páez Gallego: experiencia como desarrollador full-stack, especialización en bases de datos y formación.",
+        description:
+          "Conoce más sobre Aníbal Páez Gallego: experiencia como desarrollador full-stack, especialización en bases de datos y formación.",
       },
       projects: {
         title: "Proyectos | Aníbal Páez Gallego",
-        description: "Selección de proyectos de Aníbal Páez Gallego: aplicaciones web, herramientas de automatización y más.",
+        description:
+          "Selección de proyectos de Aníbal Páez Gallego: aplicaciones web, herramientas de automatización y más.",
       },
       resume: {
         title: "Currículum | Aníbal Páez Gallego",
-        description: "Experiencia laboral, educación y CV descargable de Aníbal Páez Gallego.",
+        description:
+          "Experiencia laboral, educación y CV descargable de Aníbal Páez Gallego.",
       },
       blog: {
         title: "Blog | Aníbal Páez Gallego",
-        description: "Artículos y reflexiones sobre desarrollo, tecnología y bases de datos.",
+        description:
+          "Artículos y reflexiones sobre desarrollo, tecnología y bases de datos.",
       },
       contact: {
         title: "Contacto | Aníbal Páez Gallego",
-        description: "Ponte en contacto con Aníbal Páez Gallego para proyectos, colaboraciones o consultas.",
+        description:
+          "Ponte en contacto con Aníbal Páez Gallego para proyectos, colaboraciones o consultas.",
       },
       "404": {
         title: "Página no encontrada | Aníbal Páez Gallego",
@@ -55,7 +61,8 @@ export const translations = {
         "Desarrollador web full-stack con experiencia práctica en frontend y backend. Técnico Superior en DAW y estudiante de Ingeniería Informática, he trabajado con tecnologías como React, Node.js, PostgreSQL y Supabase, desarrollando aplicaciones completas de principio a fin. Me adapto tanto a la capa visual como a la lógica de negocio y Bases de Datos, con especial interés en el diseño y gestión de Bases de Datos. Busco incorporarme a un equipo donde pueda aportar desde el primer día mientras sigo creciendo profesionalmente.",
       skills: "Habilidades y Tecnologías",
       dbTitle: "Especialización: Bases de Datos",
-      dbDescription: "Mi mayor interés técnico es el diseño, modelado y optimización de bases de datos relacionales. Trabajo con SQL a diario y disfruto especialmente del diseño de esquemas, escritura de consultas complejas y análisis de rendimiento.",
+      dbDescription:
+        "Mi mayor interés técnico es el diseño, modelado y optimización de bases de datos relacionales. Trabajo con SQL a diario y disfruto especialmente del diseño de esquemas, escritura de consultas complejas y análisis de rendimiento.",
       githubTitle: "Actividad en GitHub",
       githubRepos: "Repositorios",
       githubStars: "Stars",
@@ -154,8 +161,7 @@ export const translations = {
     },
     work_together: {
       title: "¿Te gustaría que charlásemos un rato?",
-      description:
-        "Ponte en contacto conmigo y te responderé enseguida.",
+      description: "Ponte en contacto conmigo y te responderé enseguida.",
       button: "Empieza una conversación",
     },
     myprojects: {
@@ -179,7 +185,8 @@ export const translations = {
       },
       project5: {
         title: "Proyectos varios",
-        description: "Diferentes proyectos personales y colaborativos en GitHub.",
+        description:
+          "Diferentes proyectos personales y colaborativos en GitHub.",
       },
       project6: {
         title: "Tip Tracker",
@@ -261,27 +268,33 @@ export const translations = {
     seo: {
       home: {
         title: "Aníbal Páez Gallego — Full-Stack Developer",
-        description: "Portfolio of Aníbal Páez Gallego, full-stack web developer specialized in React, TypeScript, Node.js and PostgreSQL.",
+        description:
+          "Portfolio of Aníbal Páez Gallego, full-stack web developer specialized in React, TypeScript, Node.js and PostgreSQL.",
       },
       about: {
         title: "About Me | Aníbal Páez Gallego",
-        description: "Learn more about Aníbal Páez Gallego: full-stack development experience, database specialization and education.",
+        description:
+          "Learn more about Aníbal Páez Gallego: full-stack development experience, database specialization and education.",
       },
       projects: {
         title: "Projects | Aníbal Páez Gallego",
-        description: "A selection of projects by Aníbal Páez Gallego: web apps, automation tools and more.",
+        description:
+          "A selection of projects by Aníbal Páez Gallego: web apps, automation tools and more.",
       },
       resume: {
         title: "Resume | Aníbal Páez Gallego",
-        description: "Work experience, education and downloadable CV of Aníbal Páez Gallego.",
+        description:
+          "Work experience, education and downloadable CV of Aníbal Páez Gallego.",
       },
       blog: {
         title: "Blog | Aníbal Páez Gallego",
-        description: "Articles and thoughts about development, technology and databases.",
+        description:
+          "Articles and thoughts about development, technology and databases.",
       },
       contact: {
         title: "Contact | Aníbal Páez Gallego",
-        description: "Get in touch with Aníbal Páez Gallego for projects, collaborations or enquiries.",
+        description:
+          "Get in touch with Aníbal Páez Gallego for projects, collaborations or enquiries.",
       },
       "404": {
         title: "Page not found | Aníbal Páez Gallego",
@@ -312,7 +325,8 @@ export const translations = {
         "Full-stack web developer with hands-on experience in both frontend and backend. Holding a Higher Degree in Web Application Development and currently studying Computer Engineering, I have worked with technologies such as React, Node.js, PostgreSQL and Supabase, building complete applications from start to finish. I adapt equally well to the visual layer, business logic, and databases, with a particular interest in database design and management. I am looking to join a team where I can contribute from day one while continuing to grow professionally.",
       skills: "Skills & Technologies",
       dbTitle: "Specialization: Databases",
-      dbDescription: "My biggest technical interest is the design, modelling and optimization of relational databases. I work with SQL daily and especially enjoy schema design, writing complex queries and performance analysis.",
+      dbDescription:
+        "My biggest technical interest is the design, modelling and optimization of relational databases. I work with SQL daily and especially enjoy schema design, writing complex queries and performance analysis.",
       githubTitle: "GitHub Activity",
       githubRepos: "Repositories",
       githubStars: "Stars",
@@ -488,8 +502,7 @@ export const translations = {
         title: "Biological Baccalaureate",
         institution: "IES Alpajkes",
         period: "2020 - 2022",
-        description:
-          "Baccalaureate in the Sciences track, Biology branch.",
+        description: "Baccalaureate in the Sciences track, Biology branch.",
       },
     },
     blogs: {
@@ -518,27 +531,33 @@ export const translations = {
     seo: {
       home: {
         title: "Aníbal Páez Gallego — Développeur Full-Stack",
-        description: "Portfolio d'Aníbal Páez Gallego, développeur web full-stack spécialisé en React, TypeScript, Node.js et PostgreSQL.",
+        description:
+          "Portfolio d'Aníbal Páez Gallego, développeur web full-stack spécialisé en React, TypeScript, Node.js et PostgreSQL.",
       },
       about: {
         title: "À propos | Aníbal Páez Gallego",
-        description: "En savoir plus sur Aníbal Páez Gallego : expérience en développement full-stack, spécialisation en bases de données et formation.",
+        description:
+          "En savoir plus sur Aníbal Páez Gallego : expérience en développement full-stack, spécialisation en bases de données et formation.",
       },
       projects: {
         title: "Projets | Aníbal Páez Gallego",
-        description: "Une sélection de projets d'Aníbal Páez Gallego : applications web, outils d'automatisation et plus.",
+        description:
+          "Une sélection de projets d'Aníbal Páez Gallego : applications web, outils d'automatisation et plus.",
       },
       resume: {
         title: "CV | Aníbal Páez Gallego",
-        description: "Expérience professionnelle, formation et CV téléchargeable d'Aníbal Páez Gallego.",
+        description:
+          "Expérience professionnelle, formation et CV téléchargeable d'Aníbal Páez Gallego.",
       },
       blog: {
         title: "Blog | Aníbal Páez Gallego",
-        description: "Articles et réflexions sur le développement, la technologie et les bases de données.",
+        description:
+          "Articles et réflexions sur le développement, la technologie et les bases de données.",
       },
       contact: {
         title: "Contact | Aníbal Páez Gallego",
-        description: "Contactez Aníbal Páez Gallego pour des projets, collaborations ou demandes.",
+        description:
+          "Contactez Aníbal Páez Gallego pour des projets, collaborations ou demandes.",
       },
       "404": {
         title: "Page introuvable | Aníbal Páez Gallego",
@@ -569,7 +588,8 @@ export const translations = {
         "Développeur web full-stack avec une expérience pratique en frontend et backend. Titulaire d'un BTS Développement d'Applications Web et actuellement étudiant en Ingénierie Informatique, j'ai travaillé avec des technologies telles que React, Node.js, PostgreSQL et Supabase, en développant des applications complètes de bout en bout. Je m'adapte aussi bien à la couche visuelle qu'à la logique métier et aux bases de données, avec un intérêt particulier pour la conception et la gestion de bases de données. Je cherche à intégrer une équipe où je puisse contribuer dès le premier jour tout en continuant à évoluer professionnellement.",
       skills: "Compétences et Technologies",
       dbTitle: "Spécialisation : Bases de données",
-      dbDescription: "Mon plus grand intérêt technique est la conception, la modélisation et l'optimisation des bases de données relationnelles. Je travaille avec SQL au quotidien et apprécie particulièrement le design de schémas, l'écriture de requêtes complexes et l'analyse des performances.",
+      dbDescription:
+        "Mon plus grand intérêt technique est la conception, la modélisation et l'optimisation des bases de données relationnelles. Je travaille avec SQL au quotidien et apprécie particulièrement le design de schémas, l'écriture de requêtes complexes et l'analyse des performances.",
       githubTitle: "Activité GitHub",
       githubRepos: "Dépôts",
       githubStars: "Stars",
@@ -653,7 +673,8 @@ export const translations = {
     features: {
       cleanCode: {
         title: "Bases de données",
-        description: "J'aime beaucoup administrer et concevoir des bases de données",
+        description:
+          "J'aime beaucoup administrer et concevoir des bases de données",
       },
       modernDesign: {
         title: "Full Stack",
@@ -693,7 +714,8 @@ export const translations = {
       },
       project5: {
         title: "Projets divers",
-        description: "Différents projets personnels et collaboratifs sur GitHub.",
+        description:
+          "Différents projets personnels et collaboratifs sur GitHub.",
       },
       project6: {
         title: "Tip Tracker",
@@ -735,7 +757,8 @@ export const translations = {
           "Actuellement en train de poursuivre un diplôme en Ingénierie Informatique à l'Université Nationale de l'Éducation à Distance (UNED).",
       },
       degree2: {
-        title: "Diplôme de Technicien Supérieur en Développement d'Applications Web",
+        title:
+          "Diplôme de Technicien Supérieur en Développement d'Applications Web",
         institution: "IES Domenico Scarlatti",
         period: "2022 - 2024",
         description:
@@ -745,8 +768,7 @@ export const translations = {
         title: "Baccalauréat Biologique",
         institution: "IES Alpajkes",
         period: "2020 - 2022",
-        description:
-          "Baccalauréat dans la filière Sciences, branche Biologie.",
+        description: "Baccalauréat dans la filière Sciences, branche Biologie.",
       },
     },
     blogs: {
@@ -775,27 +797,33 @@ export const translations = {
     seo: {
       home: {
         title: "Aníbal Páez Gallego — Full-Stack-Entwickler",
-        description: "Portfolio von Aníbal Páez Gallego, Full-Stack-Webentwickler spezialisiert auf React, TypeScript, Node.js und PostgreSQL.",
+        description:
+          "Portfolio von Aníbal Páez Gallego, Full-Stack-Webentwickler spezialisiert auf React, TypeScript, Node.js und PostgreSQL.",
       },
       about: {
         title: "Über mich | Aníbal Páez Gallego",
-        description: "Mehr über Aníbal Páez Gallego: Full-Stack-Entwicklerfahrung, Datenbank-Spezialisierung und Ausbildung.",
+        description:
+          "Mehr über Aníbal Páez Gallego: Full-Stack-Entwicklerfahrung, Datenbank-Spezialisierung und Ausbildung.",
       },
       projects: {
         title: "Projekte | Aníbal Páez Gallego",
-        description: "Eine Auswahl von Projekten von Aníbal Páez Gallego: Webanwendungen, Automatisierungswerkzeuge und mehr.",
+        description:
+          "Eine Auswahl von Projekten von Aníbal Páez Gallego: Webanwendungen, Automatisierungswerkzeuge und mehr.",
       },
       resume: {
         title: "Lebenslauf | Aníbal Páez Gallego",
-        description: "Berufserfahrung, Ausbildung und herunterladbarer Lebenslauf von Aníbal Páez Gallego.",
+        description:
+          "Berufserfahrung, Ausbildung und herunterladbarer Lebenslauf von Aníbal Páez Gallego.",
       },
       blog: {
         title: "Blog | Aníbal Páez Gallego",
-        description: "Artikel und Gedanken über Entwicklung, Technologie und Datenbanken.",
+        description:
+          "Artikel und Gedanken über Entwicklung, Technologie und Datenbanken.",
       },
       contact: {
         title: "Kontakt | Aníbal Páez Gallego",
-        description: "Kontaktieren Sie Aníbal Páez Gallego für Projekte, Zusammenarbeit oder Anfragen.",
+        description:
+          "Kontaktieren Sie Aníbal Páez Gallego für Projekte, Zusammenarbeit oder Anfragen.",
       },
       "404": {
         title: "Seite nicht gefunden | Aníbal Páez Gallego",
@@ -826,7 +854,8 @@ export const translations = {
         "Full-Stack-Webentwickler mit praktischer Erfahrung in Frontend und Backend. Mit einem Abschluss als Techniker für Webapplikationsentwicklung und einem laufenden Studium der Informatik habe ich mit Technologien wie React, Node.js, PostgreSQL und Supabase gearbeitet und vollständige Anwendungen von Grund auf entwickelt. Ich passe mich sowohl der visuellen Ebene als auch der Geschäftslogik und Datenbanken an, mit besonderem Interesse an Datenbankdesign und -verwaltung. Ich möchte einem Team beitreten, in dem ich vom ersten Tag an einen Beitrag leisten und gleichzeitig professionell wachsen kann.",
       skills: "Fähigkeiten und Technologien",
       dbTitle: "Spezialisierung: Datenbanken",
-      dbDescription: "Mein größtes technisches Interesse ist das Design, die Modellierung und Optimierung relationaler Datenbanken. Ich arbeite täglich mit SQL und freue mich besonders über Schema-Design, das Schreiben komplexer Abfragen und Leistungsanalyse.",
+      dbDescription:
+        "Mein größtes technisches Interesse ist das Design, die Modellierung und Optimierung relationaler Datenbanken. Ich arbeite täglich mit SQL und freue mich besonders über Schema-Design, das Schreiben komplexer Abfragen und Leistungsanalyse.",
       githubTitle: "GitHub-Aktivität",
       githubRepos: "Repositories",
       githubStars: "Stars",
@@ -848,13 +877,15 @@ export const translations = {
     },
     resume: {
       title: "Lebenslauf",
-      subtitle: "Laden Sie meinen Lebenslauf herunter oder sehen Sie ihn online an",
+      subtitle:
+        "Laden Sie meinen Lebenslauf herunter oder sehen Sie ihn online an",
       download: "PDF Herunterladen",
       experience: "Berufserfahrung",
       education: "Bildung",
       captcha: {
         title: "Schnelle Verifizierung",
-        instructions: "Lösen Sie die folgende Rechenaufgabe, um den Lebenslauf herunterzuladen",
+        instructions:
+          "Lösen Sie die folgende Rechenaufgabe, um den Lebenslauf herunterzuladen",
         close: "Schließen",
         answerPlaceholder: "Ihre Antwort...",
         incorrect: "Falsche Antwort.",
@@ -885,7 +916,8 @@ export const translations = {
       messagePlaceholder: "Erzählen Sie mir von Ihrem Projekt...",
       send: "Nachricht senden",
       sending: "Nachricht wird gesendet...",
-      success: "Nachricht erfolgreich gesendet! Ich werde Ihnen bald antworten.",
+      success:
+        "Nachricht erfolgreich gesendet! Ich werde Ihnen bald antworten.",
       error: "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut.",
       validation: {
         nameRequired: "Der Name ist erforderlich",
@@ -951,7 +983,8 @@ export const translations = {
       },
       project5: {
         title: "Verschiedene Projekte",
-        description: "Verschiedene persönliche und kollaborative Projekte auf GitHub.",
+        description:
+          "Verschiedene persönliche und kollaborative Projekte auf GitHub.",
       },
       project6: {
         title: "Tip Tracker",
@@ -1033,11 +1066,13 @@ export const translations = {
     seo: {
       home: {
         title: "Aníbal Páez Gallego — 全栈开发者",
-        description: "Aníbal Páez Gallego 的作品集，专注于 React、TypeScript、Node.js 和 PostgreSQL 的全栈网页开发者。",
+        description:
+          "Aníbal Páez Gallego 的作品集，专注于 React、TypeScript、Node.js 和 PostgreSQL 的全栈网页开发者。",
       },
       about: {
         title: "关于我 | Aníbal Páez Gallego",
-        description: "了解更多关于 Aníbal Páez Gallego：全栈开发经验、数据库专长与教育背景。",
+        description:
+          "了解更多关于 Aníbal Páez Gallego：全栈开发经验、数据库专长与教育背景。",
       },
       projects: {
         title: "项目 | Aníbal Páez Gallego",
@@ -1084,7 +1119,8 @@ export const translations = {
         "具備前端與後端實務經驗的全端網頁開發者。擁有網頁應用程式開發高級技術文憑，目前就讀資訊工程學系。曾使用 React、Node.js、PostgreSQL 及 Supabase 等技術，獨立開發完整應用程式。能靈活應對視覺介面、商業邏輯與資料庫等各層面，尤其對資料庫設計與管理抱有濃厚興趣。期望加入一個能從第一天起就發揮所長、同時持續精進的專業團隊。",
       skills: "技能和技术",
       dbTitle: "专业方向：数据库",
-      dbDescription: "我最大的技术兴趣是关系型数据库的设计、建模和优化。我每天使用SQL，特别享受数据库架构设计、复杂查询编写和性能分析。",
+      dbDescription:
+        "我最大的技术兴趣是关系型数据库的设计、建模和优化。我每天使用SQL，特别享受数据库架构设计、复杂查询编写和性能分析。",
       githubTitle: "GitHub 活动",
       githubRepos: "仓库",
       githubStars: "星标",
@@ -1191,7 +1227,8 @@ export const translations = {
       },
       project2: {
         title: "自动化工具",
-        description: "用于PDF编辑、大规模重命名和Windows功能等任务的各种自动化程序",
+        description:
+          "用于PDF编辑、大规模重命名和Windows功能等任务的各种自动化程序",
       },
       project3: {
         title: "作品集生成器",
@@ -1199,7 +1236,8 @@ export const translations = {
       },
       project4: {
         title: "Golden Bucket Movies",
-        description: "使用HTML、CSS和JavaScript从零开始的项目。电影目录，支持搜索、筛选和详情。",
+        description:
+          "使用HTML、CSS和JavaScript从零开始的项目。电影目录，支持搜索、筛选和详情。",
       },
       project5: {
         title: "各类项目",

@@ -39,17 +39,47 @@ export interface SeoMeta {
   description: string;
 }
 
-const SEO_KEYS = ["home", "about", "projects", "resume", "blog", "contact", "404"] as const;
+const SEO_KEYS = [
+  "home",
+  "about",
+  "projects",
+  "resume",
+  "blog",
+  "contact",
+  "404",
+] as const;
 type SeoKey = (typeof SEO_KEYS)[number];
 
 const FALLBACK_SEO: Record<SeoKey, SeoMeta> = {
-  home: { title: "Aníbal Páez Gallego — Full-Stack Developer", description: "Portfolio de Aníbal Páez Gallego, desarrollador web full-stack especializado en React, TypeScript, Node.js y PostgreSQL." },
-  about: { title: "Sobre Mí | Aníbal Páez Gallego", description: "Conoce más sobre Aníbal Páez Gallego." },
-  projects: { title: "Proyectos | Aníbal Páez Gallego", description: "Selección de proyectos de Aníbal Páez Gallego." },
-  resume: { title: "Currículum | Aníbal Páez Gallego", description: "Experiencia laboral, educación y CV de Aníbal Páez Gallego." },
-  blog: { title: "Blog | Aníbal Páez Gallego", description: "Artículos y reflexiones sobre desarrollo y tecnología." },
-  contact: { title: "Contacto | Aníbal Páez Gallego", description: "Ponte en contacto con Aníbal Páez Gallego." },
-  "404": { title: "Página no encontrada | Aníbal Páez Gallego", description: "La página que buscas no existe." },
+  home: {
+    title: "Aníbal Páez Gallego — Full-Stack Developer",
+    description:
+      "Portfolio de Aníbal Páez Gallego, desarrollador web full-stack especializado en React, TypeScript, Node.js y PostgreSQL.",
+  },
+  about: {
+    title: "Sobre Mí | Aníbal Páez Gallego",
+    description: "Conoce más sobre Aníbal Páez Gallego.",
+  },
+  projects: {
+    title: "Proyectos | Aníbal Páez Gallego",
+    description: "Selección de proyectos de Aníbal Páez Gallego.",
+  },
+  resume: {
+    title: "Currículum | Aníbal Páez Gallego",
+    description: "Experiencia laboral, educación y CV de Aníbal Páez Gallego.",
+  },
+  blog: {
+    title: "Blog | Aníbal Páez Gallego",
+    description: "Artículos y reflexiones sobre desarrollo y tecnología.",
+  },
+  contact: {
+    title: "Contacto | Aníbal Páez Gallego",
+    description: "Ponte en contacto con Aníbal Páez Gallego.",
+  },
+  "404": {
+    title: "Página no encontrada | Aníbal Páez Gallego",
+    description: "La página que buscas no existe.",
+  },
 };
 
 export function seoMeta(lang: Lang, key: string): SeoMeta {
@@ -57,22 +87,31 @@ export function seoMeta(lang: Lang, key: string): SeoMeta {
   const dict = (translations[lang] as Record<string, any>)?.seo?.[valid];
   const esDict = (translations.es as Record<string, any>)?.seo?.[valid];
   const title = dict?.title || esDict?.title || FALLBACK_SEO[valid].title;
-  const description = dict?.description || esDict?.description || FALLBACK_SEO[valid].description;
+  const description =
+    dict?.description || esDict?.description || FALLBACK_SEO[valid].description;
   return { title, description };
 }
 
 /** Determines which route a pathname belongs to (defaults to the home page). */
 export function routeKeyFromPath(pathname: string): string {
-  const cleaned = pathname.replace(/^\/(en|fr|de|zh|es)\/?/, "/").replace(/\/+$/, "");
+  const cleaned = pathname
+    .replace(/^\/(en|fr|de|zh|es)\/?/, "/")
+    .replace(/\/+$/, "");
   const first = cleaned.split("/")[1];
-  return (SEO_KEYS as readonly string[]).includes(first ?? "") ? first! : "home";
+  return (SEO_KEYS as readonly string[]).includes(first ?? "")
+    ? first!
+    : "home";
 }
 
 /**
  * Builds the canonical URL for a route. Spanish (the default locale) keeps the
  * root path (resolving the duplicate `/` vs `/es`), other locales are prefixed.
  */
-export function canonicalUrl(lang: Lang, pathname: string, base: string): string {
+export function canonicalUrl(
+  lang: Lang,
+  pathname: string,
+  base: string,
+): string {
   const origin = base.replace(/\/+$/, "");
   const key = routeKeyFromPath(pathname);
   const path = key === "home" ? "" : `/${key}`;

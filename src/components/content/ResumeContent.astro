@@ -75,7 +75,7 @@ const education = [
         aria-modal="true"
         aria-labelledby="captcha-title"
         class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in"
-        onclick="if (event.target === event.currentTarget) window.__closeCaptcha()"
+        data-close-on-backdrop
       >
         <div class="relative bg-background border rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4">
           <button
@@ -274,6 +274,12 @@ const education = [
     if (container) container.classList.add("hidden");
     if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
   };
+
+  const backdrop = document.getElementById("captcha-modal-container");
+  const closeOnBackdrop = function (e: Event) {
+    if (e.target === e.currentTarget) window.__closeCaptcha();
+  };
+  if (backdrop) backdrop.addEventListener("click", closeOnBackdrop);
 
   // Focus trap + Escape while the dialog is open.
   document.addEventListener("keydown", function (e: KeyboardEvent) {

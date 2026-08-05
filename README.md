@@ -51,15 +51,15 @@ src/
 
 ## Commands
 
-| Command            | Action                                        |
-| :----------------- | :-------------------------------------------- |
-| `npm install`      | Install dependencies                          |
-| `npm run dev`      | Start the dev server at `localhost:4321`      |
-| `npm run build`    | Build the production site to `./dist/`        |
-| `npm run preview`  | Preview the production build locally          |
-| `npm run check`    | Run `astro check` (TypeScript diagnostics)    |
-| `npm run format`   | Format the whole repo with Prettier           |
-| `npm run format:check` | Check formatting without modifying files |
+| Command                | Action                                     |
+| :--------------------- | :----------------------------------------- |
+| `npm install`          | Install dependencies                       |
+| `npm run dev`          | Start the dev server at `localhost:4321`   |
+| `npm run build`        | Build the production site to `./dist/`     |
+| `npm run preview`      | Preview the production build locally       |
+| `npm run check`        | Run `astro check` (TypeScript diagnostics) |
+| `npm run format`       | Format the whole repo with Prettier        |
+| `npm run format:check` | Check formatting without modifying files   |
 
 ## Environment variables
 

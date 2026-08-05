@@ -51,9 +51,11 @@
     const menu = document.getElementById("mobile-menu");
     const btn = document.getElementById("menu-btn");
     if (!menu || !btn) return;
-    if (!menu.classList.contains("hidden") &&
+    if (
+      !menu.classList.contains("hidden") &&
       !menu.contains(e.target as Node) &&
-      !btn.contains(e.target as Node)) {
+      !btn.contains(e.target as Node)
+    ) {
       menu.classList.add("hidden");
       btn.setAttribute("aria-expanded", "false");
       updateMenuIcons(false);
@@ -67,17 +69,23 @@
   if (!btn) return;
 
   let visible = false;
-  window.addEventListener("scroll", function () {
-    const shouldShow = window.scrollY > 400;
-    if (shouldShow !== visible) {
-      visible = shouldShow;
-      btn.classList.toggle("hidden", !visible);
-      btn.classList.toggle("flex", visible);
-    }
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    function () {
+      const shouldShow = window.scrollY > 400;
+      if (shouldShow !== visible) {
+        visible = shouldShow;
+        btn.classList.toggle("hidden", !visible);
+        btn.classList.toggle("flex", visible);
+      }
+    },
+    { passive: true },
+  );
 
   btn.addEventListener("click", function () {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   });
 })();
@@ -92,14 +100,18 @@
     banner.remove();
   } else {
     banner.classList.remove("hidden");
-    document.getElementById("cookie-accept")?.addEventListener("click", function () {
-      localStorage.setItem(COOKIE_KEY, "true");
-      banner.remove();
-    });
-    document.getElementById("cookie-decline")?.addEventListener("click", function () {
-      localStorage.setItem(COOKIE_KEY, "false");
-      banner.remove();
-    });
+    document
+      .getElementById("cookie-accept")
+      ?.addEventListener("click", function () {
+        localStorage.setItem(COOKIE_KEY, "true");
+        banner.remove();
+      });
+    document
+      .getElementById("cookie-decline")
+      ?.addEventListener("click", function () {
+        localStorage.setItem(COOKIE_KEY, "false");
+        banner.remove();
+      });
   }
 })();
 
@@ -117,7 +129,7 @@
         }
       }
     },
-    { threshold: 0.08 }
+    { threshold: 0.08 },
   );
   els.forEach((el) => obs.observe(el));
 })();

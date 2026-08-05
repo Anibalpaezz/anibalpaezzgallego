@@ -66,7 +66,11 @@
   --radius: 0.75rem;
 
   /* Guardamos tus gradientes nativos */
-  --gradient-primary: linear-gradient(135deg, hsl(260 70% 55%), hsl(240 70% 60%));
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(260 70% 55%),
+    hsl(240 70% 60%)
+  );
   --gradient-accent: linear-gradient(135deg, hsl(15 85% 60%), hsl(30 90% 65%));
   --gradient-subtle: linear-gradient(180deg, hsl(240 5% 98%), hsl(240 5% 96%));
   --shadow-glow: 0 0 30px hsl(250 70% 55% / 0.3);
@@ -96,7 +100,11 @@
   --border: 240 4% 20%;
   --input: 240 4% 20%;
   --ring: 250 70% 60%;
-  --gradient-primary: linear-gradient(135deg, hsl(260 70% 60%), hsl(240 70% 65%));
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(260 70% 60%),
+    hsl(240 70% 65%)
+  );
   --gradient-accent: linear-gradient(135deg, hsl(15 85% 55%), hsl(30 90% 60%));
   --gradient-subtle: linear-gradient(180deg, hsl(240 8% 10%), hsl(240 8% 12%));
   --shadow-glow: 0 0 40px hsl(250 70% 60% / 0.4);
@@ -111,18 +119,27 @@ html {
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  transition: color 0.3s, background-color 0.3s;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-
-
 
 /* ── 5. Clases Utilitarias Personalizadas (Tu Diseño Original) ── */
 
 /* El degradado de tu nombre */
 .gradient-text {
-  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary-light)), hsl(var(--accent)));
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--primary-light)),
+    hsl(var(--accent))
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -146,18 +163,42 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% -10%,  hsl(250 70% 60% / 0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 80%  60%,  hsl(220 80% 55% / 0.10) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 35% at 10%  70%,  hsl(260 60% 50% / 0.08) 0%, transparent 60%);
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(250 70% 60% / 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(220 80% 55% / 0.1) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(260 60% 50% / 0.08) 0%,
+      transparent 60%
+    );
   pointer-events: none;
   z-index: 0;
 }
 
 .dark .hero-mesh-bg {
   background:
-    radial-gradient(ellipse 80% 60% at 50% -10%,  hsl(250 70% 60% / 0.22) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 80%  60%,  hsl(220 80% 55% / 0.13) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 35% at 10%  70%,  hsl(260 60% 50% / 0.10) 0%, transparent 60%);
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(250 70% 60% / 0.22) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(220 80% 55% / 0.13) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(260 60% 50% / 0.1) 0%,
+      transparent 60%
+    );
 }
 
 /* Capa 2: La cuadrícula técnica (Grid Overlay) */
@@ -168,8 +209,20 @@ body {
     linear-gradient(hsl(240 10% 50% / 0.06) 1px, transparent 1px),
     linear-gradient(90deg, hsl(240 10% 50% / 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 75%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 75%, transparent 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 15%,
+    black 75%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 15%,
+    black 75%,
+    transparent 100%
+  );
   pointer-events: none;
   z-index: 0;
 }
@@ -190,8 +243,12 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
@@ -209,8 +266,9 @@ body {
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reveal.visible {
@@ -220,8 +278,13 @@ body {
 
 /* ── 8. Badge glow (Open to Work) ── */
 @keyframes badgeGlow {
-  0%, 100% { box-shadow: 0 0 0 0 hsl(142 72% 50% / 0.4); }
-  50%       { box-shadow: 0 0 0 6px hsl(142 72% 50% / 0); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 hsl(142 72% 50% / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px hsl(142 72% 50% / 0);
+  }
 }
 
 .badge-open-to-work {
@@ -249,7 +312,9 @@ body {
     scroll-behavior: auto;
   }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

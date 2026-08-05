@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
-import { translations } from '@/lib/translations';
+import React, { createContext, useContext, useState } from "react";
+import { translations } from "@/lib/translations";
 
-type Language = 'es' | 'en' | 'fr' | 'de' | 'zh';
+type Language = "es" | "en" | "fr" | "de" | "zh";
 
 interface LanguageContextType {
   language: Language;
@@ -9,19 +9,23 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined,
+);
 
 function getInitialLanguage(): Language {
-  if (typeof window === 'undefined') return 'es';
-  const stored = localStorage.getItem('language');
-  return (stored as Language) || 'es';
+  if (typeof window === "undefined") return "es";
+  const stored = localStorage.getItem("language");
+  return (stored as Language) || "es";
 }
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [language, setLanguage] = useState<Language>(getInitialLanguage);
 
   const t = (key: string): string => {
-    const keys = key.split('.');
+    const keys = key.split(".");
     let value: any = translations[language];
     for (const k of keys) {
       value = value?.[k];
@@ -31,11 +35,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
-    localStorage.setItem('language', lang);
+    localStorage.setItem("language", lang);
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+    <LanguageContext.Provider
+      value={{ language, setLanguage: handleSetLanguage, t }}
+    >
       {children}
     </LanguageContext.Provider>
   );
@@ -44,7 +50,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within LanguageProvider');
+    throw new Error("useLanguage must be used within LanguageProvider");
   }
   return context;
 };

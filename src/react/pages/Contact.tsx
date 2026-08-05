@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import { Mail, Send } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { useToast } from '@/hooks/use-toast';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { supabase } from '@/integrations/supabase/client';
-import { z } from 'zod';
+import { useState, type ChangeEvent, type SubmitEvent } from "react";
+import { Mail, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
 
-const EMAILJS_SERVICE_ID  = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID as string;
-const EMAILJS_TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID as string;
-const EMAILJS_PUBLIC_KEY  = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY as string;
+const EMAILJS_SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID as string;
+const EMAILJS_TEMPLATE_ID = import.meta.env
+  .PUBLIC_EMAILJS_TEMPLATE_ID as string;
+const EMAILJS_PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY as string;
 
 const COOLDOWN_SECONDS = 60;
 const LAST_SUBMIT_KEY = "contact_last_submit";
@@ -34,8 +35,7 @@ function getRemainingCooldown(): number {
 function markSubmitted() {
   try {
     localStorage.setItem(LAST_SUBMIT_KEY, String(Date.now()));
-  } catch {
-  }
+  } catch {}
 }
 
 const Contact = () => {
@@ -45,42 +45,47 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
-    name:    '',
-    email:   '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const contactSchema = z.object({
-    name: z.string()
+    name: z
+      .string()
       .trim()
-      .min(1,   { message: t('contact.validation.nameRequired') })
-      .max(100, { message: t('contact.validation.nameMax') }),
-    email: z.string()
+      .min(1, { message: t("contact.validation.nameRequired") })
+      .max(100, { message: t("contact.validation.nameMax") }),
+    email: z
+      .email({ message: t("contact.validation.emailInvalid") })
       .trim()
-      .email({ message: t('contact.validation.emailInvalid') })
-      .min(1, { message: t('contact.validation.emailRequired') }),
-    subject: z.string()
+      .min(1, { message: t("contact.validation.emailRequired") }),
+    subject: z
+      .string()
       .trim()
-      .min(1,   { message: t('contact.validation.subjectRequired') })
-      .max(150, { message: t('contact.validation.subjectMax') }),
-    message: z.string()
+      .min(1, { message: t("contact.validation.subjectRequired") })
+      .max(150, { message: t("contact.validation.subjectMax") }),
+    message: z
+      .string()
       .trim()
-      .min(1,    { message: t('contact.validation.messageRequired') })
-      .max(1000, { message: t('contact.validation.messageMax') }),
+      .min(1, { message: t("contact.validation.messageRequired") })
+      .max(1000, { message: t("contact.validation.messageMax") }),
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors({});
 
@@ -88,7 +93,7 @@ const Contact = () => {
     if (remaining > 0) {
       toast({
         title: `Please wait ${remaining}s before sending another message.`,
-        variant: 'destructive',
+        variant: "destructive",
         duration: 4000,
       });
       return;
@@ -100,7 +105,7 @@ const Contact = () => {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};
-        error.issues.forEach(err => {
+        error.issues.forEach((err) => {
           if (err.path[0]) fieldErrors[err.path[0].toString()] = err.message;
         });
         setErrors(fieldErrors);
@@ -112,23 +117,24 @@ const Contact = () => {
 
     void (async () => {
       try {
-        await supabase.from('contacts').insert([{
-          name:    validatedData.name,
-          email:   validatedData.email,
-          subject: validatedData.subject,
-          message: validatedData.message,
-        }]);
-      } catch {
-      }
+        await supabase.from("contacts").insert([
+          {
+            name: validatedData.name,
+            email: validatedData.email,
+            subject: validatedData.subject,
+            message: validatedData.message,
+          },
+        ]);
+      } catch {}
     })();
 
     const emailConfigured =
       EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY;
 
     if (!emailConfigured) {
-      console.warn('EmailJS env vars not configured (PUBLIC_EMAILJS_*)');
-      toast({ title: t('contact.success'), duration: 5000 });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      console.warn("EmailJS env vars not configured (PUBLIC_EMAILJS_*)");
+      toast({ title: t("contact.success"), duration: 5000 });
+      setFormData({ name: "", email: "", subject: "", message: "" });
       markSubmitted();
       setIsSubmitting(false);
       return;
@@ -139,20 +145,23 @@ const Contact = () => {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          from_name:  validatedData.name,
+          from_name: validatedData.name,
           from_email: validatedData.email,
-          subject:    validatedData.subject,
-          message:    validatedData.message,
+          subject: validatedData.subject,
+          message: validatedData.message,
         },
         EMAILJS_PUBLIC_KEY,
       );
 
-      toast({ title: t('contact.success'), duration: 5000 });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      toast({ title: t("contact.success"), duration: 5000 });
+      setFormData({ name: "", email: "", subject: "", message: "" });
       markSubmitted();
-
     } catch {
-      toast({ title: t('contact.error'), variant: 'destructive', duration: 5000 });
+      toast({
+        title: t("contact.error"),
+        variant: "destructive",
+        duration: 5000,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -166,10 +175,10 @@ const Contact = () => {
             <Mail className="h-8 w-8 text-white" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {t('contact.title')}
+            {t("contact.title")}
           </h1>
           <p className="text-xl text-muted-foreground">
-            {t('contact.subtitle')}
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -178,14 +187,14 @@ const Contact = () => {
             <CardContent className="pt-6">
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="space-y-2">
-                  <Label htmlFor="name">{t('contact.name')}</Label>
+                  <Label htmlFor="name">{t("contact.name")}</Label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder={t('contact.namePlaceholder')}
-                    className={errors.name ? 'border-destructive' : ''}
+                    placeholder={t("contact.namePlaceholder")}
+                    className={errors.name ? "border-destructive" : ""}
                     autoComplete="name"
                   />
                   {errors.name && (
@@ -194,15 +203,15 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">{t('contact.email')}</Label>
+                  <Label htmlFor="email">{t("contact.email")}</Label>
                   <Input
                     id="email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder={t('contact.emailPlaceholder')}
-                    className={errors.email ? 'border-destructive' : ''}
+                    placeholder={t("contact.emailPlaceholder")}
+                    className={errors.email ? "border-destructive" : ""}
                     autoComplete="email"
                   />
                   {errors.email && (
@@ -211,14 +220,14 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="subject">{t('contact.subject')}</Label>
+                  <Label htmlFor="subject">{t("contact.subject")}</Label>
                   <Input
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder={t('contact.subjectPlaceholder')}
-                    className={errors.subject ? 'border-destructive' : ''}
+                    placeholder={t("contact.subjectPlaceholder")}
+                    className={errors.subject ? "border-destructive" : ""}
                   />
                   {errors.subject && (
                     <p className="text-sm text-destructive">{errors.subject}</p>
@@ -226,15 +235,15 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">{t('contact.message')}</Label>
+                  <Label htmlFor="message">{t("contact.message")}</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder={t('contact.messagePlaceholder')}
+                    placeholder={t("contact.messagePlaceholder")}
                     rows={6}
-                    className={errors.message ? 'border-destructive' : ''}
+                    className={errors.message ? "border-destructive" : ""}
                   />
                   {errors.message && (
                     <p className="text-sm text-destructive">{errors.message}</p>
@@ -248,11 +257,11 @@ const Contact = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    t('contact.sending')
+                    t("contact.sending")
                   ) : (
                     <>
                       <Send className="mr-2 h-5 w-5" />
-                      {t('contact.send')}
+                      {t("contact.send")}
                     </>
                   )}
                 </Button>
