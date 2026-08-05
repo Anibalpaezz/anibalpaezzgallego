@@ -73,6 +73,7 @@ export const translations = {
       dbDescription:
         "Mi mayor interés técnico es el diseño, modelado y optimización de bases de datos relacionales. Trabajo con SQL a diario y disfruto especialmente del diseño de esquemas, escritura de consultas complejas y análisis de rendimiento.",
       githubTitle: "Actividad en GitHub",
+      githubGraphAlt: "Gráfico de actividad en GitHub",
       githubRepos: "Repositorios",
       githubStars: "Stars",
       githubFollowers: "Seguidores",
@@ -348,6 +349,7 @@ export const translations = {
       dbDescription:
         "My biggest technical interest is the design, modelling and optimization of relational databases. I work with SQL daily and especially enjoy schema design, writing complex queries and performance analysis.",
       githubTitle: "GitHub Activity",
+      githubGraphAlt: "GitHub activity graph",
       githubRepos: "Repositories",
       githubStars: "Stars",
       githubFollowers: "Followers",
@@ -622,6 +624,7 @@ export const translations = {
       dbDescription:
         "Mon plus grand intérêt technique est la conception, la modélisation et l'optimisation des bases de données relationnelles. Je travaille avec SQL au quotidien et apprécie particulièrement le design de schémas, l'écriture de requêtes complexes et l'analyse des performances.",
       githubTitle: "Activité GitHub",
+      githubGraphAlt: "Graphique d'activité GitHub",
       githubRepos: "Dépôts",
       githubStars: "Stars",
       githubFollowers: "Abonnés",
@@ -899,6 +902,7 @@ export const translations = {
       dbDescription:
         "Mein größtes technisches Interesse ist das Design, die Modellierung und Optimierung relationaler Datenbanken. Ich arbeite täglich mit SQL und freue mich besonders über Schema-Design, das Schreiben komplexer Abfragen und Leistungsanalyse.",
       githubTitle: "GitHub-Aktivität",
+      githubGraphAlt: "GitHub-Aktivitätsdiagramm",
       githubRepos: "Repositories",
       githubStars: "Stars",
       githubFollowers: "Follower",
@@ -1176,6 +1180,7 @@ export const translations = {
       dbDescription:
         "我最大的技术兴趣是关系型数据库的设计、建模和优化。我每天使用SQL，特别享受数据库架构设计、复杂查询编写和性能分析。",
       githubTitle: "GitHub 活动",
+      githubGraphAlt: "GitHub 活跃度图表",
       githubRepos: "仓库",
       githubStars: "星标",
       githubFollowers: "关注者",
