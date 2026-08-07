@@ -144,6 +144,11 @@ export const translations = {
         excerpt:
           "Cómo configurar correctamente las políticas de Row Level Security en Supabase, combinarlas con Edge Functions y evitar los errores más comunes en entornos de producción.",
       },
+      fallback4: {
+        title: "Mapas interactivos con Leaflet, SunCalc y Astro",
+        excerpt:
+          "Cómo construir un mapa estático de sol y sombras usando Leaflet sobre OpenStreetMap, calcular la posición solar con SunCalc y renderizarlo con Astro sin romper el renderizado en servidor.",
+      },
     },
     contact: {
       title: "Ponte en Contacto",
@@ -443,6 +448,11 @@ export const translations = {
         title: "Supabase in Production: Row Level Security & Edge Functions",
         excerpt:
           "How to properly configure Row Level Security policies in Supabase, combine them with Edge Functions, and avoid the most common pitfalls in production setups.",
+      },
+      fallback4: {
+        title: "Interactive Maps with Leaflet, SunCalc and Astro",
+        excerpt:
+          "How to build a static sun-and-shadow map using Leaflet on top of OpenStreetMap, compute the sun position with SunCalc, and render it with Astro without breaking server-side rendering.",
       },
     },
     contact: {
@@ -744,6 +754,11 @@ export const translations = {
         title: "Supabase en production : Row Level Security et Edge Functions",
         excerpt:
           "Comment configurer correctement les politiques Row Level Security dans Supabase, les combiner avec les Edge Functions et éviter les pièges les plus courants en production.",
+      },
+      fallback4: {
+        title: "Cartes interactives avec Leaflet, SunCalc et Astro",
+        excerpt:
+          "Construire une carte statique de soleil et d'ombres avec Leaflet sur OpenStreetMap, calculer la position du soleil avec SunCalc et l'afficher avec Astro sans casser le rendu côté serveur.",
       },
     },
     contact: {
@@ -1049,6 +1064,11 @@ export const translations = {
         excerpt:
           "So konfigurieren Sie Row-Level-Security-Richtlinien in Supabase richtig, kombinieren sie mit Edge Functions und vermeiden die häufigsten Fallstricke in Produktionsumgebungen.",
       },
+      fallback4: {
+        title: "Interaktive Karten mit Leaflet, SunCalc und Astro",
+        excerpt:
+          "So bauen Sie eine statische Sonnen-und-Schatten-Karte mit Leaflet auf OpenStreetMap, berechnen die Sonnenposition mit SunCalc und rendern sie mit Astro, ohne das Server-Rendering zu brechen.",
+      },
     },
     contact: {
       title: "Kontakt",
@@ -1347,6 +1367,11 @@ export const translations = {
         title: "生产环境中的Supabase：行级安全与Edge Functions",
         excerpt:
           "如何正确配置Supabase的行级安全策略，将其与Edge Functions结合，并避免生产环境中最常见的陷阱。",
+      },
+      fallback4: {
+        title: "使用Leaflet、SunCalc与Astro构建交互式地图",
+        excerpt:
+          "如何在OpenStreetMap上使用Leaflet构建静态的太阳和阴影地图，用SunCalc计算太阳位置，并借助Astro渲染而不破坏服务端渲染。",
       },
     },
     contact: {

@@ -77,8 +77,6 @@ const projects: Project[] = [
     featured: false,
   },
 ];
-const leftProjects = projects.slice(0, 3);
-const rightProjects = projects.slice(3, 6);
 ---
 
 <div class="min-h-screen py-16 md:py-24">
@@ -88,20 +86,14 @@ const rightProjects = projects.slice(3, 6);
       <p class="text-base md:text-lg text-muted-foreground">{t(lang, "projects.subtitle")}</p>
     </div>
 
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.35fr_1fr] gap-6 items-start">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-        {leftProjects.map((project) => (
-          <ProjectCard lang={lang} project={project} />
-        ))}
-      </div>
-
+    <div class="max-w-[1600px] mx-auto">
       <ShadowMap lang={lang} client:idle />
+    </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-        {rightProjects.map((project) => (
-          <ProjectCard lang={lang} project={project} />
-        ))}
-      </div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+      {projects.map((project) => (
+        <ProjectCard lang={lang} project={project} />
+      ))}
     </div>
   </div>
 </div>
