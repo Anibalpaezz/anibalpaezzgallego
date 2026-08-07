@@ -184,7 +184,7 @@ const Blog = () => {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
           {loading && renderSkeletons()}
 
           {!loading &&
@@ -206,7 +206,7 @@ const Blog = () => {
                       </Badge>
                     ))}
                   </div>
-                  <h3 className="text-lg font-bold mb-2 line-clamp-2 leading-snug">
+                  <h3 className="text-xl font-bold mb-2 line-clamp-3 leading-snug">
                     {post.title}
                   </h3>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -223,7 +223,7 @@ const Blog = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="flex-1">
-                  <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
+                  <p className="text-muted-foreground text-sm line-clamp-6 leading-relaxed">
                     {post.excerpt}
                   </p>
                 </CardContent>
