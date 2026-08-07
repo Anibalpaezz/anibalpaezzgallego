@@ -1,4 +1,9 @@
 ---
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/800.css";
 import "../styles/global.css";
 import CookieConsent from "@/react/CookieConsent";
 import { seoMeta, canonicalUrl, routeKeyFromPath, t } from "@/lib/t";
@@ -101,16 +106,6 @@ const websiteLd = JSON.stringify({
     <script type="application/ld+json" is:inline set:html={personLd} />
     <script type="application/ld+json" is:inline set:html={websiteLd} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <script is:inline>
