@@ -1,5 +1,7 @@
 ---
 import { t } from "@/lib/t";
+import ShadowMap from "@/react/ShadowMap";
+import ProjectCard from "@/components/content/ProjectCard.astro";
 
 export interface Props {
   lang: "es" | "en" | "fr" | "de" | "zh";
@@ -75,6 +77,8 @@ const projects: Project[] = [
     featured: false,
   },
 ];
+const leftProjects = projects.slice(0, 3);
+const rightProjects = projects.slice(3, 6);
 ---
 
 <div class="min-h-screen py-16 md:py-24">
@@ -84,89 +88,20 @@ const projects: Project[] = [
       <p class="text-base md:text-lg text-muted-foreground">{t(lang, "projects.subtitle")}</p>
     </div>
 
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-      {projects.map((project) => (
-        <div
-          class:list={[
-            "reveal overflow-hidden rounded-xl border bg-card flex flex-col",
-            project.featured ? "border-primary/30 shadow-glow" : "border-border",
-          ]}
-        >
-          <div class="relative h-44 shrink-0" id={project.isLive ? "tip-tracker-card" : undefined}>
-            {project.isLive ? (
-              <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex flex-col items-center justify-center gap-4 p-4">
-                <div class="text-center">
-                  <p class="text-3xl font-bold gradient-text" data-total>—</p>
-                  <p class="text-xs text-muted-foreground mt-0.5">{t(lang, "projects.totalAccumulated")}</p>
-                </div>
-                <div class="flex gap-6">
-                  <div class="text-center">
-                    <p class="text-xl font-semibold" data-avg>—</p>
-                    <p class="text-xs text-muted-foreground">{t(lang, "projects.averagePerShift")}</p>
-                  </div>
-                  <div class="text-center">
-                    <p class="text-xl font-semibold" data-count>—</p>
-                    <p class="text-xs text-muted-foreground">{t(lang, "projects.shifts")}</p>
-                  </div>
-                </div>
-                <span data-live-badge class="hidden inline-flex items-center rounded-full bg-green-500 px-2.5 py-0.5 text-xs font-medium text-white animate-pulse">{t(lang, "projects.liveData")}</span>
-              </div>
-            ) : project.image ? (
-              <>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  class="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
-                {project.featured && (
-                  <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-gradient-accent px-3 py-1 text-xs font-medium text-white">
-                    {t(lang, "projects.featured")}
-                  </span>
-                )}
-              </>
-            ) : (
-              <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                <span class="text-3xl font-bold gradient-text">
-                  <svg class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-                </span>
-              </div>
-            )}
-          </div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.35fr_1fr] gap-6 items-start">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+        {leftProjects.map((project) => (
+          <ProjectCard lang={lang} project={project} />
+        ))}
+      </div>
 
-          <div class="p-5 flex flex-col flex-1">
-            <h3 class="text-lg font-bold mb-1.5 tracking-tight">{project.title}</h3>
-            <p class="text-sm text-muted-foreground mb-3 leading-relaxed line-clamp-3">{project.description}</p>
+      <ShadowMap lang={lang} client:idle />
 
-            <div class="flex flex-wrap gap-1.5 mb-3">
-              {project.tags.map((tag) => (
-                <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-xs text-secondary-foreground">{tag}</span>
-              ))}
-            </div>
-
-            <div class="flex gap-3 mt-auto pt-4">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-4 py-2 text-xs font-medium hover:opacity-90 transition-opacity"
-              >
-                <svg class="mr-1.5 h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                {t(lang, "projects.viewProject")}
-              </a>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 inline-flex items-center justify-center rounded-lg border border-border bg-transparent px-4 py-2 text-xs font-medium hover:bg-secondary transition-colors"
-              >
-                <svg viewBox="0 0 24 24" class="mr-1.5 h-3.5 w-3.5" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                {t(lang, "projects.viewCode")}
-              </a>
-            </div>
-          </div>
-        </div>
-      ))}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+        {rightProjects.map((project) => (
+          <ProjectCard lang={lang} project={project} />
+        ))}
+      </div>
     </div>
   </div>
 </div>
