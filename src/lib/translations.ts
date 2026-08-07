@@ -42,6 +42,7 @@ export const translations = {
       toggleTheme: "Cambiar tema",
       changeLanguage: "Cambiar idioma",
       toggleMenu: "Abrir menú",
+      logo: "logo",
     },
     notFound: {
       message: "¡Ups! Página no encontrada",
@@ -61,6 +62,7 @@ export const translations = {
       subtitle:
         "Desarrollador Full Stack, gestor de bases de datos e ingeniero informático",
       description: "",
+      currentlyWorking: "Actualmente trabajo en",
       cta: "Ver Mi Trabajo",
       contact: "Contactar",
     },
@@ -80,6 +82,8 @@ export const translations = {
       statsTech: "Tecnologías",
       statsFocus: "Especialización",
       statsFormation: "Formación",
+      statsFocusValue: "SQL · Backend",
+      statsFormationValue: "DAW + Ing.",
     },
     projects: {
       title: "Mis Proyectos",
@@ -118,6 +122,22 @@ export const translations = {
       readMore: "Leer Más",
       minutes: "min de lectura",
       poweredBy: "Funciona con",
+      fallback1: {
+        title:
+          "Optimización de consultas PostgreSQL con Índices y EXPLAIN ANALYZE",
+        excerpt:
+          "Una guía práctica para detectar cuellos de botella en consultas PostgreSQL usando EXPLAIN ANALYZE, índices parciales e índices de cobertura para acelerar tu base de datos.",
+      },
+      fallback2: {
+        title: "React + TypeScript: patrones para aplicaciones escalables",
+        excerpt:
+          "Buenas prácticas para estructurar bases de código grandes de React + TypeScript: componentes compuestos, custom hooks y estrategias de tipado estricto que ahorran tiempo en producción.",
+      },
+      fallback3: {
+        title: "Supabase en producción: Row Level Security y Edge Functions",
+        excerpt:
+          "Cómo configurar correctamente las políticas de Row Level Security en Supabase, combinarlas con Edge Functions y evitar los errores más comunes en entornos de producción.",
+      },
     },
     contact: {
       title: "Ponte en Contacto",
@@ -319,6 +339,7 @@ export const translations = {
       toggleTheme: "Toggle theme",
       changeLanguage: "Change language",
       toggleMenu: "Toggle menu",
+      logo: "logo",
     },
     notFound: {
       message: "Oops! Page not found",
@@ -337,6 +358,7 @@ export const translations = {
       greeting: "Hello, I'm",
       subtitle: "Full-Stack Developer & Computer Engineering Student",
       description: "",
+      currentlyWorking: "Currently working at",
       cta: "View My Work",
       contact: "Get In Touch",
     },
@@ -356,6 +378,8 @@ export const translations = {
       statsTech: "Technologies",
       statsFocus: "Specialization",
       statsFormation: "Education",
+      statsFocusValue: "SQL · Backend",
+      statsFormationValue: "Web Dev + Eng.",
     },
     projects: {
       title: "My Projects",
@@ -394,6 +418,21 @@ export const translations = {
       readMore: "Read More",
       minutes: "min read",
       poweredBy: "Powered by",
+      fallback1: {
+        title: "Optimizing PostgreSQL Queries with Indexes & EXPLAIN ANALYZE",
+        excerpt:
+          "A practical guide to finding query bottlenecks in PostgreSQL using EXPLAIN ANALYZE, partial indexes, and covering indexes to speed up your database.",
+      },
+      fallback2: {
+        title: "React + TypeScript: Patterns for Scalable Applications",
+        excerpt:
+          "Best practices for structuring large React + TypeScript codebases: compound components, custom hooks, and strict typing strategies that save time in production.",
+      },
+      fallback3: {
+        title: "Supabase in Production: Row Level Security & Edge Functions",
+        excerpt:
+          "How to properly configure Row Level Security policies in Supabase, combine them with Edge Functions, and avoid the most common pitfalls in production setups.",
+      },
     },
     contact: {
       title: "Get In Touch",
@@ -594,6 +633,7 @@ export const translations = {
       toggleTheme: "Changer de thème",
       changeLanguage: "Changer de langue",
       toggleMenu: "Ouvrir le menu",
+      logo: "logo",
     },
     notFound: {
       message: "Oups ! Page introuvable",
@@ -612,6 +652,7 @@ export const translations = {
       greeting: "Bonjour, je suis",
       subtitle: "Développeur Full-Stack & Étudiant en Ingénierie Informatique",
       description: "",
+      currentlyWorking: "Je travaille actuellement chez",
       cta: "Voir Mon Travail",
       contact: "Contacter",
     },
@@ -631,6 +672,8 @@ export const translations = {
       statsTech: "Technologies",
       statsFocus: "Spécialisation",
       statsFormation: "Formation",
+      statsFocusValue: "SQL · Backend",
+      statsFormationValue: "BTS + Ing.",
     },
     projects: {
       title: "Mes Projets",
@@ -669,6 +712,22 @@ export const translations = {
       readMore: "Lire Plus",
       minutes: "min de lecture",
       poweredBy: "Propulsé par",
+      fallback1: {
+        title:
+          "Optimisation des requêtes PostgreSQL avec les index et EXPLAIN ANALYZE",
+        excerpt:
+          "Un guide pratique pour trouver les goulots d'étranglement des requêtes PostgreSQL avec EXPLAIN ANALYZE, les index partiels et les index de couverture pour accélérer votre base de données.",
+      },
+      fallback2: {
+        title: "React + TypeScript : des modèles pour des applications évolutives",
+        excerpt:
+          "Bonnes pratiques pour structurer de grandes bases de code React + TypeScript : composants composés, hooks personnalisés et stratégies de typage strict qui font gagner du temps en production.",
+      },
+      fallback3: {
+        title: "Supabase en production : Row Level Security et Edge Functions",
+        excerpt:
+          "Comment configurer correctement les politiques Row Level Security dans Supabase, les combiner avec les Edge Functions et éviter les pièges les plus courants en production.",
+      },
     },
     contact: {
       title: "Contact",
@@ -872,6 +931,7 @@ export const translations = {
       toggleTheme: "Design wechseln",
       changeLanguage: "Sprache ändern",
       toggleMenu: "Menü öffnen",
+      logo: "Logo",
     },
     notFound: {
       message: "Hoppla! Seite nicht gefunden",
@@ -890,6 +950,7 @@ export const translations = {
       greeting: "Hallo, ich bin",
       subtitle: "Full-Stack-Entwickler & Informatikstudent",
       description: "",
+      currentlyWorking: "Ich arbeite derzeit bei",
       cta: "Siehe Meine Arbeit",
       contact: "Kontaktieren Sie mich",
     },
@@ -909,6 +970,8 @@ export const translations = {
       statsTech: "Technologien",
       statsFocus: "Spezialisierung",
       statsFormation: "Ausbildung",
+      statsFocusValue: "SQL · Backend",
+      statsFormationValue: "WebDev + Ing.",
     },
     projects: {
       title: "Meine Projekte",
@@ -949,6 +1012,21 @@ export const translations = {
       readMore: "Mehr Lesen",
       minutes: "min Lesezeit",
       poweredBy: "Unterstützt durch",
+      fallback1: {
+        title: "Optimierung von PostgreSQL-Abfragen mit Indizes und EXPLAIN ANALYZE",
+        excerpt:
+          "Ein praktischer Leitfaden zum Auffinden von Abfrage-Flaschenhälsen in PostgreSQL mit EXPLAIN ANALYZE, partiellen Indizes und abdeckenden Indizes, um Ihre Datenbank zu beschleunigen.",
+      },
+      fallback2: {
+        title: "React + TypeScript: Muster für skalierbare Anwendungen",
+        excerpt:
+          "Bewährte Methoden für die Strukturierung großer React + TypeScript-Codebasen: zusammengesetzte Komponenten, benutzerdefinierte Hooks und strenge Typisierungsstrategien, die in der Produktion Zeit sparen.",
+      },
+      fallback3: {
+        title: "Supabase in der Produktion: Row Level Security und Edge Functions",
+        excerpt:
+          "So konfigurieren Sie Row-Level-Security-Richtlinien in Supabase richtig, kombinieren sie mit Edge Functions und vermeiden die häufigsten Fallstricke in Produktionsumgebungen.",
+      },
     },
     contact: {
       title: "Kontakt",
@@ -1150,6 +1228,7 @@ export const translations = {
       toggleTheme: "切换主题",
       changeLanguage: "切换语言",
       toggleMenu: "打开菜单",
+      logo: "标志",
     },
     notFound: {
       message: "哎呀！页面未找到",
@@ -1168,6 +1247,7 @@ export const translations = {
       greeting: "你好，我是",
       subtitle: "全栈开发者 & 计算机工程专业学生",
       description: "",
+      currentlyWorking: "目前任职于",
       cta: "查看我的作品",
       contact: "与我联系",
     },
@@ -1187,6 +1267,8 @@ export const translations = {
       statsTech: "技术栈",
       statsFocus: "专业方向",
       statsFormation: "教育背景",
+      statsFocusValue: "SQL · 后端",
+      statsFormationValue: "高等文凭 + 工程",
     },
     projects: {
       title: "我的项目",
@@ -1225,6 +1307,21 @@ export const translations = {
       readMore: "阅读更多",
       minutes: "分钟阅读时间",
       poweredBy: "由以下提供",
+      fallback1: {
+        title: "使用索引与EXPLAIN ANALYZE优化PostgreSQL查询",
+        excerpt:
+          "实用指南：使用EXPLAIN ANALYZE、部分索引和覆盖索引查找PostgreSQL查询瓶颈，加速您的数据库。",
+      },
+      fallback2: {
+        title: "React + TypeScript：构建可扩展应用的设计模式",
+        excerpt:
+          "大型React + TypeScript代码库的最佳实践：复合组件、自定义Hooks和严格类型策略，助您在开发阶段节省时间。",
+      },
+      fallback3: {
+        title: "生产环境中的Supabase：行级安全与Edge Functions",
+        excerpt:
+          "如何正确配置Supabase的行级安全策略，将其与Edge Functions结合，并避免生产环境中最常见的陷阱。",
+      },
     },
     contact: {
       title: "联系",

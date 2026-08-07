@@ -35,39 +35,6 @@ interface DevToArticle {
   tag_list: string[];
 }
 
-const FALLBACK: Post[] = [
-  {
-    id: 1,
-    title: "Optimizing PostgreSQL Queries with Indexes & EXPLAIN ANALYZE",
-    excerpt:
-      "A practical guide to finding query bottlenecks in PostgreSQL using EXPLAIN ANALYZE, partial indexes, and covering indexes to speed up your database.",
-    url: "https://www.postgresql.org/docs/current/performance-tips.html",
-    date: new Date().toISOString(),
-    readTime: 8,
-    tags: ["postgresql", "sql", "backend"],
-  },
-  {
-    id: 2,
-    title: "React + TypeScript: Patterns for Scalable Applications",
-    excerpt:
-      "Best practices for structuring large React + TypeScript codebases: compound components, custom hooks, and strict typing strategies that save time in production.",
-    url: "https://react.dev/learn",
-    date: new Date().toISOString(),
-    readTime: 6,
-    tags: ["react", "typescript", "frontend"],
-  },
-  {
-    id: 3,
-    title: "Supabase in Production: Row Level Security & Edge Functions",
-    excerpt:
-      "How to properly configure Row Level Security policies in Supabase, combine them with Edge Functions, and avoid the most common pitfalls in production setups.",
-    url: "https://supabase.com/docs",
-    date: new Date().toISOString(),
-    readTime: 7,
-    tags: ["supabase", "backend", "database"],
-  },
-];
-
 const loadCache = (): Post[] | null => {
   try {
     const raw = localStorage.getItem(CACHE_KEY);
@@ -106,6 +73,37 @@ const fetchFromDevTo = async (): Promise<Post[]> => {
 
 const Blog = () => {
   const { t } = useLanguage();
+
+  const FALLBACK: Post[] = [
+    {
+      id: 1,
+      title: t("blog.fallback1.title"),
+      excerpt: t("blog.fallback1.excerpt"),
+      url: "https://www.postgresql.org/docs/current/performance-tips.html",
+      date: new Date().toISOString(),
+      readTime: 8,
+      tags: ["postgresql", "sql", "backend"],
+    },
+    {
+      id: 2,
+      title: t("blog.fallback2.title"),
+      excerpt: t("blog.fallback2.excerpt"),
+      url: "https://react.dev/learn",
+      date: new Date().toISOString(),
+      readTime: 6,
+      tags: ["react", "typescript", "frontend"],
+    },
+    {
+      id: 3,
+      title: t("blog.fallback3.title"),
+      excerpt: t("blog.fallback3.excerpt"),
+      url: "https://supabase.com/docs",
+      date: new Date().toISOString(),
+      readTime: 7,
+      tags: ["supabase", "backend", "database"],
+    },
+  ];
+
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
