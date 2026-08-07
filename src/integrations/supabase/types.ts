@@ -41,11 +41,14 @@ export type Database = {
       };
       cookie_consent_log: {
         Row: {
-          id: string;
+          consent_id: number;
           created_at: string;
+          consented_at: string;
           anonymous_id: string;
+          user_id: number | null;
           ip_address: string | null;
           user_agent: string | null;
+          browser_language: string | null;
           page_url: string | null;
           policy_version: string;
           necessary_cookies: boolean;
@@ -56,11 +59,14 @@ export type Database = {
           consent_method: string;
         };
         Insert: {
-          id?: string;
+          consent_id?: number;
           created_at?: string;
+          consented_at?: string;
           anonymous_id: string;
+          user_id?: number | null;
           ip_address?: string | null;
           user_agent?: string | null;
+          browser_language?: string | null;
           page_url?: string | null;
           policy_version: string;
           necessary_cookies: boolean;
@@ -71,11 +77,14 @@ export type Database = {
           consent_method: string;
         };
         Update: {
-          id?: string;
+          consent_id?: number;
           created_at?: string;
+          consented_at?: string;
           anonymous_id?: string;
+          user_id?: number | null;
           ip_address?: string | null;
           user_agent?: string | null;
+          browser_language?: string | null;
           page_url?: string | null;
           policy_version?: string;
           necessary_cookies?: boolean;

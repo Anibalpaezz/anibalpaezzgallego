@@ -117,7 +117,7 @@ the visitor grants analytics consent via `loadAnalyticsIfConsented()` /
   ```
   curl -X POST http://localhost:4321/api/consent \
     -H "Content-Type: application/json" \
-    -d '{"anonymous_id":"test-1234","necessary_cookies":true,"analytics_cookies":true,"marketing_cookies":false,"preferences_cookies":true,"consent_action":"accepted","consent_method":"banner"}'
+    -d '{"anonymous_id":"550e8400-e29b-41d4-a716-446655440000","necessary_cookies":true,"analytics_cookies":true,"marketing_cookies":false,"preferences_cookies":true,"consent_action":"accept_all","consent_method":"banner"}'
   ```
 
   In local dev there is no real proxy, so `x-forwarded-for` is empty and the
@@ -127,7 +127,7 @@ the visitor grants analytics consent via `loadAnalyticsIfConsented()` /
   curl -X POST http://localhost:4321/api/consent \
     -H "Content-Type: application/json" \
     -H "x-forwarded-for: 203.0.113.10, 10.0.0.1" \
-    -d '{"anonymous_id":"test-5678","necessary_cookies":true,"analytics_cookies":false,"marketing_cookies":false,"preferences_cookies":false,"consent_action":"rejected","consent_method":"settings_panel"}'
+    -d '{"anonymous_id":"af0bd4ec-9b1e-4b2a-b6c2-3c1f2d9d8e7f","necessary_cookies":true,"analytics_cookies":false,"marketing_cookies":false,"preferences_cookies":false,"consent_action":"reject_all","consent_method":"settings_panel"}'
   ```
 
   The endpoint stores the **first** IP in the list (`203.0.113.10`).

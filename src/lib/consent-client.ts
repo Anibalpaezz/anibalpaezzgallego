@@ -9,6 +9,7 @@ import {
   COOKIE_MAX_AGE,
   CONSENT_PREFS_KEY,
   COOKIE_POLICY_VERSION,
+  isUuid,
   type ConsentAction,
   type ConsentMethod,
   type ConsentPrefs,
@@ -46,17 +47,29 @@ export function setCookie(
   document.cookie = cookie;
 }
 
+function uuidFallback(): string {
+  const h = "0123456789abcdef";
+  const seg = (n: number) =>
+    Array.from({ length: n }, () => h[Math.floor(Math.random() * 16)]).join("");
+  return `${seg(8)}-${seg(4)}-4${seg(3)}-${(8 + Math.floor(Math.random() * 4)).toString(16)}${seg(3)}-${seg(12)}`;
+}
+
 /**
  * Returns the persistent anonymous id. Generates a UUID and stores it in the
  * `cookie_consent_id` cookie on first call; reuses it afterwards.
+ *
+ * The value is always a valid RFC 4122 UUID (the `anonymous_id UUID` column
+ * rejects anything else). If a stored cookie holds a non-UUID value (e.g. from
+ * an older version), it is regenerated.
  */
 export function getOrCreateAnonymousId(): string {
   const existing = getCookie(COOKIE_ID_NAME);
-  if (existing) return existing;
+  if (existing && isUuid(existing)) return existing;
+
   const id =
     typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
       ? crypto.randomUUID()
-      : `anon-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+      : uuidFallback();
   setCookie(COOKIE_ID_NAME, id, COOKIE_MAX_AGE);
   return id;
 }

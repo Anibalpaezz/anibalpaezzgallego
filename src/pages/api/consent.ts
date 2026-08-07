@@ -4,6 +4,8 @@ import {
   COOKIE_POLICY_VERSION,
   isConsentAction,
   isConsentMethod,
+  isIp,
+  isUuid,
   toBoolean,
 } from "@/lib/consent";
 
@@ -20,8 +22,8 @@ interface ConsentBody {
   page_url?: unknown;
 }
 
-const ALLOWED_ACTIONS_MESSAGE = "accepted, rejected, custom, withdrawn";
-const ALLOWED_METHODS_MESSAGE = "banner, settings_panel";
+const ALLOWED_ACTIONS_MESSAGE = "accept_all, reject_all, custom, withdrawn";
+const ALLOWED_METHODS_MESSAGE = "banner, settings_panel, api";
 
 function json(data: unknown, status: number = 200): Response {
   return new Response(JSON.stringify(data), {
@@ -47,12 +49,13 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: false, error: "Invalid JSON body" }, 400);
   }
 
-  // Validate identity: required, at least a UUID-ish format.
-  if (typeof body.anonymous_id !== "string" || body.anonymous_id.length < 8) {
+  // anonymous_id maps to a UUID NOT NULL column: reject anything that is not a
+  // valid RFC 4122 UUID (a clear 400 instead of a Postgres "invalid input" error).
+  if (!isUuid(body.anonymous_id)) {
     return json(
       {
         ok: false,
-        error: "anonymous_id is required and must identify a visitor",
+        error: "anonymous_id is required and must be a valid UUID",
       },
       400,
     );
@@ -81,16 +84,23 @@ export const POST: APIRoute = async ({ request }) => {
 
   // Derive server-side (never trust the client for these).
   const forwarded = request.headers.get("x-forwarded-for");
-  const ipAddress =
+  const rawIp =
     forwarded?.split(",")[0]?.trim() ||
     request.headers.get("x-real-ip") ||
-    null;
+    "";
+  // Only pass a token the `INET` column can parse; otherwise leave it NULL.
+  const ipAddress = rawIp && isIp(rawIp) ? rawIp : null;
   const userAgent = request.headers.get("user-agent") || null;
+  // First tag of Accept-Language (VARCHAR(10) column).
+  const browserLanguage =
+    request.headers.get("accept-language")?.split(",")[0]?.trim()?.slice(0, 10) ||
+    null;
 
   const { error } = await supabaseAdmin.from("cookie_consent_log").insert({
     anonymous_id: body.anonymous_id,
     ip_address: ipAddress,
     user_agent: userAgent,
+    browser_language: browserLanguage,
     page_url:
       typeof body.page_url === "string" && body.page_url.length > 0
         ? body.page_url.slice(0, 2048)
@@ -105,8 +115,18 @@ export const POST: APIRoute = async ({ request }) => {
   });
 
   if (error) {
-    console.error("[consent] insert failed:", error.message);
-    return json({ ok: false, error: "Failed to record consent" }, 500);
+    // Surface the underlying cause so it shows up in the response (and in the
+    // dev console we also log it server-side).
+    console.error("[consent] insert failed:", error.code, error.message, error.details);
+    return json(
+      {
+        ok: false,
+        error: "Failed to record consent",
+        detail: error.message,
+        code: error.code,
+      },
+      500,
+    );
   }
 
   return json({ ok: true, policy_version: COOKIE_POLICY_VERSION }, 200);

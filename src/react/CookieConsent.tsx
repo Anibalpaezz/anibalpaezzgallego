@@ -4,6 +4,7 @@ import { translations } from "@/lib/translations";
 import {
   COOKIE_POLICY_VERSION,
   OPEN_SETTINGS_EVENT,
+  type ConsentAction,
   type ConsentPrefs,
 } from "@/lib/consent";
 import {
@@ -55,7 +56,7 @@ export default function CookieConsent({ lang }: { lang: Lang }) {
 
   const persist = async (
     next: ConsentPrefs,
-    action: "accepted" | "rejected" | "custom" | "withdrawn",
+    action: ConsentAction,
     method: "banner" | "settings_panel",
   ) => {
     setSaving(true);
@@ -77,11 +78,11 @@ export default function CookieConsent({ lang }: { lang: Lang }) {
   };
 
   const handleAcceptAll = () => {
-    persist({ ...ALL_CATEGORIES_ON }, "accepted", "banner");
+    persist({ ...ALL_CATEGORIES_ON }, "accept_all", "banner");
   };
 
   const handleRejectAll = () => {
-    persist({ ...ALL_CATEGORIES_OFF }, "rejected", "banner");
+    persist({ ...ALL_CATEGORIES_OFF }, "reject_all", "banner");
   };
 
   const handleSaveCustom = () => {

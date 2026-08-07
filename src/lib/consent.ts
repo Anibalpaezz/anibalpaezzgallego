@@ -22,16 +22,30 @@ export const OPEN_SETTINGS_EVENT = "open-cookie-settings";
 
 /** Allowed values for `consent_action` (mirrors the DB CHECK constraint). */
 export const ALLOWED_ACTIONS = [
-  "accepted",
-  "rejected",
+  "accept_all",
+  "reject_all",
   "custom",
   "withdrawn",
 ] as const;
 export type ConsentAction = (typeof ALLOWED_ACTIONS)[number];
 
 /** Allowed values for `consent_method` (mirrors the DB CHECK constraint). */
-export const ALLOWED_METHODS = ["banner", "settings_panel"] as const;
+export const ALLOWED_METHODS = ["banner", "settings_panel", "api"] as const;
 export type ConsentMethod = (typeof ALLOWED_METHODS)[number];
+
+/** RFC 4122 UUID (any version). Matches the `anonymous_id UUID` column. */
+export const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+export const isUuid = (v: unknown): v is string =>
+  typeof v === "string" && UUID_RE.test(v);
+
+/** Best-effort IPv4 / IPv6 token, as accepted by the `INET` column. */
+const IPV4_RE = /^\d{1,3}(\.\d{1,3}){3}$/;
+const IPV6_RE = /^[0-9a-fA-F:]+$/;
+
+export const isIp = (v: string): boolean =>
+  IPV4_RE.test(v) || (v.includes(":") && IPV6_RE.test(v));
 
 export interface ConsentPrefs {
   necessary_cookies: boolean;
