@@ -7,11 +7,19 @@ import tailwindcss from "@tailwindcss/vite";
 
 import sitemap from "@astrojs/sitemap";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   // Production origin. Canonical tags, og:url, robots.txt and the sitemap all
   // derive from this. Update here if the domain changes.
   site: "https://anibalpaezzgallego.vercel.app",
+
+  // Default `output: "static"`: every route is prerendered (static) except the
+  // endpoints that opt out with `export const prerender = false` (e.g.
+  // /api/consent), which run on demand. On Vercel the non-prerendered routes
+  // become Serverless Functions.
+  adapter: vercel({}),
 
   integrations: [
     react(),

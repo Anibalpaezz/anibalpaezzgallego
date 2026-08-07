@@ -180,11 +180,34 @@ export const translations = {
     footer: {
       rights: "Todos los derechos reservados",
       social: "Encuéntrame en",
+      manageCookies: "Configurar cookies",
     },
     cookieBanner: {
       text: "Usamos cookies para guardar tus preferencias de idioma y tema. No se comparten datos con terceros.",
       accept: "Aceptar",
       decline: "Rechazar",
+      acceptAll: "Aceptar todo",
+      rejectAll: "Rechazar todo",
+      customize: "Personalizar",
+      settingsTitle: "Preferencias de cookies",
+      settingsIntro:
+        "Elige qué categorías de cookies permites. Las cookies necesarias siempre están activas porque son imprescindibles para el funcionamiento de la web.",
+      necessary: "Necesarias",
+      necessaryDesc:
+        "Imprescindibles para que la web funcione: recuerdan tu idioma, tu tema y tu identificador anónimo.",
+      necessaryLabel: "siempre activas",
+      analytics: "Analíticas",
+      analyticsDesc:
+        "Nos ayudan a entender cómo se usa la web (páginas visitadas, tiempos) para mejorarla.",
+      marketing: "Marketing",
+      marketingDesc:
+        "Se usan para mostrar contenido o publicidad relevante. Actualmente no cargamos ninguna.",
+      preferences: "Preferencias",
+      preferencesDesc:
+        "Recuerdan ajustes como el tema claro/oscuro o el idioma elegido para tu próxima visita.",
+      saving: "Guardando...",
+      save: "Guardar preferencias",
+      close: "Cerrar",
     },
     features: {
       cleanCode: {
@@ -485,11 +508,34 @@ export const translations = {
     footer: {
       rights: "All rights reserved",
       social: "Find me on",
+      manageCookies: "Cookie settings",
     },
     cookieBanner: {
       text: "We use cookies to save your language and theme preferences. No data is shared with third parties.",
       accept: "Accept",
       decline: "Decline",
+      acceptAll: "Accept all",
+      rejectAll: "Reject all",
+      customize: "Customize",
+      settingsTitle: "Cookie preferences",
+      settingsIntro:
+        "Choose which cookie categories you allow. Necessary cookies are always active because the website cannot work without them.",
+      necessary: "Necessary",
+      necessaryDesc:
+        "Essential for the site to work: they remember your language, theme and anonymous identifier.",
+      necessaryLabel: "always active",
+      analytics: "Analytics",
+      analyticsDesc:
+        "Help us understand how the site is used (pages visited, time on page) so we can improve it.",
+      marketing: "Marketing",
+      marketingDesc:
+        "Used to show relevant content or ads. We currently do not load any.",
+      preferences: "Preferences",
+      preferencesDesc:
+        "Remember settings such as your light/dark theme or chosen language for your next visit.",
+      saving: "Saving...",
+      save: "Save preferences",
+      close: "Close",
     },
     features: {
       cleanCode: {
@@ -791,11 +837,34 @@ export const translations = {
     footer: {
       rights: "Tous droits réservés",
       social: "Retrouvez-moi sur",
+      manageCookies: "Gérer les cookies",
     },
     cookieBanner: {
       text: "Nous utilisons des cookies pour sauvegarder vos préférences de langue et de thème. Aucune donnée n'est partagée avec des tiers.",
       accept: "Accepter",
       decline: "Refuser",
+      acceptAll: "Tout accepter",
+      rejectAll: "Tout refuser",
+      customize: "Personnaliser",
+      settingsTitle: "Préférences de cookies",
+      settingsIntro:
+        "Choisissez les catégories de cookies que vous autorisez. Les cookies nécessaires sont toujours actifs, car le site ne peut pas fonctionner sans eux.",
+      necessary: "Nécessaires",
+      necessaryDesc:
+        "Essentiels au fonctionnement du site : ils mémorisent votre langue, votre thème et votre identifiant anonyme.",
+      necessaryLabel: "toujours actifs",
+      analytics: "Analytiques",
+      analyticsDesc:
+        "Nous aident à comprendre comment le site est utilisé (pages visitées, durée) pour l'améliorer.",
+      marketing: "Marketing",
+      marketingDesc:
+        "Utilisés pour afficher du contenu ou des publicités pertinents. Nous n'en chargeons actuellement aucun.",
+      preferences: "Préférences",
+      preferencesDesc:
+        "Mémorisent des réglages comme le thème clair/sombre ou la langue choisie pour votre prochaine visite.",
+      saving: "Enregistrement...",
+      save: "Enregistrer les préférences",
+      close: "Fermer",
     },
     features: {
       cleanCode: {
@@ -1102,11 +1171,34 @@ export const translations = {
     footer: {
       rights: "Alle Rechte vorbehalten",
       social: "Finde mich auf",
+      manageCookies: "Cookie-Einstellungen",
     },
     cookieBanner: {
       text: "Wir verwenden Cookies, um Ihre Sprach- und Designeinstellungen zu speichern. Es werden keine Daten an Dritte weitergegeben.",
       accept: "Akzeptieren",
       decline: "Ablehnen",
+      acceptAll: "Alle akzeptieren",
+      rejectAll: "Alle ablehnen",
+      customize: "Anpassen",
+      settingsTitle: "Cookie-Einstellungen",
+      settingsIntro:
+        "Wählen Sie, welche Cookie-Kategorien Sie erlauben. Notwendige Cookies sind immer aktiv, da die Website ohne sie nicht funktioniert.",
+      necessary: "Notwendig",
+      necessaryDesc:
+        "Unverzichtbar für die Funktion der Website: Sie merken sich Sprache, Design und Ihre anonyme Kennung.",
+      necessaryLabel: "immer aktiv",
+      analytics: "Analytik",
+      analyticsDesc:
+        "Helfen uns zu verstehen, wie die Website genutzt wird (besuchte Seiten, Verweildauer), um sie zu verbessern.",
+      marketing: "Marketing",
+      marketingDesc:
+        "Werden verwendet, um relevante Inhalte oder Werbung anzuzeigen. Wir laden derzeit keine.",
+      preferences: "Präferenzen",
+      preferencesDesc:
+        "Merken sich Einstellungen wie das helle/dunkle Design oder die gewählte Sprache für Ihren nächsten Besuch.",
+      saving: "Speichern...",
+      save: "Einstellungen speichern",
+      close: "Schließen",
     },
     features: {
       cleanCode: {
@@ -1404,11 +1496,30 @@ export const translations = {
     footer: {
       rights: "保留所有权利",
       social: "关注我",
+      manageCookies: "Cookie 设置",
     },
     cookieBanner: {
       text: "我们使用 Cookie 保存您的语言和主题偏好，不会与第三方共享任何数据。",
       accept: "接受",
       decline: "拒绝",
+      acceptAll: "全部接受",
+      rejectAll: "全部拒绝",
+      customize: "自定义",
+      settingsTitle: "Cookie 偏好设置",
+      settingsIntro:
+        "选择允许的 Cookie 类别。必需 Cookie 始终处于活动状态，因为网站没有它们就无法运行。",
+      necessary: "必需",
+      necessaryDesc: "网站运行所必需：用于记住您的语言、主题和匿名标识。",
+      necessaryLabel: "始终启用",
+      analytics: "分析",
+      analyticsDesc: "帮助我们了解网站的使用情况（访问页面、停留时间），以便改进。",
+      marketing: "营销",
+      marketingDesc: "用于展示相关内容或广告。目前我们不加载任何营销 Cookie。",
+      preferences: "偏好",
+      preferencesDesc: "记住您的明/暗主题或所选语言等设置，方便下次访问。",
+      saving: "保存中...",
+      save: "保存偏好设置",
+      close: "关闭",
     },
     features: {
       cleanCode: {
