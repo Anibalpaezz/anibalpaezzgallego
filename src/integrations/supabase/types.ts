@@ -39,6 +39,54 @@ export type Database = {
         };
         Relationships: [];
       };
+      cookie_consent_log: {
+        Row: {
+          id: string;
+          created_at: string;
+          anonymous_id: string;
+          ip_address: string | null;
+          user_agent: string | null;
+          page_url: string | null;
+          policy_version: string;
+          necessary_cookies: boolean;
+          analytics_cookies: boolean;
+          marketing_cookies: boolean;
+          preferences_cookies: boolean;
+          consent_action: string;
+          consent_method: string;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          anonymous_id: string;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          page_url?: string | null;
+          policy_version: string;
+          necessary_cookies: boolean;
+          analytics_cookies: boolean;
+          marketing_cookies: boolean;
+          preferences_cookies: boolean;
+          consent_action: string;
+          consent_method: string;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          anonymous_id?: string;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          page_url?: string | null;
+          policy_version?: string;
+          necessary_cookies?: boolean;
+          analytics_cookies?: boolean;
+          marketing_cookies?: boolean;
+          preferences_cookies?: boolean;
+          consent_action?: string;
+          consent_method?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;

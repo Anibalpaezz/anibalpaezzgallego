@@ -1,5 +1,11 @@
 /// <reference types="astro/client" />
 
+import { OPEN_SETTINGS_EVENT } from "@/lib/consent";
+import {
+  loadAnalyticsIfConsented,
+  loadSpeedInsightsIfConsented,
+} from "@/lib/consent-client";
+
 // ── Theme ──
 (function () {
   const key = "theme";
@@ -90,29 +96,21 @@
   });
 })();
 
-// ── Cookie banner ──
-(function () {
-  const COOKIE_KEY = "cookiesAccepted";
-  const banner = document.getElementById("cookie-banner");
-  if (!banner) return;
+// ── Cookie consent ──
+// Return, visitors: load analytics now if they previously allowed it (the banner
+// UI, decision POSTing and the "Configurar cookies" reopen are handled by the
+// CookieConsent React island). This mirror is the integration point that runs
+// before React hydrates, so analytics can start on the very first paint.
+loadAnalyticsIfConsented();
+loadSpeedInsightsIfConsented();
 
-  if (localStorage.getItem(COOKIE_KEY)) {
-    banner.remove();
-  } else {
-    banner.classList.remove("hidden");
-    document
-      .getElementById("cookie-accept")
-      ?.addEventListener("click", function () {
-        localStorage.setItem(COOKIE_KEY, "true");
-        banner.remove();
-      });
-    document
-      .getElementById("cookie-decline")
-      ?.addEventListener("click", function () {
-        localStorage.setItem(COOKIE_KEY, "false");
-        banner.remove();
-      });
-  }
+// Footer "Configurar cookies" button → let the React island open the panel.
+(function () {
+  const btn = document.getElementById("cookie-settings-btn");
+  if (!btn) return;
+  btn.addEventListener("click", function () {
+    window.dispatchEvent(new CustomEvent(OPEN_SETTINGS_EVENT));
+  });
 })();
 
 // ── Scroll reveal (Intersection Observer) ──

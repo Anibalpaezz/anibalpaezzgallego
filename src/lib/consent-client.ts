@@ -1,0 +1,175 @@
+/**
+ * Client-side cookie-consent helpers.
+ *
+ * Only ever runs in the browser. Keeps the anonymous visitor id in a first-party
+ * cookie (`cookie_consent_id`) and the chosen categories in localStorage.
+ */
+import {
+  COOKIE_ID_NAME,
+  COOKIE_MAX_AGE,
+  CONSENT_PREFS_KEY,
+  COOKIE_POLICY_VERSION,
+  type ConsentAction,
+  type ConsentMethod,
+  type ConsentPrefs,
+} from "@/lib/consent";
+
+export const ALL_CATEGORIES_ON: ConsentPrefs = {
+  necessary_cookies: true,
+  analytics_cookies: true,
+  marketing_cookies: true,
+  preferences_cookies: true,
+};
+
+export const ALL_CATEGORIES_OFF: ConsentPrefs = {
+  necessary_cookies: true,
+  analytics_cookies: false,
+  marketing_cookies: false,
+  preferences_cookies: false,
+};
+
+export function getCookie(name: string): string | undefined {
+  const match = document.cookie.match(
+    new RegExp(
+      "(?:^|; )" + name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "=([^;]*)",
+    ),
+  );
+  return match ? decodeURIComponent(match[1]) : undefined;
+}
+
+export function setCookie(
+  name: string,
+  value: string,
+  maxAgeSec: number,
+): void {
+  const cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${maxAgeSec}; Path=/; SameSite=Lax`;
+  document.cookie = cookie;
+}
+
+/**
+ * Returns the persistent anonymous id. Generates a UUID and stores it in the
+ * `cookie_consent_id` cookie on first call; reuses it afterwards.
+ */
+export function getOrCreateAnonymousId(): string {
+  const existing = getCookie(COOKIE_ID_NAME);
+  if (existing) return existing;
+  const id =
+    typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+      ? crypto.randomUUID()
+      : `anon-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+  setCookie(COOKIE_ID_NAME, id, COOKIE_MAX_AGE);
+  return id;
+}
+
+export function hasConsentCookie(): boolean {
+  return Boolean(getCookie(COOKIE_ID_NAME));
+}
+
+export function readConsentPrefs(): ConsentPrefs | null {
+  try {
+    const raw = localStorage.getItem(CONSENT_PREFS_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<ConsentPrefs>;
+    if (typeof parsed !== "object" || parsed === null) return null;
+    return {
+      necessary_cookies: true,
+      analytics_cookies: parsed.analytics_cookies === true,
+      marketing_cookies: parsed.marketing_cookies === true,
+      preferences_cookies: parsed.preferences_cookies === true,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function writeConsentPrefs(prefs: ConsentPrefs): void {
+  try {
+    localStorage.setItem(CONSENT_PREFS_KEY, JSON.stringify(prefs));
+  } catch {
+    /* storage unavailable (e.g. private mode) — ignore */
+  }
+}
+
+export interface ConsentRecord {
+  anonymous_id: string;
+  prefs: ConsentPrefs;
+  action: ConsentAction;
+  method: ConsentMethod;
+  pageUrl: string;
+}
+
+/** Posts a consent decision to /api/consent. */
+export async function submitConsent(record: ConsentRecord): Promise<boolean> {
+  try {
+    const res = await fetch("/api/consent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        anonymous_id: record.anonymous_id,
+        necessary_cookies: record.prefs.necessary_cookies,
+        analytics_cookies: record.prefs.analytics_cookies,
+        marketing_cookies: record.prefs.marketing_cookies,
+        preferences_cookies: record.prefs.preferences_cookies,
+        consent_action: record.action,
+        consent_method: record.method,
+        policy_version: COOKIE_POLICY_VERSION,
+        page_url: record.pageUrl,
+      }),
+    });
+    if (!res.ok) return false;
+    const data = (await res.json()) as { ok?: boolean };
+    return data.ok === true;
+  } catch {
+    return false;
+  }
+}
+
+let analyticsInjected = false;
+let speedInsightsInjected = false;
+
+// window-level guards survive separate bundle instances (e.g. the app script vs
+// the React island each bundling this module), preventing double injection.
+declare global {
+  interface Window {
+    __consentAnalyticsLoaded?: boolean;
+    __consentSpeedInsightsLoaded?: boolean;
+  }
+}
+
+/**
+ * Integration point for third-party analytics / marketing scripts.
+ *
+ * Only runs when the visitor has explicitly allowed analytics. Call this after
+ * the user makes a choice, or on every page load for returning visitors.
+ *
+ * New providers should be added here, gated on their own category.
+ */
+export async function loadAnalyticsIfConsented(): Promise<void> {
+  if (analyticsInjected || window.__consentAnalyticsLoaded) return;
+  const prefs = readConsentPrefs();
+  if (!prefs || !prefs.analytics_cookies) return;
+
+  try {
+    const analytics = await import("@vercel/analytics");
+    analytics.inject();
+    analyticsInjected = true;
+    window.__consentAnalyticsLoaded = true;
+  } catch {
+    /* optional — analytics must never break the site */
+  }
+}
+
+/** Loads Vercel Speed Insights once the visitor is known (categories stored). */
+export async function loadSpeedInsightsIfConsented(): Promise<void> {
+  if (speedInsightsInjected || window.__consentSpeedInsightsLoaded) return;
+  const prefs = readConsentPrefs();
+  if (!prefs || !prefs.analytics_cookies) return;
+  try {
+    const insights = await import("@vercel/speed-insights");
+    insights.injectSpeedInsights();
+    speedInsightsInjected = true;
+    window.__consentSpeedInsightsLoaded = true;
+  } catch {
+    /* ignore */
+  }
+}
