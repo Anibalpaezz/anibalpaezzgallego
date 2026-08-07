@@ -14,6 +14,7 @@ const workExperience = [
     period: t(lang, "work_experience3.period"),
     description: t(lang, "work_experience3.description"),
     logo: "/photos/logo-arktic.avif",
+    link: "https://www.arktic.es",
   },
   {
     title: t(lang, "work_experience2.title"),
@@ -21,6 +22,7 @@ const workExperience = [
     period: t(lang, "work_experience2.period"),
     description: t(lang, "work_experience2.description"),
     logo: "/photos/logo-aytec.avif",
+    link: "https://www.aytecdigital.com",
   },
   {
     title: t(lang, "work_experience1.title"),
@@ -28,6 +30,7 @@ const workExperience = [
     period: t(lang, "work_experience1.period"),
     description: t(lang, "work_experience1.description"),
     logo: "/photos/logo-telepizza.avif",
+    link: "https://www.telepizza.es",
   },
 ];
 
@@ -38,6 +41,7 @@ const education = [
     period: t(lang, "education.degree1.period"),
     description: t(lang, "education.degree1.description"),
     logo: "/photos/logo-uned.avif",
+    link: "https://www.uned.es",
   },
   {
     title: t(lang, "education.degree2.title"),
@@ -45,6 +49,7 @@ const education = [
     period: t(lang, "education.degree2.period"),
     description: t(lang, "education.degree2.description"),
     logo: "/photos/logo-domenico.avif",
+    link: "https://www.educa2.madrid.org/web/centro.ies.domenicoscarlat.aranjuez",
   },
   {
     title: t(lang, "education.degree3.title"),
@@ -52,6 +57,7 @@ const education = [
     period: t(lang, "education.degree3.period"),
     description: t(lang, "education.degree3.description"),
     logo: "/photos/logo-alpajkes.avif",
+    link: "https://www.educa2.madrid.org/web/centro.ies.alpajes.aranjuez",
   },
 ];
 ---
@@ -86,12 +92,21 @@ const education = [
             <div class="rounded-xl border-l-4 border-l-primary border border-border bg-card overflow-hidden">
               <div class="p-6 flex items-start gap-4">
                 {job.logo && (
-                  <img
-                    src={job.logo}
-                    alt={`${job.company} ${t(lang, "accessibility.logo")}`}
-                    class="w-12 h-12 rounded-lg object-cover shrink-0 mt-1"
-                    loading="lazy"
-                  />
+                  <a
+                    href={job.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={job.company}
+                    class="shrink-0 mt-1 hover:opacity-90 transition-opacity"
+                    aria-label={job.company}
+                  >
+                    <img
+                      src={job.logo}
+                      alt={`${job.company} ${t(lang, "accessibility.logo")}`}
+                      class="w-16 h-16 rounded-lg object-cover"
+                      loading="lazy"
+                    />
+                  </a>
                 )}
                 <div class="flex-1 min-w-0">
                   <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
@@ -120,12 +135,21 @@ const education = [
             <div class="rounded-xl border-l-4 border-l-accent border border-border bg-card overflow-hidden">
               <div class="p-6 flex items-start gap-4">
                 {edu.logo && (
-                  <img
-                    src={edu.logo}
-                    alt={`${edu.institution} ${t(lang, "accessibility.logo")}`}
-                    class="w-12 h-12 rounded-lg object-cover shrink-0 mt-1"
-                    loading="lazy"
-                  />
+                  <a
+                    href={edu.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={edu.institution}
+                    class="shrink-0 mt-1 hover:opacity-90 transition-opacity"
+                    aria-label={edu.institution}
+                  >
+                    <img
+                      src={edu.logo}
+                      alt={`${edu.institution} ${t(lang, "accessibility.logo")}`}
+                      class="w-16 h-16 rounded-lg object-cover"
+                      loading="lazy"
+                    />
+                  </a>
                 )}
                 <div class="flex-1 min-w-0">
                   <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">

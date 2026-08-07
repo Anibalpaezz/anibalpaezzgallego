@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const DEVTO_API =
-  "https://dev.to/api/articles?tag=webdev&per_page=6&state=rising";
+  "https://dev.to/api/articles?tag=webdev&per_page=4&state=rising";
 const CACHE_KEY = "devto_posts_cache";
 const CACHE_TTL = 6 * 60 * 60 * 1000;
 
@@ -60,7 +60,7 @@ const fetchFromDevTo = async (): Promise<Post[]> => {
   const res = await fetch(DEVTO_API);
   if (!res.ok) throw new Error(`dev.to ${res.status}`);
   const data: DevToArticle[] = await res.json();
-  return data.slice(0, 6).map((a) => ({
+  return data.slice(0, 4).map((a) => ({
     id: a.id,
     title: a.title,
     excerpt: a.description || "",
@@ -102,6 +102,15 @@ const Blog = () => {
       readTime: 7,
       tags: ["supabase", "backend", "database"],
     },
+    {
+      id: 4,
+      title: t("blog.fallback4.title"),
+      excerpt: t("blog.fallback4.excerpt"),
+      url: "https://leafletjs.com/",
+      date: new Date().toISOString(),
+      readTime: 6,
+      tags: ["leaflet", "typescript", "astro"],
+    },
   ];
 
   const [posts, setPosts] = useState<Post[]>([]);
@@ -135,7 +144,7 @@ const Blog = () => {
   }, []);
 
   const renderSkeletons = () =>
-    Array.from({ length: 6 }).map((_, i) => (
+    Array.from({ length: 4 }).map((_, i) => (
       <Card key={i} className="flex flex-col animate-pulse">
         <CardHeader>
           <div className="h-4 w-20 bg-muted rounded mb-3" />
@@ -184,7 +193,7 @@ const Blog = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
           {loading && renderSkeletons()}
 
           {!loading &&
@@ -206,7 +215,7 @@ const Blog = () => {
                       </Badge>
                     ))}
                   </div>
-                  <h3 className="text-xl font-bold mb-2 line-clamp-3 leading-snug">
+                  <h3 className="text-2xl font-bold mb-2 line-clamp-3 leading-snug">
                     {post.title}
                   </h3>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -223,7 +232,7 @@ const Blog = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="flex-1">
-                  <p className="text-muted-foreground text-sm line-clamp-6 leading-relaxed">
+                  <p className="text-muted-foreground text-sm line-clamp-[10] leading-relaxed">
                     {post.excerpt}
                   </p>
                 </CardContent>

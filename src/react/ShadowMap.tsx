@@ -345,7 +345,7 @@ export default function ShadowMap({ lang }: { lang: Lang }) {
 
       <div className="px-5 pb-3 text-xs text-muted-foreground min-h-[1rem] truncate">{placeName}</div>
 
-      <div ref={containerRef} className="relative z-0 mx-5 mb-3 h-[420px] lg:h-[520px] rounded-lg overflow-hidden" />
+      <div ref={containerRef} className="relative z-0 mx-5 mb-3 h-[420px] lg:h-[640px] rounded-lg overflow-hidden" />
 
       <div className="px-5 pb-5 space-y-2">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
