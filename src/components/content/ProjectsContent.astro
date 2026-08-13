@@ -1,6 +1,6 @@
 ---
 import { t } from "@/lib/t";
-import ShadowMap from "@/react/ShadowMap";
+import SqlSandbox from "@/react/SqlSandbox";
 import ProjectCard from "@/components/content/ProjectCard.astro";
 
 export interface Props {
@@ -87,7 +87,7 @@ const projects: Project[] = [
     </div>
 
     <div class="max-w-[1600px] mx-auto">
-      <ShadowMap lang={lang} client:idle />
+      <SqlSandbox lang={lang} client:idle />
     </div>
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">

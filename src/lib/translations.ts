@@ -96,24 +96,30 @@ export const translations = {
       shifts: "Turnos",
       liveData: "● Live data",
     },
-    map: {
-      title: "Mapa de Sol y Sombras",
+    sandbox: {
+      title: "SQL Sandbox",
       subtitle:
-        "Elige la ubicación, la fecha y la hora para ver la posición del sol y las sombras en un radio de 1 km.",
-      addressPlaceholder: "Busca una dirección (p. ej. Calle Carretas, Ontígola)",
-      date: "Fecha",
-      time: "Hora",
-      now: "Ahora",
-      altitude: "Altitud del sol",
-      azimuth: "Azimut",
-      sunrise: "Amanecer",
-      sunset: "Atardecer",
-      night: "El sol está bajo el horizonte: no hay sombras",
-      noResults: "Sin resultados. Prueba con otra dirección.",
-      search: "Buscar",
-      radius: "1 km a la redonda",
-      legend:
-        "Cono: sombras durante el día · Flecha: sombra a la hora elegida",
+        "Editor SQL con terminal en vivo. PostgreSQL (PGlite) corre en el navegador; MySQL se ejecuta a través de una API.",
+      postgres: "PostgreSQL",
+      mysql: "MySQL",
+      run: "Ejecutar",
+      running: "Ejecutando…",
+      placeholder: "-- Escribe tu consulta SQL aquí\nSELECT * FROM inventario;",
+      loadExample: "Cargar ejemplo",
+      clear: "Limpiar",
+      terminal: "Terminal",
+      output: "Resultado",
+      rowsReturned: "{n} filas devueltas",
+      rowsAffected: "{n} filas afectadas",
+      noRows: "Sin filas.",
+      startup: "Iniciando PostgreSQL (PGlite)…",
+      seeded: "Postgres listo · tabla 'inventario' creada",
+      connectingMysql: "Conectando a MySQL…",
+      mysqlNotConfigured:
+        "MySQL no está configurado. Añade MYSQL_HOST, MYSQL_USER y MYSQL_DATABASE al .env y vuelve a desplegar.",
+      errorLabel: "Error",
+      elapsed: "({ms} ms)",
+      truncated: "Mostrando las primeras {n} filas",
     },
     resume: {
       title: "Currículum",
@@ -143,11 +149,6 @@ export const translations = {
         title: "Supabase en producción: Row Level Security y Edge Functions",
         excerpt:
           "Cómo configurar correctamente las políticas de Row Level Security en Supabase, combinarlas con Edge Functions y evitar los errores más comunes en entornos de producción.",
-      },
-      fallback4: {
-        title: "Mapas interactivos con Leaflet, SunCalc y Astro",
-        excerpt:
-          "Cómo construir un mapa estático de sol y sombras usando Leaflet sobre OpenStreetMap, calcular la posición solar con SunCalc y renderizarlo con Astro sin romper el renderizado en servidor.",
       },
     },
     contact: {
@@ -426,23 +427,30 @@ export const translations = {
       shifts: "Shifts",
       liveData: "● Live data",
     },
-    map: {
-      title: "Sun & Shadow Map",
+    sandbox: {
+      title: "SQL Sandbox",
       subtitle:
-        "Pick a location, date and time to see the sun position and shadows within a 1 km radius.",
-      addressPlaceholder: "Search an address (e.g. Calle Carretas, Ontígola)",
-      date: "Date",
-      time: "Time",
-      now: "Now",
-      altitude: "Sun altitude",
-      azimuth: "Azimuth",
-      sunrise: "Sunrise",
-      sunset: "Sunset",
-      night: "The sun is below the horizon: no shadows",
-      noResults: "No results. Try another address.",
-      search: "Search",
-      radius: "1 km radius",
-      legend: "Cone: daytime shadow sweep · Arrow: shadow at the selected time",
+        "SQL editor with a live terminal. PostgreSQL (PGlite) runs in the browser; MySQL runs through an API.",
+      postgres: "PostgreSQL",
+      mysql: "MySQL",
+      run: "Run",
+      running: "Running…",
+      placeholder: "-- Write your SQL here\nSELECT * FROM inventario;",
+      loadExample: "Load example",
+      clear: "Clear",
+      terminal: "Terminal",
+      output: "Result",
+      rowsReturned: "{n} rows returned",
+      rowsAffected: "{n} rows affected",
+      noRows: "No rows.",
+      startup: "Starting PostgreSQL (PGlite)…",
+      seeded: "Postgres ready · 'inventario' table created",
+      connectingMysql: "Connecting to MySQL…",
+      mysqlNotConfigured:
+        "MySQL is not configured. Add MYSQL_HOST, MYSQL_USER and MYSQL_DATABASE to .env and redeploy.",
+      errorLabel: "Error",
+      elapsed: "({ms} ms)",
+      truncated: "Showing the first {n} rows",
     },
     resume: {
       title: "Resume",
@@ -471,11 +479,6 @@ export const translations = {
         title: "Supabase in Production: Row Level Security & Edge Functions",
         excerpt:
           "How to properly configure Row Level Security policies in Supabase, combine them with Edge Functions, and avoid the most common pitfalls in production setups.",
-      },
-      fallback4: {
-        title: "Interactive Maps with Leaflet, SunCalc and Astro",
-        excerpt:
-          "How to build a static sun-and-shadow map using Leaflet on top of OpenStreetMap, compute the sun position with SunCalc, and render it with Astro without breaking server-side rendering.",
       },
     },
     contact: {
@@ -753,24 +756,31 @@ export const translations = {
       shifts: "Services",
       liveData: "● Données en direct",
     },
-    map: {
-      title: "Carte du soleil et des ombres",
+    sandbox: {
+      title: "SQL Sandbox",
       subtitle:
-        "Choisissez une localisation, une date et une heure pour voir la position du soleil et les ombres dans un rayon de 1 km.",
-      addressPlaceholder: "Rechercher une adresse (p. ex. Calle Carretas, Ontígola)",
-      date: "Date",
-      time: "Heure",
-      now: "Maintenant",
-      altitude: "Altitude du soleil",
-      azimuth: "Azimut",
-      sunrise: "Lever du soleil",
-      sunset: "Coucher du soleil",
-      night: "Le soleil est sous l'horizon : pas d'ombre",
-      noResults: "Aucun résultat. Essayez une autre adresse.",
-      search: "Rechercher",
-      radius: "Rayon de 1 km",
-      legend:
-        "Cône : ombres de la journée · Flèche : ombre à l'heure choisie",
+        "Éditeur SQL avec terminal en direct. PostgreSQL (PGlite) tourne dans le navigateur ; MySQL passe par une API.",
+      postgres: "PostgreSQL",
+      mysql: "MySQL",
+      run: "Exécuter",
+      running: "Exécution…",
+      placeholder:
+        "-- Écrivez votre requête SQL ici\nSELECT * FROM inventario;",
+      loadExample: "Charger un exemple",
+      clear: "Effacer",
+      terminal: "Terminal",
+      output: "Résultat",
+      rowsReturned: "{n} lignes retournées",
+      rowsAffected: "{n} lignes affectées",
+      noRows: "Aucune ligne.",
+      startup: "Démarrage de PostgreSQL (PGlite)…",
+      seeded: "Postgres prêt · table 'inventario' créée",
+      connectingMysql: "Connexion à MySQL…",
+      mysqlNotConfigured:
+        "MySQL n'est pas configuré. Ajoutez MYSQL_HOST, MYSQL_USER et MYSQL_DATABASE au .env et redéployez.",
+      errorLabel: "Erreur",
+      elapsed: "({ms} ms)",
+      truncated: "Affichage des {n} premières lignes",
     },
     resume: {
       title: "Currículum",
@@ -800,11 +810,6 @@ export const translations = {
         title: "Supabase en production : Row Level Security et Edge Functions",
         excerpt:
           "Comment configurer correctement les politiques Row Level Security dans Supabase, les combiner avec les Edge Functions et éviter les pièges les plus courants en production.",
-      },
-      fallback4: {
-        title: "Cartes interactives avec Leaflet, SunCalc et Astro",
-        excerpt:
-          "Construire une carte statique de soleil et d'ombres avec Leaflet sur OpenStreetMap, calculer la position du soleil avec SunCalc et l'afficher avec Astro sans casser le rendu côté serveur.",
       },
     },
     contact: {
@@ -1085,24 +1090,30 @@ export const translations = {
       shifts: "Schichten",
       liveData: "● Live-Daten",
     },
-    map: {
-      title: "Sonnen- und Schattenkarte",
+    sandbox: {
+      title: "SQL-Sandbox",
       subtitle:
-        "Wählen Sie einen Standort, ein Datum und eine Uhrzeit, um die Sonnenposition und die Schatten in einem Umkreis von 1 km zu sehen.",
-      addressPlaceholder: "Adresse suchen (z. B. Calle Carretas, Ontígola)",
-      date: "Datum",
-      time: "Uhrzeit",
-      now: "Jetzt",
-      altitude: "Sonnenhöhe",
-      azimuth: "Azimut",
-      sunrise: "Sonnenaufgang",
-      sunset: "Sonnenuntergang",
-      night: "Die Sonne steht unter dem Horizont: keine Schatten",
-      noResults: "Keine Ergebnisse. Versuchen Sie eine andere Adresse.",
-      search: "Suche",
-      radius: "Umkreis von 1 km",
-      legend:
-        "Kegel: Schattenverlauf des Tages · Pfeil: Schatten zur gewählten Zeit",
+        "SQL-Editor mit Live-Terminal. PostgreSQL (PGlite) läuft im Browser; MySQL läuft über eine API.",
+      postgres: "PostgreSQL",
+      mysql: "MySQL",
+      run: "Ausführen",
+      running: "Ausführen…",
+      placeholder: "-- SQL hier eingeben\nSELECT * FROM inventario;",
+      loadExample: "Beispiel laden",
+      clear: "Leeren",
+      terminal: "Terminal",
+      output: "Ergebnis",
+      rowsReturned: "{n} Zeilen zurückgegeben",
+      rowsAffected: "{n} Zeilen betroffen",
+      noRows: "Keine Zeilen.",
+      startup: "PostgreSQL (PGlite) wird gestartet…",
+      seeded: "Postgres bereit · Tabelle 'inventario' erstellt",
+      connectingMysql: "Verbindung zu MySQL wird hergestellt…",
+      mysqlNotConfigured:
+        "MySQL ist nicht konfiguriert. Füge MYSQL_HOST, MYSQL_USER und MYSQL_DATABASE zum .env hinzu und stelle erneut bereit.",
+      errorLabel: "Fehler",
+      elapsed: "({ms} ms)",
+      truncated: "Die ersten {n} Zeilen werden angezeigt",
     },
     resume: {
       title: "Lebenslauf",
@@ -1132,11 +1143,6 @@ export const translations = {
         title: "Supabase in der Produktion: Row Level Security und Edge Functions",
         excerpt:
           "So konfigurieren Sie Row-Level-Security-Richtlinien in Supabase richtig, kombinieren sie mit Edge Functions und vermeiden die häufigsten Fallstricke in Produktionsumgebungen.",
-      },
-      fallback4: {
-        title: "Interaktive Karten mit Leaflet, SunCalc und Astro",
-        excerpt:
-          "So bauen Sie eine statische Sonnen-und-Schatten-Karte mit Leaflet auf OpenStreetMap, berechnen die Sonnenposition mit SunCalc und rendern sie mit Astro, ohne das Server-Rendering zu brechen.",
       },
     },
     contact: {
@@ -1415,22 +1421,30 @@ export const translations = {
       shifts: "班次",
       liveData: "● 实时数据",
     },
-    map: {
-      title: "太阳与阴影地图",
-      subtitle: "选择地点、日期和时间，查看太阳位置及周边1公里范围内的阴影。",
-      addressPlaceholder: "搜索地址（例如 Calle Carretas, Ontígola）",
-      date: "日期",
-      time: "时间",
-      now: "现在",
-      altitude: "太阳高度",
-      azimuth: "方位角",
-      sunrise: "日出",
-      sunset: "日落",
-      night: "太阳在地平线以下：没有阴影",
-      noResults: "无结果，请尝试其他地址。",
-      search: "搜索",
-      radius: "1公里范围",
-      legend: "扇形：全天阴影范围 · 箭头：所选时间的阴影",
+    sandbox: {
+      title: "SQL 沙盒",
+      subtitle:
+        "带实时终端的 SQL 编辑器。PostgreSQL (PGlite) 在浏览器中运行；MySQL 通过 API 运行。",
+      postgres: "PostgreSQL",
+      mysql: "MySQL",
+      run: "执行",
+      running: "执行中…",
+      placeholder: "-- 在此编写 SQL 查询\nSELECT * FROM inventario;",
+      loadExample: "加载示例",
+      clear: "清空",
+      terminal: "终端",
+      output: "结果",
+      rowsReturned: "返回 {n} 行",
+      rowsAffected: "影响 {n} 行",
+      noRows: "无结果。",
+      startup: "正在启动 PostgreSQL (PGlite)…",
+      seeded: "Postgres 已就绪 · 已创建 'inventario' 表",
+      connectingMysql: "正在连接 MySQL…",
+      mysqlNotConfigured:
+        "MySQL 未配置。请在 .env 中添加 MYSQL_HOST、MYSQL_USER 和 MYSQL_DATABASE 并重新部署。",
+      errorLabel: "错误",
+      elapsed: "({ms} 毫秒)",
+      truncated: "仅显示前 {n} 行",
     },
     resume: {
       title: "简历",
@@ -1459,11 +1473,6 @@ export const translations = {
         title: "生产环境中的Supabase：行级安全与Edge Functions",
         excerpt:
           "如何正确配置Supabase的行级安全策略，将其与Edge Functions结合，并避免生产环境中最常见的陷阱。",
-      },
-      fallback4: {
-        title: "使用Leaflet、SunCalc与Astro构建交互式地图",
-        excerpt:
-          "如何在OpenStreetMap上使用Leaflet构建静态的太阳和阴影地图，用SunCalc计算太阳位置，并借助Astro渲染而不破坏服务端渲染。",
       },
     },
     contact: {

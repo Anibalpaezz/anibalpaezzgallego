@@ -102,15 +102,6 @@ const Blog = () => {
       readTime: 7,
       tags: ["supabase", "backend", "database"],
     },
-    {
-      id: 4,
-      title: t("blog.fallback4.title"),
-      excerpt: t("blog.fallback4.excerpt"),
-      url: "https://leafletjs.com/",
-      date: new Date().toISOString(),
-      readTime: 6,
-      tags: ["leaflet", "typescript", "astro"],
-    },
   ];
 
   const [posts, setPosts] = useState<Post[]>([]);
