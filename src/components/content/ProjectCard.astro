@@ -11,7 +11,6 @@ export interface Props {
     liveUrl: string;
     githubUrl: string;
     featured: boolean;
-    isLive?: boolean;
   };
 }
 
@@ -24,26 +23,8 @@ const { lang, project } = Astro.props;
     project.featured ? "border-primary/30 shadow-glow" : "border-border",
   ]}
 >
-  <div class="relative h-44 shrink-0" id={project.isLive ? "tip-tracker-card" : undefined}>
-    {project.isLive ? (
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex flex-col items-center justify-center gap-4 p-4">
-        <div class="text-center">
-          <p class="text-3xl font-bold gradient-text" data-total>—</p>
-          <p class="text-xs text-muted-foreground mt-0.5">{t(lang, "projects.totalAccumulated")}</p>
-        </div>
-        <div class="flex gap-6">
-          <div class="text-center">
-            <p class="text-xl font-semibold" data-avg>—</p>
-            <p class="text-xs text-muted-foreground">{t(lang, "projects.averagePerShift")}</p>
-          </div>
-          <div class="text-center">
-            <p class="text-xl font-semibold" data-count>—</p>
-            <p class="text-xs text-muted-foreground">{t(lang, "projects.shifts")}</p>
-          </div>
-        </div>
-        <span data-live-badge class="hidden inline-flex items-center rounded-full bg-green-500 px-2.5 py-0.5 text-xs font-medium text-white animate-pulse">{t(lang, "projects.liveData")}</span>
-      </div>
-    ) : project.image ? (
+  <div class="relative h-44 shrink-0">
+    {project.image ? (
       <>
         <img
           src={project.image}

@@ -1,6 +1,5 @@
 ---
 import { t } from "@/lib/t";
-import SqlSandbox from "@/react/SqlSandbox";
 import ProjectCard from "@/components/content/ProjectCard.astro";
 
 export interface Props {
@@ -17,7 +16,6 @@ interface Project {
   liveUrl: string;
   githubUrl: string;
   featured: boolean;
-  isLive?: boolean;
 }
 
 const projects: Project[] = [
@@ -60,12 +58,11 @@ const projects: Project[] = [
   {
     title: t(lang, "myprojects.project6.title"),
     description: t(lang, "myprojects.project6.description"),
-    image: "/photos/GBM-logo.avif",
+    image: null,
     tags: ["Supabase", "PostgreSQL"],
     liveUrl: "#",
     githubUrl: "#",
     featured: false,
-    isLive: true,
   },
   {
     title: t(lang, "myprojects.project7.title"),
@@ -86,67 +83,10 @@ const projects: Project[] = [
       <p class="text-base md:text-lg text-muted-foreground">{t(lang, "projects.subtitle")}</p>
     </div>
 
-    <div class="max-w-[1600px] mx-auto">
-      <SqlSandbox lang={lang} client:idle />
-    </div>
-
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project) => (
         <ProjectCard lang={lang} project={project} />
       ))}
     </div>
   </div>
 </div>
-
-<script>
-  (async function () {
-    const el = document.getElementById("tip-tracker-card");
-    if (!el) return;
-
-    const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
-    const SUPABASE_KEY = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-
-    if (!SUPABASE_URL || !SUPABASE_KEY) return;
-
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    let allData: { cantidad: number }[] = [];
-    let page = 0;
-    const pageSize = 1000;
-    let keepFetching = true;
-
-    while (keepFetching) {
-      const from = page * pageSize;
-      const to = from + pageSize - 1;
-      const { data, error } = await supabase.from("propinas").select("cantidad").range(from, to);
-      if (error) {
-        console.error("Tip Tracker error:", error);
-        keepFetching = false;
-      } else if (data && data.length > 0) {
-        allData = [...allData, ...data];
-        keepFetching = data.length >= pageSize;
-        page++;
-      } else {
-        keepFetching = false;
-      }
-    }
-
-    if (allData.length === 0) return;
-
-    const total = allData.reduce((s, p) => s + Number(p.cantidad || 0), 0);
-    const registros = allData.length;
-
-    const liveBadge = el.querySelector("[data-live-badge]");
-    if (liveBadge) liveBadge.classList.remove("hidden");
-
-    const totalEl = el.querySelector("[data-total]");
-    if (totalEl) totalEl.textContent = total.toFixed(2) + " €";
-
-    const avgEl = el.querySelector("[data-avg]");
-    if (avgEl) avgEl.textContent = (total / registros).toFixed(2) + " €";
-
-    const countEl = el.querySelector("[data-count]");
-    if (countEl) countEl.textContent = String(registros);
-  })();
-</script>
