@@ -137,18 +137,6 @@ export async function submitConsent(record: ConsentRecord): Promise<boolean> {
   }
 }
 
-let analyticsInjected = false;
-let speedInsightsInjected = false;
-
-// window-level guards survive separate bundle instances (e.g. the app script vs
-// the React island each bundling this module), preventing double injection.
-declare global {
-  interface Window {
-    __consentAnalyticsLoaded?: boolean;
-    __consentSpeedInsightsLoaded?: boolean;
-  }
-}
-
 /**
  * Integration point for third-party analytics / marketing scripts.
  *
@@ -157,32 +145,3 @@ declare global {
  *
  * New providers should be added here, gated on their own category.
  */
-export async function loadAnalyticsIfConsented(): Promise<void> {
-  if (analyticsInjected || window.__consentAnalyticsLoaded) return;
-  const prefs = readConsentPrefs();
-  if (!prefs || !prefs.analytics_cookies) return;
-
-  try {
-    const analytics = await import("@vercel/analytics");
-    analytics.inject();
-    analyticsInjected = true;
-    window.__consentAnalyticsLoaded = true;
-  } catch {
-    /* optional — analytics must never break the site */
-  }
-}
-
-/** Loads Vercel Speed Insights once the visitor is known (categories stored). */
-export async function loadSpeedInsightsIfConsented(): Promise<void> {
-  if (speedInsightsInjected || window.__consentSpeedInsightsLoaded) return;
-  const prefs = readConsentPrefs();
-  if (!prefs || !prefs.analytics_cookies) return;
-  try {
-    const insights = await import("@vercel/speed-insights");
-    insights.injectSpeedInsights();
-    speedInsightsInjected = true;
-    window.__consentSpeedInsightsLoaded = true;
-  } catch {
-    /* ignore */
-  }
-}

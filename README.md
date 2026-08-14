@@ -3,13 +3,13 @@
 Personal portfolio website for Aníbal Páez Gallego, a full-stack developer
 specializing in React, TypeScript, Node.js, PostgreSQL and Supabase.
 
-Production: <https://anibalpaezzgallego.vercel.app>
+Production: <https://anibalpaezzgallego-dev.pages.dev>
 
 ## Tech stack
 
 - **Framework:** [Astro 6](https://astro.build/) (static-site generation,
-  `@astrojs/vercel` adapter — every route is prerendered except `/api/consent`,
-  which runs as a Vercel Serverless Function) with React islands
+  `@astrojs/cloudflare` adapter — every route is prerendered except
+  `/api/consent`, which runs as a Cloudflare Pages Function) with React islands
   (`@astrojs/react`) on the `/blog`, `/contact` and cookie-consent UI.
 - **Styling:** Tailwind CSS v4 (via `@tailwindcss/vite`) with a custom
   light/dark HSL theme and hand-written utilities in `src/styles/global.css`.
@@ -22,7 +22,6 @@ Production: <https://anibalpaezzgallego.vercel.app>
   - EmailJS — contact form email delivery
   - GitHub API — repo stats shown on project cards
   - dev.to API — blog feed
-  - Vercel Analytics + Speed Insights (loaded via the consent manager)
 - **SEO:** per-locale meta tags, canonical URLs, Open Graph/Twitter cards,
   JSON-LD (Person + WebSite) and a generated sitemap (`@astrojs/sitemap`).
 
@@ -66,7 +65,8 @@ src/
 
 ## Environment variables
 
-Copy `.env` (git-ignored) from a secure location or set the following on Vercel:
+Copy `.env` (git-ignored) from a secure location or set the following as
+Environment variables on Cloudflare Pages:
 
 ```
 PUBLIC_SUPABASE_PROJECT_ID
@@ -80,7 +80,8 @@ PUBLIC_EMAILJS_PUBLIC_KEY
 
 `SUPABASE_SERVICE_ROLE_KEY` is read only by `src/lib/supabase-server.ts` (used by
 `/api/consent`). It must never be prefixed with `PUBLIC_` and is never bundled
-to the client.
+to the client. `GITHUB_TOKEN` (optional, used by `/api/contributions.svg`) is a
+secret on Cloudflare Pages too.
 
 ## Cookie consent
 
@@ -103,9 +104,10 @@ Flow:
 4. When a change to the policy invalidates existing consents, bump
    `COOKIE_POLICY_VERSION` in `src/lib/consent.ts`. It is sent on every request.
 
-Third-party analytics (Vercel Analytics / Speed Insights) are loaded only after
-the visitor grants analytics consent via `loadAnalyticsIfConsented()` /
-`loadSpeedInsightsIfConsented()` in `src/lib/consent-client.ts`.
+Third-party analytics scripts are loaded only after the visitor grants
+analytics consent. The Vercel Analytics / Speed Insights loaders were removed
+during the Cloudflare migration; add a provider in
+`src/lib/consent-client.ts` (gated on `analytics_cookies`) if you need one.
 
 ### Testing locally
 
@@ -137,9 +139,11 @@ the visitor grants analytics consent via `loadAnalyticsIfConsented()` /
 
 ## Deploying
 
-The site is deployed on Vercel from the `main` branch. The production origin
-is set in `astro.config.mjs` (`site`) and is used for canonical tags, the
-sitemap and `robots.txt` — update it there if the domain changes.
+The site is deployed on Cloudflare Pages from the `main` branch (build command
+`npm run build`, output directory `dist`). The production origin is set in
+`astro.config.mjs` (`site`) and is used for canonical tags, the sitemap and
+`robots.txt` — update it there if the domain changes (e.g. the auto-assigned
+`<project>.pages.dev` URL or a custom domain).
 
 ### Missing assets
 

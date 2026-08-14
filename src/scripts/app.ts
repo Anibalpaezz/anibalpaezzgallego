@@ -1,10 +1,6 @@
 /// <reference types="astro/client" />
 
 import { OPEN_SETTINGS_EVENT } from "@/lib/consent";
-import {
-  loadAnalyticsIfConsented,
-  loadSpeedInsightsIfConsented,
-} from "@/lib/consent-client";
 
 // ── Theme ──
 (function () {
@@ -97,13 +93,8 @@ import {
 })();
 
 // ── Cookie consent ──
-// Return, visitors: load analytics now if they previously allowed it (the banner
-// UI, decision POSTing and the "Configurar cookies" reopen are handled by the
-// CookieConsent React island). This mirror is the integration point that runs
-// before React hydrates, so analytics can start on the very first paint.
-loadAnalyticsIfConsented();
-loadSpeedInsightsIfConsented();
-
+// The banner UI, decision POSTing and the "Configurar cookies" reopen are
+// handled by the CookieConsent React island.
 // Footer "Configurar cookies" button → let the React island open the panel.
 (function () {
   const btn = document.getElementById("cookie-settings-btn");

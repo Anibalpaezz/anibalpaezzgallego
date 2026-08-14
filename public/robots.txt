@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # The sitemap is generated at build time by @astrojs/sitemap.
-Sitemap: https://anibalpaezzgallego.vercel.app/sitemap-index.xml
+Sitemap: https://anibalpaezzgallego-dev.pages.dev/sitemap-index.xml

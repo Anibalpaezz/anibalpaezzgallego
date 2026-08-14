@@ -15,8 +15,6 @@ import {
   readConsentPrefs,
   submitConsent,
   writeConsentPrefs,
-  loadAnalyticsIfConsented,
-  loadSpeedInsightsIfConsented,
 } from "@/lib/consent-client";
 
 type Lang = "es" | "en" | "fr" | "de" | "zh";
@@ -38,11 +36,6 @@ export default function CookieConsent({ lang }: { lang: Lang }) {
   useEffect(() => {
     // Show the banner on first visit (no anon-id cookie yet).
     if (!hasConsentCookie()) setBannerVisible(true);
-    else {
-      // Returning visitor: load analytics if previously allowed (no-op otherwise).
-      loadAnalyticsIfConsented();
-      loadSpeedInsightsIfConsented();
-    }
   }, []);
 
   useEffect(() => {
@@ -73,8 +66,6 @@ export default function CookieConsent({ lang }: { lang: Lang }) {
     setSaving(false);
     setBannerVisible(false);
     setPanelVisible(false);
-    loadAnalyticsIfConsented();
-    loadSpeedInsightsIfConsented();
   };
 
   const handleAcceptAll = () => {
