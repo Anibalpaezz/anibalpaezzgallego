@@ -285,7 +285,7 @@ export const translations = {
       },
       degree3: {
         title: "Bachillerato Biológico",
-        institution: "IES Alpajkes",
+        institution: "IES Alpajes",
         period: "2020 - 2022",
         description:
           "Bachillerato en la modalidad de Ciencias, rama Biológica.",
@@ -597,7 +597,7 @@ export const translations = {
       },
       degree3: {
         title: "Biological Baccalaureate",
-        institution: "IES Alpajkes",
+        institution: "IES Alpajes",
         period: "2020 - 2022",
         description: "Baccalaureate in the Sciences track, Biology branch.",
       },
@@ -913,7 +913,7 @@ export const translations = {
       },
       degree3: {
         title: "Baccalauréat Biologique",
-        institution: "IES Alpajkes",
+        institution: "IES Alpajes",
         period: "2020 - 2022",
         description: "Baccalauréat dans la filière Sciences, branche Biologie.",
       },
@@ -1231,7 +1231,7 @@ export const translations = {
       },
       degree3: {
         title: "Biologisches Abitur",
-        institution: "IES Alpajkes",
+        institution: "IES Alpajes",
         period: "2020 - 2022",
         description:
           "Abitur im naturwissenschaftlichen Zweig, Fachrichtung Biologie.",
@@ -1530,7 +1530,7 @@ export const translations = {
       },
       degree3: {
         title: "生物学高中毕业证书",
-        institution: "IES Alpajkes",
+        institution: "IES Alpajes",
         period: "2020 - 2022",
         description: "科学方向的高中毕业证书，生物学科。",
       },
