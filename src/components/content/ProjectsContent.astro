@@ -29,6 +29,15 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    title: t(lang, "myprojects.project9.title"),
+    description: t(lang, "myprojects.project9.description"),
+    image: "/photos/club_atletismo_cover.svg",
+    tags: ["Astro", "TypeScript", "React", "Supabase"],
+    liveUrl: "https://club-atletismo-san-clemente.vercel.app",
+    githubUrl: "https://github.com/Anibalpaezz/club-atletismo-san-clemente",
+    featured: false,
+  },
+  {
     title: t(lang, "myprojects.project4.title"),
     description: t(lang, "myprojects.project4.description"),
     image: "/photos/GBM-logo.avif",
@@ -83,6 +92,33 @@ const projects: Project[] = [
     featured: false,
   },
 ];
+
+// Calcula el número de columnas que hace que la cuadrícula quede lo más
+// cuadrada posible: sin celdas vacías si se puede, con filas y columnas
+// equilibradas y, en caso de empate, con más columnas.
+function bestColumns(count: number): number {
+  let best = 1;
+  let bestEmpty = Infinity;
+  let bestDiff = Infinity;
+  for (let c = 1; c <= count; c++) {
+    const rows = Math.ceil(count / c);
+    const empty = rows * c - count;
+    const diff = Math.abs(rows - c);
+    if (
+      empty < bestEmpty ||
+      (empty === bestEmpty && diff < bestDiff) ||
+      (empty === bestEmpty && diff === bestDiff && c > best)
+    ) {
+      bestEmpty = empty;
+      bestDiff = diff;
+      best = c;
+    }
+  }
+  return best;
+}
+
+const columns = bestColumns(projects.length);
+const mdColumns = Math.min(2, columns);
 ---
 
 <div class="min-h-screen py-16 md:py-24">
@@ -92,10 +128,29 @@ const projects: Project[] = [
       <p class="text-base md:text-lg text-muted-foreground">{t(lang, "projects.subtitle")}</p>
     </div>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div
+      class="proj-grid max-w-6xl mx-auto grid gap-6"
+      style={`--cols-lg: ${columns}; --cols-md: ${mdColumns};`}
+    >
       {projects.map((project) => (
         <ProjectCard lang={lang} project={project} />
       ))}
     </div>
   </div>
 </div>
+
+<style>
+  :global(.proj-grid) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  @media (min-width: 768px) {
+    :global(.proj-grid) {
+      grid-template-columns: repeat(var(--cols-md, 2), minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    :global(.proj-grid) {
+      grid-template-columns: repeat(var(--cols-lg, 3), minmax(0, 1fr));
+    }
+  }
+</style>

@@ -208,6 +208,11 @@ export const translations = {
         description:
           "Calculadora de subredes IPv4 con recálculo en tiempo real. Réplica moderna de ipcalc con React y TypeScript.",
       },
+      project9: {
+        title: "Club Atletismo San Clemente",
+        description:
+          "Web oficial del Club Atletismo San Clemente. Escuela deportiva, competiciones, inscripciones, horarios y eventos de atletismo en San Clemente (Cuenca).",
+      },
       project1: {
         title: "Stock & Stir",
         description: "Una aplicación web completa con React y Node.js.",
@@ -514,6 +519,11 @@ export const translations = {
         title: "IPv4 Subnet Calculator",
         description:
           "IPv4 subnet calculator with real-time recalculations. A modern ipcalc replica built with React and TypeScript.",
+      },
+      project9: {
+        title: "San Clemente Athletics Club",
+        description:
+          "Official website of the San Clemente Athletics Club (Cuenca, Spain). Sports school, competitions, registrations, schedules and athletics events.",
       },
       project1: {
         title: "Stock & Stir",
@@ -822,6 +832,11 @@ export const translations = {
         title: "Calculatrice de sous-réseaux IPv4",
         description:
           "Calculatrice de sous-réseaux IPv4 avec recalcul en temps réel. Une réplique moderne d'ipcalc avec React et TypeScript.",
+      },
+      project9: {
+        title: "Club d'athlétisme de San Clemente",
+        description:
+          "Site officiel du Club d'athlétisme de San Clemente. École sportive, compétitions, inscriptions, horaires et événements d'athlétisme à San Clemente (Cuenca).",
       },
       project1: {
         title: "Stock & Stir",
@@ -1135,6 +1150,11 @@ export const translations = {
         description:
           "IPv4-Subnetzrechner mit Echtzeit-Neuberechnung. Eine moderne ipcalc-Replik mit React und TypeScript.",
       },
+      project9: {
+        title: "Leichtathletik-Club San Clemente",
+        description:
+          "Offizielle Website des Leichtathletik-Clubs San Clemente. Sportschule, Wettkämpfe, Anmeldungen, Zeitpläne und Leichtathletik-Veranstaltungen in San Clemente (Cuenca).",
+      },
       project1: {
         title: "Stock & Stir",
         description: "Eine vollständige Webanwendung mit React und Node.js.",
@@ -1432,6 +1452,11 @@ export const translations = {
         title: "IPv4子网计算器",
         description:
           "支持实时计算的IPv4子网计算器。使用React和TypeScript构建的ipcalc现代版本。",
+      },
+      project9: {
+        title: "圣克莱门特田径俱乐部",
+        description:
+          "圣克莱门特田径俱乐部官方网站。位于圣克莱门特（昆卡）的体育学校、比赛、报名、课程安排和径赛活动。",
       },
       project1: {
         title: "Stock & Stir",
