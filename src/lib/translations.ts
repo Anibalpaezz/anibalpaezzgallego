@@ -203,6 +203,11 @@ export const translations = {
       button: "Empieza una conversación",
     },
     myprojects: {
+      project8: {
+        title: "Calculadora de Subredes IPv4",
+        description:
+          "Calculadora de subredes IPv4 con recálculo en tiempo real. Réplica moderna de ipcalc con React y TypeScript.",
+      },
       project1: {
         title: "Stock & Stir",
         description: "Una aplicación web completa con React y Node.js.",
@@ -505,6 +510,11 @@ export const translations = {
       button: "Start a Conversation",
     },
     myprojects: {
+      project8: {
+        title: "IPv4 Subnet Calculator",
+        description:
+          "IPv4 subnet calculator with real-time recalculations. A modern ipcalc replica built with React and TypeScript.",
+      },
       project1: {
         title: "Stock & Stir",
         description: "A full-stack web application with React and Node.js.",
@@ -714,7 +724,8 @@ export const translations = {
           "Un guide pratique pour trouver les goulots d'étranglement des requêtes PostgreSQL avec EXPLAIN ANALYZE, les index partiels et les index de couverture pour accélérer votre base de données.",
       },
       fallback2: {
-        title: "React + TypeScript : des modèles pour des applications évolutives",
+        title:
+          "React + TypeScript : des modèles pour des applications évolutives",
         excerpt:
           "Bonnes pratiques pour structurer de grandes bases de code React + TypeScript : composants composés, hooks personnalisés et stratégies de typage strict qui font gagner du temps en production.",
       },
@@ -807,6 +818,11 @@ export const translations = {
       button: "Commencer une conversation",
     },
     myprojects: {
+      project8: {
+        title: "Calculatrice de sous-réseaux IPv4",
+        description:
+          "Calculatrice de sous-réseaux IPv4 avec recalcul en temps réel. Une réplique moderne d'ipcalc avec React et TypeScript.",
+      },
       project1: {
         title: "Stock & Stir",
         description: "Une application web complète avec React et Node.js.",
@@ -1013,7 +1029,8 @@ export const translations = {
       minutes: "min Lesezeit",
       poweredBy: "Unterstützt durch",
       fallback1: {
-        title: "Optimierung von PostgreSQL-Abfragen mit Indizes und EXPLAIN ANALYZE",
+        title:
+          "Optimierung von PostgreSQL-Abfragen mit Indizes und EXPLAIN ANALYZE",
         excerpt:
           "Ein praktischer Leitfaden zum Auffinden von Abfrage-Flaschenhälsen in PostgreSQL mit EXPLAIN ANALYZE, partiellen Indizes und abdeckenden Indizes, um Ihre Datenbank zu beschleunigen.",
       },
@@ -1023,7 +1040,8 @@ export const translations = {
           "Bewährte Methoden für die Strukturierung großer React + TypeScript-Codebasen: zusammengesetzte Komponenten, benutzerdefinierte Hooks und strenge Typisierungsstrategien, die in der Produktion Zeit sparen.",
       },
       fallback3: {
-        title: "Supabase in der Produktion: Row Level Security und Edge Functions",
+        title:
+          "Supabase in der Produktion: Row Level Security und Edge Functions",
         excerpt:
           "So konfigurieren Sie Row-Level-Security-Richtlinien in Supabase richtig, kombinieren sie mit Edge Functions und vermeiden die häufigsten Fallstricke in Produktionsumgebungen.",
       },
@@ -1112,6 +1130,11 @@ export const translations = {
       button: "Ein Gespräch beginnen",
     },
     myprojects: {
+      project8: {
+        title: "IPv4-Subnetzrechner",
+        description:
+          "IPv4-Subnetzrechner mit Echtzeit-Neuberechnung. Eine moderne ipcalc-Replik mit React und TypeScript.",
+      },
       project1: {
         title: "Stock & Stir",
         description: "Eine vollständige Webanwendung mit React und Node.js.",
@@ -1375,7 +1398,8 @@ export const translations = {
       necessaryDesc: "网站运行所必需：用于记住您的语言、主题和匿名标识。",
       necessaryLabel: "始终启用",
       analytics: "分析",
-      analyticsDesc: "帮助我们了解网站的使用情况（访问页面、停留时间），以便改进。",
+      analyticsDesc:
+        "帮助我们了解网站的使用情况（访问页面、停留时间），以便改进。",
       marketing: "营销",
       marketingDesc: "用于展示相关内容或广告。目前我们不加载任何营销 Cookie。",
       preferences: "偏好",
@@ -1404,6 +1428,11 @@ export const translations = {
       button: "开始对话",
     },
     myprojects: {
+      project8: {
+        title: "IPv4子网计算器",
+        description:
+          "支持实时计算的IPv4子网计算器。使用React和TypeScript构建的ipcalc现代版本。",
+      },
       project1: {
         title: "Stock & Stir",
         description: "使用React和Node.js构建的完整Web应用程序",
