@@ -13,7 +13,7 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   // Production origin. Canonical tags, og:url, robots.txt and the sitemap all
   // derive from this. Update here if the domain changes.
-  site: "https://anibalpaezgallego.com",
+  site: "https://anibalpaezzgallego.com",
 
   // Default `output: "static"`: every route is prerendered (static) except the
   // endpoints that opt out with `export const prerender = false` (e.g.
