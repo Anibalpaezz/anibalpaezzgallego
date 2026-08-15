@@ -229,7 +229,7 @@ export const translations = {
       project4: {
         title: "Golden Bucket Movies",
         description:
-          "Proyecto desde cero usando HTML, CSS y JavaScript. Catálogo de películas con búsqueda, filtros y detalles.",
+          "Buscador de películas con Astro y la API de TMDB, con caché en Supabase. Búsqueda en tiempo real y detalles de cada película.",
       },
       project5: {
         title: "Proyectos varios",
@@ -541,7 +541,7 @@ export const translations = {
       project4: {
         title: "Golden Bucket Movies",
         description:
-          "A from-scratch project using HTML, CSS and JavaScript. Movie catalog with search, filters and details.",
+          "Movie search app built with Astro and the TMDB API, cached in Supabase. Real-time search and movie details.",
       },
       project5: {
         title: "Various projects",
@@ -854,7 +854,7 @@ export const translations = {
       project4: {
         title: "Golden Bucket Movies",
         description:
-          "Un projet créé de zéro avec HTML, CSS et JavaScript. Catalogue de films avec recherche, filtres et détails.",
+          "Application de recherche de films construite avec Astro et l'API TMDB, avec cache dans Supabase. Recherche en temps réel et détails des films.",
       },
       project5: {
         title: "Projets divers",
@@ -1172,7 +1172,7 @@ export const translations = {
       project4: {
         title: "Golden Bucket Movies",
         description:
-          "Ein Projekt von Grund auf mit HTML, CSS und JavaScript. Filmkatalog mit Suche, Filtern und Details.",
+          "Film-Suchapp mit Astro und der TMDB-API, zwischengespeichert in Supabase. Echtzeitsuche und Filmdetails.",
       },
       project5: {
         title: "Verschiedene Projekte",
@@ -1474,7 +1474,7 @@ export const translations = {
       project4: {
         title: "Golden Bucket Movies",
         description:
-          "使用HTML、CSS和JavaScript从零开始的项目。电影目录，支持搜索、筛选和详情。",
+          "使用Astro和TMDB API构建的电影搜索应用，并通过Supabase缓存。支持实时搜索和电影详情。",
       },
       project5: {
         title: "各类项目",

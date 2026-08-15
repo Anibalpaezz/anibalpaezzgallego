@@ -35,13 +35,13 @@ const projects: Project[] = [
     tags: ["Astro", "TypeScript", "React", "Supabase"],
     liveUrl: "https://club-atletismo-san-clemente.vercel.app",
     githubUrl: "https://github.com/Anibalpaezz/club-atletismo-san-clemente",
-    featured: false,
+    featured: true,
   },
   {
     title: t(lang, "myprojects.project4.title"),
     description: t(lang, "myprojects.project4.description"),
     image: "/photos/GBM-logo.avif",
-    tags: ["HTML", "JavaScript", "CSS", "PostgreSQL"],
+    tags: ["Astro", "TypeScript", "TMDB API", "Supabase"],
     liveUrl: "https://github.com/Anibalpaezz/Golden-Bucket-Movies",
     githubUrl: "https://github.com/Anibalpaezz/Golden-Bucket-Movies",
     featured: true,
@@ -53,7 +53,7 @@ const projects: Project[] = [
     tags: ["PHP", "JavaScript", "HTML", "CSS"],
     liveUrl: "https://github.com/Anibalpaezz/master-calendar-hub",
     githubUrl: "https://github.com/Anibalpaezz/master-calendar-hub",
-    featured: true,
+    featured: false,
   },
   {
     title: t(lang, "myprojects.project1.title"),
@@ -117,7 +117,7 @@ function bestColumns(count: number): number {
   return best;
 }
 
-const columns = bestColumns(projects.length);
+const columns = Math.min(3, bestColumns(projects.length));
 const mdColumns = Math.min(2, columns);
 ---
 
@@ -129,7 +129,7 @@ const mdColumns = Math.min(2, columns);
     </div>
 
     <div
-      class="proj-grid max-w-6xl mx-auto grid gap-6"
+      class="proj-grid max-w-7xl mx-auto grid gap-6"
       style={`--cols-lg: ${columns}; --cols-md: ${mdColumns};`}
     >
       {projects.map((project) => (
