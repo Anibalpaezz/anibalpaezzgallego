@@ -2,7 +2,7 @@ export const translations = {
   es: {
     seo: {
       home: {
-        title: "Aníbal Páez Gallego — Desarrollador Full-Stack",
+        title: "Aníbal Páez Gallego | Portfolio",
         description:
           "Portfolio de Aníbal Páez Gallego, desarrollador web full-stack especializado en React, TypeScript, Node.js y PostgreSQL.",
       },
@@ -310,7 +310,7 @@ export const translations = {
   en: {
     seo: {
       home: {
-        title: "Aníbal Páez Gallego — Full-Stack Developer",
+        title: "Aníbal Páez Gallego | Portfolio",
         description:
           "Portfolio of Aníbal Páez Gallego, full-stack web developer specialized in React, TypeScript, Node.js and PostgreSQL.",
       },
@@ -615,7 +615,7 @@ export const translations = {
   fr: {
     seo: {
       home: {
-        title: "Aníbal Páez Gallego — Développeur Full-Stack",
+        title: "Aníbal Páez Gallego | Portfolio",
         description:
           "Portfolio d'Aníbal Páez Gallego, développeur web full-stack spécialisé en React, TypeScript, Node.js et PostgreSQL.",
       },
@@ -925,7 +925,7 @@ export const translations = {
   de: {
     seo: {
       home: {
-        title: "Aníbal Páez Gallego — Full-Stack-Entwickler",
+        title: "Aníbal Páez Gallego | Portfolio",
         description:
           "Portfolio von Aníbal Páez Gallego, Full-Stack-Webentwickler spezialisiert auf React, TypeScript, Node.js und PostgreSQL.",
       },
@@ -1238,7 +1238,7 @@ export const translations = {
   zh: {
     seo: {
       home: {
-        title: "Aníbal Páez Gallego — 全栈开发者",
+        title: "Aníbal Páez Gallego | Portfolio",
         description:
           "Aníbal Páez Gallego 的作品集，专注于 React、TypeScript、Node.js 和 PostgreSQL 的全栈网页开发者。",
       },

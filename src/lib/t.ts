@@ -52,7 +52,7 @@ type SeoKey = (typeof SEO_KEYS)[number];
 
 const FALLBACK_SEO: Record<SeoKey, SeoMeta> = {
   home: {
-    title: "Aníbal Páez Gallego — Full-Stack Developer",
+    title: "Aníbal Páez Gallego | Portfolio",
     description:
       "Portfolio de Aníbal Páez Gallego, desarrollador web full-stack especializado en React, TypeScript, Node.js y PostgreSQL.",
   },
