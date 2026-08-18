@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "prebuild": "node --env-file-if-exists=.env scripts/fetch-github-stats.mjs",
+    "stats": "node --env-file-if-exists=.env scripts/fetch-github-stats.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",

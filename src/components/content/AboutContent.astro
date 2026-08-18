@@ -1,11 +1,61 @@
 ---
 import { t } from "@/lib/t";
+import GithubHeatmap from "@/react/GithubHeatmap";
+import { githubStats, formatNumber, languageColor } from "@/lib/github-stats";
 
 export interface Props {
   lang: "es" | "en" | "fr" | "de" | "zh";
 }
 
 const { lang } = Astro.props;
+
+const LOCALES: Record<string, string> = {
+  es: "es-ES",
+  en: "en-US",
+  fr: "fr-FR",
+  de: "de-DE",
+  zh: "zh-CN",
+};
+const locale = LOCALES[lang];
+
+const metrics = [
+  {
+    key: "contributions",
+    label: t(lang, "about.githubContributions"),
+    icon: "commit",
+    value: formatNumber(githubStats.totalContributions, locale),
+  },
+  {
+    key: "repos",
+    label: t(lang, "about.githubRepos"),
+    icon: "repo",
+    value: formatNumber(githubStats.repos, locale),
+  },
+  {
+    key: "commits",
+    label: t(lang, "about.githubCommits"),
+    icon: "branch",
+    value: formatNumber(githubStats.totalCommits, locale),
+  },
+  {
+    key: "currentStreak",
+    label: t(lang, "about.githubCurrentStreak"),
+    icon: "flame",
+    value: formatNumber(githubStats.currentStreak, locale),
+  },
+  {
+    key: "longestStreak",
+    label: t(lang, "about.githubLongestStreak"),
+    icon: "trophy",
+    value: formatNumber(githubStats.longestStreak, locale),
+  },
+  {
+    key: "followers",
+    label: t(lang, "about.githubFollowers"),
+    icon: "people",
+    value: formatNumber(githubStats.followers, locale),
+  },
+];
 
 const skills = [
   { name: "React", url: "https://react.dev/" },
@@ -21,7 +71,10 @@ const skills = [
   { name: "HTML", url: "https://developer.mozilla.org/docs/Web/HTML" },
   { name: "Linux", url: "https://www.kernel.org/" },
   { name: "CSS", url: "https://developer.mozilla.org/docs/Web/CSS" },
-  { name: "JavaScript", url: "https://developer.mozilla.org/docs/Web/JavaScript" },
+  {
+    name: "JavaScript",
+    url: "https://developer.mozilla.org/docs/Web/JavaScript",
+  },
   { name: "C++", url: "https://isocpp.org/" },
   { name: "Java", url: "https://www.oracle.com/java/" },
   { name: "MySQL", url: "https://www.mysql.com/" },
@@ -32,67 +85,153 @@ const skills = [
 <div class="min-h-screen py-16 md:py-24">
   <div class="container mx-auto px-4 md:px-8">
     <div class="max-w-3xl mx-auto text-center mb-12 animate-fade-in">
-      <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">{t(lang, "about.title")}</h1>
-      <p class="text-base md:text-lg text-muted-foreground leading-relaxed">{t(lang, "about.subtitle")}</p>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+        {t(lang, "about.title")}
+      </h1>
+      <p class="text-base md:text-lg text-muted-foreground leading-relaxed">
+        {t(lang, "about.subtitle")}
+      </p>
     </div>
 
     <div class="max-w-4xl mx-auto mb-10">
-      <div class="animate-slide-up rounded-xl border-2 border-primary/40 bg-gradient-to-br from-primary/5 to-accent/5 p-8" style="animation-delay:0.05s">
+      <div
+        class="animate-slide-up rounded-xl border-2 border-primary/40 bg-gradient-to-br from-primary/5 to-accent/5 p-8"
+        style="animation-delay:0.05s"
+      >
         <div class="flex items-center gap-3 mb-4">
           <div class="p-2 bg-primary rounded-lg">
-            <svg class="h-6 w-6 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+            <svg
+              class="h-6 w-6 text-primary-foreground"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+              ></path></svg
+            >
           </div>
           <h2 class="text-2xl font-bold">{t(lang, "about.dbTitle")}</h2>
         </div>
-        <p class="text-muted-foreground mb-5 leading-relaxed">{t(lang, "about.dbDescription")}</p>
+        <p class="text-muted-foreground mb-5 leading-relaxed">
+          {t(lang, "about.dbDescription")}
+        </p>
         <div class="flex flex-wrap gap-2">
-          {["SQL", "PostgreSQL", "MySQL", "MongoDB"].map((tech) => (
-            <span class="inline-flex items-center px-4 py-1.5 text-sm rounded-full bg-primary/10 text-primary border border-primary/30 transition-colors">{tech}</span>
-          ))}
+          {
+            ["SQL", "PostgreSQL", "MySQL", "MongoDB"].map((tech) => (
+              <span class="inline-flex items-center px-4 py-1.5 text-sm rounded-full bg-primary/10 text-primary border border-primary/30 transition-colors">
+                {tech}
+              </span>
+            ))
+          }
         </div>
       </div>
     </div>
 
     <div class="max-w-4xl mx-auto mb-12">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {[
-          { icon: "code", value: `${skills.length}+`, label: t(lang, "about.statsTech") },
-          { icon: "server", value: t(lang, "about.statsFocusValue"), label: t(lang, "about.statsFocus") },
-          { icon: "book", value: t(lang, "about.statsFormationValue"), label: t(lang, "about.statsFormation") },
-        ].map((s, i) => (
-          <div class="animate-slide-up text-center rounded-xl border border-border bg-card p-6" style={`animation-delay:${0.1 + i * 0.05}s`}>
-            <div class="flex justify-center mb-2">
-              {s.icon === "code" && (
-                <svg class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-              )}
-              {s.icon === "server" && (
-                <svg class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>
-              )}
-              {s.icon === "book" && (
-                <svg class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-              )}
+        {
+          [
+            {
+              icon: "code",
+              value: `${skills.length}+`,
+              label: t(lang, "about.statsTech"),
+            },
+            {
+              icon: "server",
+              value: t(lang, "about.statsFocusValue"),
+              label: t(lang, "about.statsFocus"),
+            },
+            {
+              icon: "book",
+              value: t(lang, "about.statsFormationValue"),
+              label: t(lang, "about.statsFormation"),
+            },
+          ].map((s, i) => (
+            <div
+              class="animate-slide-up text-center rounded-xl border border-border bg-card p-6"
+              style={`animation-delay:${0.1 + i * 0.05}s`}
+            >
+              <div class="flex justify-center mb-2">
+                {s.icon === "code" && (
+                  <svg
+                    class="h-5 w-5 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                    />
+                  </svg>
+                )}
+                {s.icon === "server" && (
+                  <svg
+                    class="h-5 w-5 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                    />
+                  </svg>
+                )}
+                {s.icon === "book" && (
+                  <svg
+                    class="h-5 w-5 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
+                )}
+              </div>
+              <p class="text-2xl font-bold gradient-text">{s.value}</p>
+              <p class="text-sm text-muted-foreground mt-1">{s.label}</p>
             </div>
-            <p class="text-2xl font-bold gradient-text">{s.value}</p>
-            <p class="text-sm text-muted-foreground mt-1">{s.label}</p>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
 
     <div class="max-w-4xl mx-auto mb-16">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center tracking-tight">{t(lang, "about.skills")}</h2>
-      <div class="animate-slide-up rounded-xl border border-border bg-card p-4 md:p-8" style="animation-delay:0.1s">
+      <h2
+        class="text-2xl md:text-3xl font-bold mb-6 text-center tracking-tight"
+      >
+        {t(lang, "about.skills")}
+      </h2>
+      <div
+        class="animate-slide-up rounded-xl border border-border bg-card p-4 md:p-8"
+        style="animation-delay:0.1s"
+      >
         <div class="flex flex-wrap gap-3 justify-center">
-          {skills.map((skill) => (
-            <a
-              href={skill.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center px-4 py-2 text-sm rounded-full bg-secondary text-secondary-foreground transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-primary hover:text-primary-foreground"
-            >
-              {skill.name}
-            </a>
-          ))}
+          {
+            skills.map((skill) => (
+              <a
+                href={skill.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center px-4 py-2 text-sm rounded-full bg-secondary text-secondary-foreground transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-primary hover:text-primary-foreground"
+              >
+                {skill.name}
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -100,47 +239,186 @@ const skills = [
     <div class="max-w-4xl mx-auto mb-16">
       <div class="flex items-center gap-3 mb-8">
         <div class="p-2 bg-foreground rounded-lg">
-          <svg viewBox="0 0 24 24" class="h-6 w-6 text-background" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+          <svg
+            viewBox="0 0 24 24"
+            class="h-6 w-6 text-background"
+            fill="currentColor"
+          >
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+            ></path>
           </svg>
         </div>
         <h2 class="text-3xl font-bold">{t(lang, "about.githubTitle")}</h2>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
-        <div class="animate-slide-up lg:col-span-2 overflow-hidden rounded-xl border border-border bg-card p-2 sm:p-4" style="animation-delay:0.2s">
-          <img
-            src="/api/contributions.svg"
-            alt={t(lang, "about.githubGraphAlt")}
-            class="w-full rounded-lg"
-            loading="lazy"
-          />
-        </div>
+      <div
+        class="animate-slide-up overflow-hidden rounded-xl border border-border bg-card p-2 sm:p-4"
+        style="animation-delay:0.2s"
+      >
+        <GithubHeatmap
+          weeks={githubStats.calendar.weeks}
+          totalContributions={githubStats.totalContributions}
+          lang={lang}
+          client:visible
+        />
+      </div>
 
-        <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
-          {[
-            { key: "contributions", label: t(lang, "about.githubContributions"), icon: "commit" },
-            { key: "repos", label: t(lang, "about.githubRepos"), icon: "repo" },
-            { key: "followers", label: t(lang, "about.githubFollowers"), icon: "people" },
-          ].map((s, i) => (
-            <div class="animate-slide-up rounded-xl border border-border bg-card p-4 text-center lg:text-left" style={`animation-delay:${0.22 + i * 0.05}s`}>
-              <div class="flex items-center gap-3 mb-1.5 justify-center lg:justify-start">
+      {
+        githubStats.generatedAt && (
+          <p class="mt-2 text-right text-xs text-muted-foreground">
+            {t(lang, "about.githubUpdated")}{" "}
+            <time datetime={githubStats.generatedAt}>
+              {new Date(githubStats.generatedAt).toLocaleDateString(locale)}
+            </time>
+          </p>
+        )
+      }
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
+        {
+          metrics.map((s, i) => (
+            <div
+              class="animate-slide-up rounded-xl border border-border bg-card p-4 text-center"
+              style={`animation-delay:${0.24 + i * 0.05}s`}
+            >
+              <div class="flex items-center justify-center gap-3 mb-1.5">
                 {s.icon === "commit" && (
-                  <svg class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3" /><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h6m6 0h6" /></svg>
+                  <svg
+                    class="h-4 w-4 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 12h6m6 0h6"
+                    />
+                  </svg>
                 )}
                 {s.icon === "repo" && (
-                  <svg class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v6a2 2 0 002 2h4m10-8a2 2 0 00-2-2h-4a2 2 0 00-2 2v10a2 2 0 002 2h4a2 2 0 002-2V9zm-6 6h8M3 7a2 2 0 012-2h4a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" /></svg>
+                  <svg
+                    class="h-4 w-4 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 7v6a2 2 0 002 2h4m10-8a2 2 0 00-2-2h-4a2 2 0 00-2 2v10a2 2 0 002 2h4a2 2 0 002-2V9zm-6 6h8M3 7a2 2 0 012-2h4a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
+                    />
+                  </svg>
+                )}
+                {s.icon === "branch" && (
+                  <svg
+                    class="h-4 w-4 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <line x1="6" y1="3" x2="6" y2="15" />
+                    <circle cx="18" cy="6" r="3" />
+                    <circle cx="6" cy="18" r="3" />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M18 9a9 9 0 01-9 9"
+                    />
+                  </svg>
+                )}
+                {s.icon === "flame" && (
+                  <svg
+                    class="h-4 w-4 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
+                    />
+                  </svg>
+                )}
+                {s.icon === "trophy" && (
+                  <svg
+                    class="h-4 w-4 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6m12 5h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16m-10-7.34V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22m10-7.34V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22m-11-20h12v7a6 6 0 0 1-12 0V2Z"
+                    />
+                  </svg>
                 )}
                 {s.icon === "people" && (
-                  <svg class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  <svg
+                    class="h-4 w-4 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
                 )}
                 <p class="text-sm text-muted-foreground">{s.label}</p>
               </div>
-              <p class="text-2xl font-bold gradient-text tabular-nums" data-gh-stat={s.key}>—</p>
+              <p class="text-2xl font-bold gradient-text tabular-nums">
+                {s.value}
+              </p>
             </div>
-          ))}
-        </div>
+          ))
+        }
       </div>
+
+      {
+        githubStats.languages.length > 0 && (
+          <div
+            class="animate-slide-up mt-4 rounded-xl border border-border bg-card p-4 sm:p-6"
+            style="animation-delay:0.5s"
+          >
+            <h3 class="text-lg font-semibold mb-4">
+              {t(lang, "about.githubLanguages")}
+            </h3>
+            <div class="space-y-3">
+              {githubStats.languages.slice(0, 8).map((l) => (
+                <div class="flex items-center gap-3">
+                  <span
+                    class="h-3 w-3 rounded-full shrink-0"
+                    style={`background-color:${languageColor(l)}`}
+                  />
+                  <span class="w-32 shrink-0 truncate text-sm">{l.name}</span>
+                  <div class="h-2 flex-1 overflow-hidden rounded-full bg-secondary">
+                    <div
+                      class="h-full rounded-full"
+                      style={`width:${l.percentage}%;background-color:${languageColor(l)}`}
+                    />
+                  </div>
+                  <span class="w-12 text-right text-sm text-muted-foreground tabular-nums">
+                    {l.percentage}%
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
 
       <div class="text-center mt-6">
         <a
@@ -150,7 +428,9 @@ const skills = [
           class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+            ></path>
           </svg>
           github.com/Anibalpaezz
         </a>
@@ -158,23 +438,3 @@ const skills = [
     </div>
   </div>
 </div>
-
-<script>
-  const elementos = document.querySelectorAll<HTMLElement>("[data-gh-stat]");
-  if (elementos.length > 0) {
-    fetch("/api/github-stats.json")
-      .then((res) => (res.ok ? res.json() : Promise.reject(new Error(res.statusText))))
-      .then((stats: { contributions?: number | null; repos?: number | null; followers?: number | null }) => {
-        const valor = (n: number | null | undefined) => (typeof n === "number" ? n.toLocaleString("es-ES") : "—");
-        elementos.forEach((el) => {
-          const key = el.getAttribute("data-gh-stat");
-          if (key === "contributions") el.textContent = valor(stats.contributions);
-          else if (key === "repos") el.textContent = valor(stats.repos);
-          else if (key === "followers") el.textContent = valor(stats.followers);
-        });
-      })
-      .catch(() => {
-        // Mantiene el "—" si la API no está disponible.
-      });
-  }
-</script>
