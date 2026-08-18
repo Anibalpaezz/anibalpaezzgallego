@@ -23,39 +23,39 @@ const metrics = [
     key: "contributions",
     label: t(lang, "about.githubContributions"),
     icon: "commit",
-    value: formatNumber(githubStats.totalContributions, locale),
+    raw: githubStats.totalContributions,
   },
   {
     key: "repos",
     label: t(lang, "about.githubRepos"),
     icon: "repo",
-    value: formatNumber(githubStats.repos, locale),
+    raw: githubStats.repos,
   },
   {
     key: "commits",
     label: t(lang, "about.githubCommits"),
     icon: "branch",
-    value: formatNumber(githubStats.totalCommits, locale),
+    raw: githubStats.totalCommits,
   },
   {
     key: "currentStreak",
     label: t(lang, "about.githubCurrentStreak"),
     icon: "flame",
-    value: formatNumber(githubStats.currentStreak, locale),
+    raw: githubStats.currentStreak,
   },
   {
     key: "longestStreak",
     label: t(lang, "about.githubLongestStreak"),
     icon: "trophy",
-    value: formatNumber(githubStats.longestStreak, locale),
+    raw: githubStats.longestStreak,
   },
   {
     key: "followers",
     label: t(lang, "about.githubFollowers"),
     icon: "people",
-    value: formatNumber(githubStats.followers, locale),
+    raw: githubStats.followers,
   },
-];
+].filter((m) => typeof m.raw === "number" && m.raw > 0);
 
 const skills = [
   { name: "React", url: "https://react.dev/" },
@@ -380,7 +380,7 @@ const skills = [
                 <p class="text-sm text-muted-foreground">{s.label}</p>
               </div>
               <p class="text-2xl font-bold gradient-text tabular-nums">
-                {s.value}
+                {formatNumber(s.raw, locale)}
               </p>
             </div>
           ))

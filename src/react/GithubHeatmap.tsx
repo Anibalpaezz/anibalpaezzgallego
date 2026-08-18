@@ -119,18 +119,6 @@ export default function GithubHeatmap({
   return (
     <div ref={containerRef} className="relative overflow-x-auto">
       <div className="inline-block">
-        <div className="relative mb-1 h-4 text-[10px] leading-4 text-muted-foreground">
-          {monthMarks.map((m) => (
-            <span
-              key={m.index}
-              className="absolute whitespace-nowrap"
-              style={{ left: m.index * STRIDE }}
-            >
-              {m.label}
-            </span>
-          ))}
-        </div>
-
         <div className="flex">
           <div className="mr-1.5 flex flex-col gap-[3px] pt-5">
             {weekdayLabels.map((label, r) => (
@@ -145,6 +133,18 @@ export default function GithubHeatmap({
           </div>
 
           <div className="flex flex-col">
+            <div className="relative mb-1 h-4 text-[10px] leading-4 text-muted-foreground">
+              {monthMarks.map((m) => (
+                <span
+                  key={m.index}
+                  className="absolute whitespace-nowrap"
+                  style={{ left: m.index * STRIDE }}
+                >
+                  {m.label}
+                </span>
+              ))}
+            </div>
+
             <div className="flex gap-[3px]">
               {columns.map((col, wi) => (
                 <div key={wi} className="flex flex-col gap-[3px]">

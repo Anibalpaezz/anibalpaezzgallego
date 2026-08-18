@@ -245,11 +245,6 @@ export const translations = {
         description:
           "Diferentes proyectos personales y colaborativos en GitHub.",
       },
-      project6: {
-        title: "Tip Tracker",
-        description:
-          "App de seguimiento de propinas por turno. Registra cantidad, método de pago, clima y más.",
-      },
       project7: {
         title: "Master Calendar Hub",
         description: "Aplicación de calendario moderno.",
@@ -564,11 +559,6 @@ export const translations = {
       project5: {
         title: "Various projects",
         description: "Different personal and collaborative projects on GitHub.",
-      },
-      project6: {
-        title: "Tip Tracker",
-        description:
-          "Shift-based tip tracking app. Records amount, payment method, weather and more.",
       },
       project7: {
         title: "Master Calendar Hub",
@@ -887,11 +877,6 @@ export const translations = {
         title: "Projets divers",
         description:
           "Différents projets personnels et collaboratifs sur GitHub.",
-      },
-      project6: {
-        title: "Tip Tracker",
-        description:
-          "Application de suivi des pourboires par service. Enregistre le montant, le mode de paiement, la météo et plus.",
       },
       project7: {
         title: "Master Calendar Hub",
@@ -1215,11 +1200,6 @@ export const translations = {
         description:
           "Verschiedene persönliche und kollaborative Projekte auf GitHub.",
       },
-      project6: {
-        title: "Tip Tracker",
-        description:
-          "Trinkgeld-Tracker-App pro Schicht. Erfasst Betrag, Zahlungsmethode, Wetter und mehr.",
-      },
       project7: {
         title: "Master Calendar Hub",
         description: "Eine moderne Kalenderanwendung.",
@@ -1524,10 +1504,6 @@ export const translations = {
       project5: {
         title: "各类项目",
         description: "GitHub上的各种个人和协作项目。",
-      },
-      project6: {
-        title: "Tip Tracker",
-        description: "按班次记录小费的应用程序。记录金额、支付方式、天气等。",
       },
       project7: {
         title: "Master Calendar Hub",

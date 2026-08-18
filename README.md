@@ -17,8 +17,8 @@ Production: <https://anibalpaezzgallego-dev.pages.dev>
   `src/lib/translations.ts` and is read at build time with `t(lang, key)`
   (`.astro` pages) and at runtime with `LanguageContext` (React islands).
 - **Data / services:**
-  - Supabase — contact form submissions, the Tip Tracker stats, and the
-    cookie-consent log (`cookie_consent_log`)
+  - Supabase — contact form submissions and the cookie-consent log
+    (`cookie_consent_log`)
   - EmailJS — contact form email delivery
   - GitHub API — repo stats shown on project cards
   - dev.to API — blog feed
