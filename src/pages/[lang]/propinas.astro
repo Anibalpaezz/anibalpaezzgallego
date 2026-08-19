@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import PropinasViewer from "@/react/PropinasViewer";
+
+export async function getStaticPaths() {
+  const langs = ["es", "en", "fr", "de", "zh"] as const;
+  return langs.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: "es" | "en" | "fr" | "de" | "zh" };
+---
+
+<BaseLayout lang={lang} seoKey="propinas">
+  <Nav lang={lang} slot="nav" />
+  <PropinasViewer lang={lang} client:load />
+  <Footer lang={lang} slot="footer" />
+</BaseLayout>

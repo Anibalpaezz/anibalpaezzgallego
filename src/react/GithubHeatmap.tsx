@@ -30,6 +30,12 @@ function rowOf(date: Date): number {
   return (date.getUTCDay() + 6) % 7;
 }
 
+const WEEK_MS = 7 * 86400000;
+
+function mondayOf(date: Date): Date {
+  return new Date(date.getTime() - rowOf(date) * 86400000);
+}
+
 function dateFmt(locale: string, opts: Intl.DateTimeFormatOptions) {
   return new Intl.DateTimeFormat(locale, { timeZone: "UTC", ...opts });
 }
@@ -50,33 +56,49 @@ export default function GithubHeatmap({
   const containerRef = useRef<HTMLDivElement>(null);
   const [tip, setTip] = useState<TipState | null>(null);
 
-  const columns = useMemo(
-    () =>
-      weeks.map((week) => {
-        const slots: (GitHubDay | null)[] = new Array(ROWS).fill(null);
-        for (const day of week.days) {
-          slots[rowOf(parseUTCDate(day.date))] = day;
+  const columns = useMemo(() => {
+    const allDays = weeks
+      .flatMap((week) => week.days)
+      .slice()
+      .sort((a, b) => a.date.localeCompare(b.date));
+    const cols: { start: Date; slots: (GitHubDay | null)[] }[] = [];
+    for (const day of allDays) {
+      const date = parseUTCDate(day.date);
+      const start = mondayOf(date);
+      const last = cols[cols.length - 1];
+      if (!last || last.start.getTime() !== start.getTime()) {
+        if (last) {
+          const gapWeeks =
+            Math.round((start.getTime() - last.start.getTime()) / WEEK_MS) - 1;
+          for (let g = 1; g <= gapWeeks; g++) {
+            cols.push({
+              start: new Date(last.start.getTime() + g * WEEK_MS),
+              slots: new Array(ROWS).fill(null),
+            });
+          }
         }
-        return slots;
-      }),
-    [weeks],
-  );
+        cols.push({ start, slots: new Array(ROWS).fill(null) });
+      }
+      cols[cols.length - 1].slots[rowOf(date)] = day;
+    }
+    return cols;
+  }, [weeks]);
 
   const monthMarks = useMemo(() => {
     const marks: { index: number; label: string }[] = [];
     let prev = -1;
-    weeks.forEach((week, i) => {
-      const first = parseUTCDate(week.firstDay);
-      if (first.getUTCMonth() !== prev) {
+    columns.forEach((col, i) => {
+      const month = col.start.getUTCMonth();
+      if (month !== prev) {
         marks.push({
           index: i,
-          label: dateFmt(locale, { month: "short" }).format(first),
+          label: dateFmt(locale, { month: "short" }).format(col.start),
         });
-        prev = first.getUTCMonth();
+        prev = month;
       }
     });
     return marks;
-  }, [weeks, locale]);
+  }, [columns, locale]);
 
   const weekdayLabels = useMemo(() => {
     const fmt = dateFmt(locale, { weekday: "narrow" });
@@ -148,7 +170,7 @@ export default function GithubHeatmap({
             <div className="flex gap-[3px]">
               {columns.map((col, wi) => (
                 <div key={wi} className="flex flex-col gap-[3px]">
-                  {col.map((day, r) =>
+                  {col.slots.map((day, r) =>
                     day ? (
                       <button
                         key={r}

@@ -1,6 +1,7 @@
 ---
 import { t } from "@/lib/t";
 import ProjectCard from "@/components/content/ProjectCard.astro";
+import PropinasCard from "@/components/content/PropinasCard.astro";
 
 export interface Props {
   lang: "es" | "en" | "fr" | "de" | "zh";
@@ -115,18 +116,22 @@ const mdColumns = Math.min(2, columns);
 <div class="min-h-screen py-16 md:py-24">
   <div class="container mx-auto px-4 md:px-8">
     <div class="max-w-2xl mx-auto text-center mb-12 animate-fade-in">
-      <h1 class="text-3xl md:text-5xl font-bold mb-3 tracking-tight">{t(lang, "projects.title")}</h1>
-      <p class="text-base md:text-lg text-muted-foreground">{t(lang, "projects.subtitle")}</p>
+      <h1 class="text-3xl md:text-5xl font-bold mb-3 tracking-tight">
+        {t(lang, "projects.title")}
+      </h1>
+      <p class="text-base md:text-lg text-muted-foreground">
+        {t(lang, "projects.subtitle")}
+      </p>
     </div>
 
     <div
       class="proj-grid max-w-7xl mx-auto grid gap-6"
       style={`--cols-lg: ${columns}; --cols-md: ${mdColumns};`}
     >
-      {projects.map((project) => (
-        <ProjectCard lang={lang} project={project} />
-      ))}
+      {projects.map((project) => <ProjectCard lang={lang} project={project} />)}
     </div>
+
+    <PropinasCard lang={lang} />
   </div>
 </div>
 

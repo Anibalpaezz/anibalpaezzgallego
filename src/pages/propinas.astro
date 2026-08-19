@@ -1,0 +1,12 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import PropinasViewer from "@/react/PropinasViewer";
+---
+
+<BaseLayout lang="es" seoKey="propinas">
+  <Nav lang="es" slot="nav" />
+  <PropinasViewer lang="es" client:load />
+  <Footer lang="es" slot="footer" />
+</BaseLayout>

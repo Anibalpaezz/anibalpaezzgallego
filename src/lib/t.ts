@@ -47,6 +47,7 @@ const SEO_KEYS = [
   "blog",
   "contact",
   "404",
+  "propinas",
 ] as const;
 type SeoKey = (typeof SEO_KEYS)[number];
 
@@ -79,6 +80,11 @@ const FALLBACK_SEO: Record<SeoKey, SeoMeta> = {
   "404": {
     title: "Página no encontrada | Aníbal Páez Gallego",
     description: "La página que buscas no existe.",
+  },
+  propinas: {
+    title: "Propinas de Repartidor | Aníbal Páez Gallego",
+    description:
+      "Registro personal de las propinas que recogía trabajando como repartidor de Telepizza.",
   },
 };
 

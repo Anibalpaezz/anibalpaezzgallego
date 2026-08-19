@@ -39,6 +39,39 @@ export type Database = {
         };
         Relationships: [];
       };
+      propinas: {
+        Row: {
+          id: number;
+          fecha: string;
+          turno: "mañana" | "tarde" | "noche" | null;
+          cantidad: number;
+          metodo_pago: "efectivo" | "tarjeta" | null;
+          direccion: string | null;
+          clima: string | null;
+          notas: string | null;
+        };
+        Insert: {
+          id?: number;
+          fecha: string;
+          turno?: "mañana" | "tarde" | "noche" | null;
+          cantidad: number;
+          metodo_pago?: "efectivo" | "tarjeta" | null;
+          direccion?: string | null;
+          clima?: string | null;
+          notas?: string | null;
+        };
+        Update: {
+          id?: number;
+          fecha?: string;
+          turno?: "mañana" | "tarde" | "noche" | null;
+          cantidad?: number;
+          metodo_pago?: "efectivo" | "tarjeta" | null;
+          direccion?: string | null;
+          clima?: string | null;
+          notas?: string | null;
+        };
+        Relationships: [];
+      };
       cookie_consent_log: {
         Row: {
           consent_id: number;

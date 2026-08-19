@@ -13,7 +13,14 @@ export interface Props {
   description?: string;
   lang?: "es" | "en" | "fr" | "de" | "zh";
   seoKey?:
-    "home" | "about" | "projects" | "resume" | "blog" | "contact" | "404";
+    | "home"
+    | "about"
+    | "projects"
+    | "resume"
+    | "blog"
+    | "contact"
+    | "404"
+    | "propinas";
 }
 
 const { lang = "es", seoKey, title, description } = Astro.props;
