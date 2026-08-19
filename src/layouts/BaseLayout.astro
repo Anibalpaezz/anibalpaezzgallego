@@ -123,6 +123,65 @@ const websiteLd = JSON.stringify({
       })();
     </script>
 
+    <script is:inline>
+      (function () {
+        var SEASONS = ["primavera", "verano", "otono", "invierno"];
+        var season = null;
+        try {
+          var stored = localStorage.getItem("theme_season");
+          if (SEASONS.indexOf(stored) !== -1) season = stored;
+        } catch (e) {}
+
+        if (!season) {
+          var m = 0;
+          var d = 0;
+          try {
+            var parts = new Intl.DateTimeFormat("en-CA", {
+              timeZone: "Europe/Madrid",
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            }).format(new Date());
+            var match = /-(\d{2})-(\d{2})$/.exec(parts);
+            if (match) {
+              m = parseInt(match[1], 10);
+              d = parseInt(match[2], 10);
+            }
+          } catch (e) {}
+
+          if (!m) {
+            var now = new Date();
+            m = now.getMonth() + 1;
+            d = now.getDate();
+          }
+
+          if (
+            (m === 3 && d >= 21) ||
+            (m > 3 && m < 6) ||
+            (m === 6 && d <= 20)
+          ) {
+            season = "primavera";
+          } else if (
+            (m === 6 && d >= 21) ||
+            (m > 6 && m < 9) ||
+            (m === 9 && d <= 22)
+          ) {
+            season = "verano";
+          } else if (
+            (m === 9 && d >= 23) ||
+            (m > 9 && m < 12) ||
+            (m === 12 && d <= 20)
+          ) {
+            season = "otono";
+          } else {
+            season = "invierno";
+          }
+        }
+
+        document.documentElement.setAttribute("data-season", season);
+      })();
+    </script>
+
     <slot name="head" />
   </head>
   <body class="min-h-screen bg-background text-foreground antialiased">

@@ -74,6 +74,22 @@
   --gradient-accent: linear-gradient(135deg, hsl(15 85% 60%), hsl(30 90% 65%));
   --gradient-subtle: linear-gradient(180deg, hsl(240 5% 98%), hsl(240 5% 96%));
   --shadow-glow: 0 0 30px hsl(250 70% 55% / 0.3);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(250 70% 60% / 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(220 80% 55% / 0.1) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(260 60% 50% / 0.08) 0%,
+      transparent 60%
+    );
 }
 
 /* Variables para el modo oscuro */
@@ -108,6 +124,22 @@
   --gradient-accent: linear-gradient(135deg, hsl(15 85% 55%), hsl(30 90% 60%));
   --gradient-subtle: linear-gradient(180deg, hsl(240 8% 10%), hsl(240 8% 12%));
   --shadow-glow: 0 0 40px hsl(250 70% 60% / 0.4);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(250 70% 60% / 0.22) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(220 80% 55% / 0.13) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(260 60% 50% / 0.1) 0%,
+      transparent 60%
+    );
 }
 
 /* ── 4. Estilos globales de etiquetas nativas ── */
@@ -162,43 +194,9 @@ body {
 .hero-mesh-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(
-      ellipse 80% 60% at 50% -10%,
-      hsl(250 70% 60% / 0.18) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 50% 40% at 80% 60%,
-      hsl(220 80% 55% / 0.1) 0%,
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse 40% 35% at 10% 70%,
-      hsl(260 60% 50% / 0.08) 0%,
-      transparent 60%
-    );
+  background: var(--hero-mesh);
   pointer-events: none;
   z-index: 0;
-}
-
-.dark .hero-mesh-bg {
-  background:
-    radial-gradient(
-      ellipse 80% 60% at 50% -10%,
-      hsl(250 70% 60% / 0.22) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 50% 40% at 80% 60%,
-      hsl(220 80% 55% / 0.13) 0%,
-      transparent 65%
-    ),
-    radial-gradient(
-      ellipse 40% 35% at 10% 70%,
-      hsl(260 60% 50% / 0.1) 0%,
-      transparent 60%
-    );
 }
 
 /* Capa 2: La cuadrícula técnica (Grid Overlay) */
@@ -248,6 +246,318 @@ body {
   --gh-level-2: 250 58% 40%;
   --gh-level-3: 250 62% 52%;
   --gh-level-4: 250 68% 64%;
+}
+
+/* ── 5c. Tematización estacional (data-season en <html>, zona Europe/Madrid) ── */
+
+/* Primavera: brote/menta con acento rosa floral */
+html[data-season="primavera"] {
+  --primary: 158 55% 45%;
+  --primary-light: 158 55% 55%;
+  --primary-dark: 158 55% 35%;
+  --accent: 350 80% 70%;
+  --accent-light: 350 80% 80%;
+  --ring: 158 55% 45%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(158 55% 45%),
+    hsl(185 65% 55%)
+  );
+  --gradient-accent: linear-gradient(135deg, hsl(350 80% 70%), hsl(25 90% 70%));
+  --shadow-glow: 0 0 30px hsl(158 55% 45% / 0.3);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(158 55% 45% / 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(185 65% 55% / 0.1) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(350 80% 70% / 0.08) 0%,
+      transparent 60%
+    );
+  --gh-level-0: 158 20% 90%;
+  --gh-level-1: 158 45% 82%;
+  --gh-level-2: 158 50% 65%;
+  --gh-level-3: 158 55% 50%;
+  --gh-level-4: 158 55% 38%;
+}
+
+html[data-season="primavera"].dark {
+  --primary: 158 55% 55%;
+  --primary-light: 158 55% 65%;
+  --primary-dark: 158 55% 45%;
+  --accent: 350 80% 75%;
+  --accent-light: 350 80% 85%;
+  --ring: 158 55% 55%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(158 55% 55%),
+    hsl(185 65% 60%)
+  );
+  --gradient-accent: linear-gradient(135deg, hsl(350 80% 75%), hsl(25 90% 72%));
+  --shadow-glow: 0 0 40px hsl(158 55% 55% / 0.4);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(158 55% 55% / 0.22) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(185 65% 55% / 0.13) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(350 80% 70% / 0.1) 0%,
+      transparent 60%
+    );
+  --gh-level-0: 158 15% 18%;
+  --gh-level-1: 158 40% 28%;
+  --gh-level-2: 158 45% 38%;
+  --gh-level-3: 158 50% 50%;
+  --gh-level-4: 158 55% 62%;
+}
+
+/* Verano: azul océano con acento coral y amarillo solar */
+html[data-season="verano"] {
+  --primary: 175 90% 35%;
+  --primary-light: 175 90% 45%;
+  --primary-dark: 175 90% 28%;
+  --accent: 358 85% 62%;
+  --accent-light: 358 85% 72%;
+  --ring: 175 90% 35%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(175 90% 35%),
+    hsl(220 80% 32%)
+  );
+  --gradient-accent: linear-gradient(135deg, hsl(358 85% 62%), hsl(42 95% 58%));
+  --shadow-glow: 0 0 30px hsl(175 90% 35% / 0.3);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(175 90% 35% / 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(220 80% 40% / 0.1) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(358 85% 62% / 0.08) 0%,
+      transparent 60%
+    );
+  --gh-level-0: 175 25% 88%;
+  --gh-level-1: 175 45% 78%;
+  --gh-level-2: 175 60% 60%;
+  --gh-level-3: 175 80% 45%;
+  --gh-level-4: 175 90% 30%;
+}
+
+html[data-season="verano"].dark {
+  --primary: 175 90% 45%;
+  --primary-light: 175 90% 55%;
+  --primary-dark: 175 90% 35%;
+  --accent: 358 85% 68%;
+  --accent-light: 358 85% 78%;
+  --ring: 175 90% 45%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(175 90% 45%),
+    hsl(220 80% 40%)
+  );
+  --gradient-accent: linear-gradient(135deg, hsl(358 85% 68%), hsl(42 95% 62%));
+  --shadow-glow: 0 0 40px hsl(175 90% 45% / 0.4);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(175 90% 45% / 0.22) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(220 80% 45% / 0.13) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(358 85% 68% / 0.1) 0%,
+      transparent 60%
+    );
+  --gh-level-0: 175 15% 18%;
+  --gh-level-1: 175 40% 26%;
+  --gh-level-2: 175 55% 36%;
+  --gh-level-3: 175 70% 48%;
+  --gh-level-4: 175 85% 62%;
+}
+
+/* Otoño: terracota cálido con acento ocre y secundario vino */
+html[data-season="otono"] {
+  --primary: 16 60% 48%;
+  --primary-light: 16 60% 58%;
+  --primary-dark: 16 60% 38%;
+  --accent: 38 75% 52%;
+  --accent-secondary: 346 60% 32%;
+  --accent-light: 38 75% 62%;
+  --ring: 16 60% 48%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(16 60% 48%),
+    hsl(346 60% 32%)
+  );
+  --gradient-accent: linear-gradient(135deg, hsl(38 75% 52%), hsl(20 70% 45%));
+  --shadow-glow: 0 0 30px hsl(16 60% 48% / 0.3);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(16 60% 48% / 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(38 75% 52% / 0.1) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(346 60% 32% / 0.08) 0%,
+      transparent 60%
+    );
+  --gh-level-0: 16 15% 90%;
+  --gh-level-1: 16 35% 82%;
+  --gh-level-2: 16 45% 68%;
+  --gh-level-3: 16 55% 55%;
+  --gh-level-4: 16 60% 42%;
+}
+
+html[data-season="otono"].dark {
+  --primary: 16 60% 58%;
+  --primary-light: 16 60% 68%;
+  --primary-dark: 16 60% 48%;
+  --accent: 38 75% 62%;
+  --accent-light: 38 75% 72%;
+  --ring: 16 60% 58%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(16 60% 58%),
+    hsl(346 60% 45%)
+  );
+  --gradient-accent: linear-gradient(135deg, hsl(38 75% 62%), hsl(20 70% 55%));
+  --shadow-glow: 0 0 40px hsl(16 60% 58% / 0.4);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(16 60% 58% / 0.22) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(38 75% 62% / 0.13) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(346 60% 42% / 0.1) 0%,
+      transparent 60%
+    );
+  --gh-level-0: 16 15% 18%;
+  --gh-level-1: 16 30% 30%;
+  --gh-level-2: 16 40% 42%;
+  --gh-level-3: 16 50% 54%;
+  --gh-level-4: 16 55% 66%;
+}
+
+/* Invierno: azul medianoche/pizarra con acento verde pino y gris glaciar */
+html[data-season="invierno"] {
+  --primary: 210 40% 40%;
+  --primary-light: 210 40% 50%;
+  --primary-dark: 210 40% 30%;
+  --accent: 160 35% 35%;
+  --accent-secondary: 210 10% 72%;
+  --accent-light: 160 35% 45%;
+  --ring: 210 40% 40%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(210 40% 40%),
+    hsl(240 35% 40%)
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    hsl(160 35% 35%),
+    hsl(210 10% 72%)
+  );
+  --shadow-glow: 0 0 30px hsl(210 40% 40% / 0.3);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(210 40% 45% / 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(240 35% 50% / 0.1) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(160 35% 35% / 0.08) 0%,
+      transparent 60%
+    );
+  --gh-level-0: 210 15% 90%;
+  --gh-level-1: 210 30% 80%;
+  --gh-level-2: 210 35% 62%;
+  --gh-level-3: 210 40% 48%;
+  --gh-level-4: 210 45% 36%;
+}
+
+html[data-season="invierno"].dark {
+  --primary: 210 40% 55%;
+  --primary-light: 210 40% 65%;
+  --primary-dark: 210 40% 45%;
+  --accent: 160 35% 50%;
+  --accent-light: 160 35% 60%;
+  --ring: 210 40% 55%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(210 40% 55%),
+    hsl(240 35% 55%)
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    hsl(160 35% 50%),
+    hsl(210 10% 70%)
+  );
+  --shadow-glow: 0 0 40px hsl(210 40% 55% / 0.4);
+  --hero-mesh:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      hsl(210 40% 55% / 0.22) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 60%,
+      hsl(240 35% 55% / 0.13) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 10% 70%,
+      hsl(160 35% 45% / 0.1) 0%,
+      transparent 60%
+    );
+  --gh-level-0: 210 15% 17%;
+  --gh-level-1: 210 30% 28%;
+  --gh-level-2: 210 35% 40%;
+  --gh-level-3: 210 40% 52%;
+  --gh-level-4: 210 45% 64%;
 }
 
 /* ── 6. Animaciones de Entrada ── */
