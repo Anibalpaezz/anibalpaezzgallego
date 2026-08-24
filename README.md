@@ -3,17 +3,19 @@
 Personal portfolio website for Aníbal Páez Gallego, a full-stack developer
 specializing in React, TypeScript, Node.js, PostgreSQL and Supabase.
 
-Production: <https://anibalpaezzgallego-dev.pages.dev>
+Production: <https://anibalpaezzgallego.com>
 
 ## Tech stack
 
-- **Framework:** [Astro 6](https://astro.build/) (static-site generation,
+- **Framework:** [Astro 7](https://astro.build/) (static-site generation,
   `@astrojs/cloudflare` adapter — every route is prerendered except the on-demand
   endpoints `/api/consent` and `/api/propina-*`, which run as Cloudflare Pages
   Functions) with React islands (`@astrojs/react`) on the `/blog`, `/contact`,
-  heatmap, delivery-tips card/viewer and cookie-consent UI.
+  GitHub heatmap, delivery-tips card/viewer and cookie-consent UI.
 - **Styling:** Tailwind CSS v4 (via `@tailwindcss/vite`) with a custom
-  light/dark HSL theme and hand-written utilities in `src/styles/global.css`.
+  light/dark HSL theme plus seasonal accent themes (spring/summer/autumn/winter,
+  resolved from `localStorage` or the current date in `src/lib/seasonTheme.ts`)
+  and hand-written utilities in `src/styles/global.css`.
 - **i18n:** 5 locales — `es` (default), `en`, `fr`, `de`, `zh`. Copy lives in
   `src/lib/translations.ts` and is read at build time with `t(lang, key)`
   (`.astro` pages) and at runtime with `LanguageContext` (React islands).
@@ -21,10 +23,13 @@ Production: <https://anibalpaezzgallego-dev.pages.dev>
   - Supabase — contact form submissions, the cookie-consent log
     (`cookie_consent_log`) and the delivery-tips summary/viewer (`propinas`)
   - EmailJS — contact form email delivery
-  - GitHub API — repo stats shown on project cards
+  - GitHub API — contribution calendar and profile stats (commits, repos,
+    streaks, languages), fetched at build time into `src/data/github-stats.json`
+    and rendered by the heatmap island on `/about`
   - dev.to API — blog feed
 - **SEO:** per-locale meta tags, canonical URLs, Open Graph/Twitter cards,
-  JSON-LD (Person + WebSite) and a generated sitemap (`@astrojs/sitemap`).
+  JSON-LD (Person + WebSite) and a generated sitemap (`@astrojs/sitemap`,
+  excluding the duplicate `/es/` paths since Spanish is served at the root).
 
 ## Project structure
 
@@ -35,17 +40,27 @@ src/
 │   ├── Footer.astro
 │   ├── content/             # Page bodies: HomeContent, AboutContent, ...
 │   └── ui/                  # shadcn-style components (only the ones in use)
+├── data/
+│   └── github-stats.json    # Generated at build time by scripts/fetch-github-stats.mjs
+├── integrations/supabase/   # Browser client (client.ts) + generated DB types
 ├── layouts/
 │   └── BaseLayout.astro     # Shared <head>: SEO, fonts, analytics, shell
 ├── pages/
-│   ├── *.astro              # Spanish routes at the root (e.g. /about)
+│   ├── *.astro              # Spanish routes at the root (e.g. /about, /resume)
+│   ├── 404.astro            # Locale detected from the URL path
+│   ├── api/                 # On-demand endpoints (consent + propinas)
 │   └── [lang]/*.astro       # Localized routes (e.g. /en/about)
-├── react/                   # React islands used by /blog and /contact
+├── react/
+│   ├── pages/               # Blog.tsx and Contact.tsx page islands
+│   └── *.tsx                # CookieConsent, GithubHeatmap, TipSummary, …
 ├── contexts/                # LanguageContext, ThemeContext (React islands)
 ├── hooks/                   # use-toast (used by the contact island)
 ├── lib/
 │   ├── translations.ts      # All UI copy for the 5 locales
-│   └── t.ts                 # t(), SEO/canonical helpers
+│   ├── t.ts                 # t(), SEO/canonical helpers
+│   ├── seasonTheme.ts       # Seasonal accent theme resolution
+│   ├── github-stats.ts      # Typed access to github-stats.json
+│   └── supabase-server.ts   # Service-role client (server-only)
 ├── scripts/
 │   └── app.ts               # Vanilla JS: theme, mobile menu, cookie banner…
 ├── styles/global.css        # Tailwind v4 entry + custom theme/animations
@@ -54,20 +69,31 @@ src/
 
 ## Commands
 
-| Command                | Action                                     |
-| :--------------------- | :----------------------------------------- |
-| `npm install`          | Install dependencies                       |
-| `npm run dev`          | Start the dev server at `localhost:4321`   |
-| `npm run build`        | Build the production site to `./dist/`     |
-| `npm run preview`      | Preview the production build locally       |
-| `npm run check`        | Run `astro check` (TypeScript diagnostics) |
-| `npm run format`       | Format the whole repo with Prettier        |
-| `npm run format:check` | Check formatting without modifying files   |
+| Command                | Action                                                                                    |
+| :--------------------- | :---------------------------------------------------------------------------------------- |
+| `npm install`          | Install dependencies                                                                      |
+| `npm run dev`          | Start the dev server at `localhost:4321`                                                  |
+| `npm run build`        | Build the production site to `./dist/` (runs the GitHub stats fetch first via `prebuild`) |
+| `npm run stats`        | Refresh `src/data/github-stats.json` manually                                             |
+| `npm run preview`      | Preview the production build locally                                                      |
+| `npm run check`        | Run `astro check` (TypeScript diagnostics)                                                |
+| `npm run format`       | Format the whole repo with Prettier                                                       |
+| `npm run format:check` | Check formatting without modifying files                                                  |
+
+## GitHub stats & heatmap
+
+`scripts/fetch-github-stats.mjs` runs automatically before every build
+(`prebuild`) and writes `src/data/github-stats.json`: contribution calendar,
+total contributions, current/longest streaks, repos, followers, stars, total
+commits and language breakdown for `@Anibalpaezz`. It uses the GraphQL API when
+`GITHUB_TOKEN` is set (required for calendar data) and falls back to the public
+REST API otherwise. `/about` renders the data through the `GithubHeatmap`
+island plus stat cards.
 
 ## Environment variables
 
-Copy `.env` (git-ignored) from a secure location or set the following as
-Environment variables on Cloudflare Pages:
+See `.env.example` for a documented template. Copy it to `.env` (git-ignored)
+or set the following as environment variables on Cloudflare Pages:
 
 ```
 PUBLIC_SUPABASE_PROJECT_ID
@@ -77,6 +103,7 @@ SUPABASE_SERVICE_ROLE_KEY    # server-only — NEVER prefix with PUBLIC_
 PUBLIC_EMAILJS_SERVICE_ID
 PUBLIC_EMAILJS_TEMPLATE_ID
 PUBLIC_EMAILJS_PUBLIC_KEY
+GITHUB_TOKEN                 # optional, build-time only (see .env.example)
 ```
 
 `SUPABASE_SERVICE_ROLE_KEY` is read only by `src/lib/supabase-server.ts` (used by
@@ -173,9 +200,9 @@ CREATE TABLE propinas (
 
 The site is deployed on Cloudflare Pages from the `main` branch (build command
 `npm run build`, output directory `dist`). The production origin is set in
-`astro.config.mjs` (`site`) and is used for canonical tags, the sitemap and
-`robots.txt` — update it there if the domain changes (e.g. the auto-assigned
-`<project>.pages.dev` URL or a custom domain).
+`astro.config.mjs` (`site`, currently `https://anibalpaezzgallego.com`) and is
+used for canonical tags, the sitemap and `robots.txt` — update it there if the
+domain changes.
 
 ### Missing assets
 
@@ -188,4 +215,4 @@ The site is deployed on Cloudflare Pages from the `main` branch (build command
 - The blog and contact pages are React islands by design; unifying the two
   i18n paths (`t()` vs `LanguageContext`) is a deliberately deferred
   architectural change.
-- `inlineStylesheets` is kept as a build-time decision; see `astro.config.mjs`.
+- `inlineStylesheets` is set to `"always"` in `astro.config.mjs`.

@@ -17,7 +17,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.7",
+    "@astrojs/react": "^6.0.4",
     "@emailjs/browser": "^4.4.1",
     "@fontsource/inter": "^5.3.0",
     "@radix-ui/react-label": "^2.1.9",
@@ -26,7 +26,7 @@
     "@radix-ui/react-tooltip": "^1.2.9",
     "@supabase/supabase-js": "^2.107.0",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.4",
+    "astro": "^7.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.17.0",
@@ -39,13 +39,13 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^13.7.0",
+    "@astrojs/cloudflare": "^14.2.3",
     "@astrojs/sitemap": "^3.7.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3",
-    "wrangler": "^4.123.0"
+    "wrangler": "^4.125.0"
   }
 }
