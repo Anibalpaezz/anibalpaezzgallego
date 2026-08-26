@@ -247,10 +247,6 @@ export const translations = {
         description:
           "Diferentes proyectos personales y colaborativos en GitHub.",
       },
-      project7: {
-        title: "Master Calendar Hub",
-        description: "Aplicación de calendario moderno.",
-      },
     },
     propinas: {
       cardTitle: "Propinas de Repartidor",
@@ -597,10 +593,6 @@ export const translations = {
       project5: {
         title: "Various projects",
         description: "Different personal and collaborative projects on GitHub.",
-      },
-      project7: {
-        title: "Master Calendar Hub",
-        description: "A modern calendar application.",
       },
     },
     propinas: {
@@ -951,10 +943,6 @@ export const translations = {
         title: "Projets divers",
         description:
           "Différents projets personnels et collaboratifs sur GitHub.",
-      },
-      project7: {
-        title: "Master Calendar Hub",
-        description: "Une application de calendrier moderne.",
       },
     },
     propinas: {
@@ -1310,10 +1298,6 @@ export const translations = {
         description:
           "Verschiedene persönliche und kollaborative Projekte auf GitHub.",
       },
-      project7: {
-        title: "Master Calendar Hub",
-        description: "Eine moderne Kalenderanwendung.",
-      },
     },
     propinas: {
       cardTitle: "Trinkgelder als Kurier",
@@ -1650,10 +1634,6 @@ export const translations = {
       project5: {
         title: "各类项目",
         description: "GitHub上的各种个人和协作项目。",
-      },
-      project7: {
-        title: "Master Calendar Hub",
-        description: "现代日历应用程序。",
       },
     },
     propinas: {
