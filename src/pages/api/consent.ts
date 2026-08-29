@@ -1,5 +1,4 @@
 import type { APIRoute } from "astro";
-import { supabaseAdmin } from "@/lib/supabase-server";
 import {
   COOKIE_POLICY_VERSION,
   isConsentAction,
@@ -24,6 +23,10 @@ interface ConsentBody {
 
 const ALLOWED_ACTIONS_MESSAGE = "accept_all, reject_all, custom, withdrawn";
 const ALLOWED_METHODS_MESSAGE = "banner, settings_panel, api";
+
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL as string;
+const SERVICE_ROLE_KEY = import.meta.env.SUPABASE_SERVICE_ROLE_KEY as
+  string | undefined;
 
 function json(data: unknown, status: number = 200): Response {
   return new Response(JSON.stringify(data), {
@@ -96,7 +99,7 @@ export const POST: APIRoute = async ({ request }) => {
     request.headers.get("accept-language")?.split(",")[0]?.trim()?.slice(0, 10) ||
     null;
 
-  const { error } = await supabaseAdmin.from("cookie_consent_log").insert({
+  const payload = {
     anonymous_id: body.anonymous_id,
     ip_address: ipAddress,
     user_agent: userAgent,
@@ -112,18 +115,38 @@ export const POST: APIRoute = async ({ request }) => {
     preferences_cookies: toBoolean(body.preferences_cookies),
     consent_action: body.consent_action,
     consent_method: body.consent_method,
-  });
+  };
 
-  if (error) {
-    // Surface the underlying cause so it shows up in the response (and in the
-    // dev console we also log it server-side).
-    console.error("[consent] insert failed:", error.code, error.message, error.details);
+  let res: Response;
+  try {
+    res = await fetch(`${SUPABASE_URL}/functions/v1/save-consent`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (err) {
+    console.error("[consent] edge function call failed:", err);
+    return json({ ok: false, error: "Failed to record consent" }, 500);
+  }
+
+  if (!res.ok) {
+    let detail: string | undefined;
+    try {
+      const data = (await res.json()) as { error?: string };
+      detail = data.error;
+    } catch {
+      // ignore
+    }
+    console.error("[consent] edge function returned", res.status, detail);
     return json(
       {
         ok: false,
         error: "Failed to record consent",
-        detail: error.message,
-        code: error.code,
+        detail,
+        code: String(res.status),
       },
       500,
     );
