@@ -1,5 +1,10 @@
-import { useState, type ChangeEvent, type SubmitEvent } from "react";
-import { Mail, Send } from "lucide-react";
+import {
+  useState,
+  type ChangeEvent,
+  type FocusEvent,
+  type SubmitEvent,
+} from "react";
+import { Loader2, Mail, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import { cn } from "@/lib/utils";
 import { z } from "zod";
 
 const EMAILJS_SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID as string;
@@ -18,6 +24,8 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY as string;
 
 const COOLDOWN_SECONDS = 60;
 const LAST_SUBMIT_KEY = "contact_last_submit";
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function getRemainingCooldown(): number {
   try {
@@ -38,56 +46,133 @@ function markSubmitted() {
   } catch {}
 }
 
+const initialFormData = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+  website: "",
+};
+
 const Contact = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
+  const [formData, setFormData] = useState(initialFormData);
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const contactSchema = z.object({
     name: z
       .string()
       .trim()
-      .min(1, { message: t("contact.validation.nameRequired") })
-      .max(100, { message: t("contact.validation.nameMax") }),
+      .max(100, { message: t("contact.validation.nameMax") })
+      .superRefine((val, ctx) => {
+        if (val.length === 0) {
+          ctx.addIssue({
+            code: "custom",
+            message: t("contact.validation.nameRequired"),
+          });
+        } else if (val.length < 2) {
+          ctx.addIssue({
+            code: "custom",
+            message: t("contact.validation.nameMin"),
+          });
+        }
+      }),
     email: z
-      .email({ message: t("contact.validation.emailInvalid") })
+      .string()
       .trim()
-      .min(1, { message: t("contact.validation.emailRequired") }),
+      .superRefine((val, ctx) => {
+        if (val.length === 0) {
+          ctx.addIssue({
+            code: "custom",
+            message: t("contact.validation.emailRequired"),
+          });
+        } else if (!EMAIL_REGEX.test(val)) {
+          ctx.addIssue({
+            code: "custom",
+            message: t("contact.validation.emailInvalid"),
+          });
+        }
+      }),
     subject: z
       .string()
       .trim()
-      .min(1, { message: t("contact.validation.subjectRequired") })
-      .max(150, { message: t("contact.validation.subjectMax") }),
+      .max(150, { message: t("contact.validation.subjectMax") })
+      .superRefine((val, ctx) => {
+        if (val.length === 0) {
+          ctx.addIssue({
+            code: "custom",
+            message: t("contact.validation.subjectRequired"),
+          });
+        } else if (val.length < 3) {
+          ctx.addIssue({
+            code: "custom",
+            message: t("contact.validation.subjectMin"),
+          });
+        }
+      }),
     message: z
       .string()
       .trim()
-      .min(1, { message: t("contact.validation.messageRequired") })
-      .max(1000, { message: t("contact.validation.messageMax") }),
+      .max(1000, { message: t("contact.validation.messageMax") })
+      .superRefine((val, ctx) => {
+        if (val.length === 0) {
+          ctx.addIssue({
+            code: "custom",
+            message: t("contact.validation.messageRequired"),
+          });
+        } else if (val.length < 10) {
+          ctx.addIssue({
+            code: "custom",
+            message: t("contact.validation.messageMin"),
+          });
+        }
+      }),
   });
+
+  const getFieldError = (name: string, value: string): string | undefined => {
+    const fieldSchema = contactSchema.shape[
+      name as keyof typeof contactSchema.shape
+    ];
+    const result = fieldSchema.safeParse(value);
+    if (result.success) return undefined;
+    return result.error.issues[0]?.message;
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
+    if (touched[name]) {
+      setErrors((prev) => ({ ...prev, [name]: getFieldError(name, value) ?? "" }));
     }
+  };
+
+  const handleBlur = (
+    e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: getFieldError(name, value) ?? "" }));
+  };
+
+  const resetForm = () => {
+    setFormData(initialFormData);
+    setTouched({});
+    setErrors({});
   };
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrors({});
+
+    // Honeypot anti-spam: bots fill this hidden field; reject silently.
+    if (formData.website) {
+      return;
+    }
 
     const remaining = getRemainingCooldown();
     if (remaining > 0) {
@@ -98,6 +183,8 @@ const Contact = () => {
       });
       return;
     }
+
+    setTouched({ name: true, email: true, subject: true, message: true });
 
     let validatedData: z.infer<typeof contactSchema>;
     try {
@@ -115,6 +202,7 @@ const Contact = () => {
 
     setIsSubmitting(true);
 
+    // Persist the message in Supabase (contacts table).
     void (async () => {
       try {
         await supabase.from("contacts").insert([
@@ -132,9 +220,11 @@ const Contact = () => {
       EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY;
 
     if (!emailConfigured) {
+      // Configure PUBLIC_EMAILJS_SERVICE_ID, PUBLIC_EMAILJS_TEMPLATE_ID and
+      // PUBLIC_EMAILJS_PUBLIC_KEY in your .env to enable email delivery.
       console.warn("EmailJS env vars not configured (PUBLIC_EMAILJS_*)");
       toast({ title: t("contact.success"), duration: 5000 });
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      resetForm();
       markSubmitted();
       setIsSubmitting(false);
       return;
@@ -154,7 +244,7 @@ const Contact = () => {
       );
 
       toast({ title: t("contact.success"), duration: 5000 });
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      resetForm();
       markSubmitted();
     } catch {
       toast({
@@ -166,6 +256,14 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+
+  const fieldStyle = (name: string) =>
+    cn(
+      errors[name] && touched[name] && "border-destructive focus-visible:ring-destructive",
+      !errors[name] && touched[name] && "border-green-500 dark:border-green-400",
+    );
+
+  const showError = (name: string) => Boolean(errors[name] && touched[name]);
 
   return (
     <div className="min-h-screen py-24">
@@ -193,12 +291,20 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={t("contact.namePlaceholder")}
-                    className={errors.name ? "border-destructive" : ""}
                     autoComplete="name"
+                    aria-required="true"
+                    aria-invalid={showError("name") || undefined}
+                    aria-describedby={
+                      showError("name") ? "name-error" : undefined
+                    }
+                    className={fieldStyle("name")}
                   />
-                  {errors.name && (
-                    <p className="text-sm text-destructive">{errors.name}</p>
+                  {showError("name") && (
+                    <p id="name-error" className="text-sm text-destructive">
+                      {errors.name}
+                    </p>
                   )}
                 </div>
 
@@ -210,12 +316,20 @@ const Contact = () => {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={t("contact.emailPlaceholder")}
-                    className={errors.email ? "border-destructive" : ""}
                     autoComplete="email"
+                    aria-required="true"
+                    aria-invalid={showError("email") || undefined}
+                    aria-describedby={
+                      showError("email") ? "email-error" : undefined
+                    }
+                    className={fieldStyle("email")}
                   />
-                  {errors.email && (
-                    <p className="text-sm text-destructive">{errors.email}</p>
+                  {showError("email") && (
+                    <p id="email-error" className="text-sm text-destructive">
+                      {errors.email}
+                    </p>
                   )}
                 </div>
 
@@ -226,11 +340,19 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={t("contact.subjectPlaceholder")}
-                    className={errors.subject ? "border-destructive" : ""}
+                    aria-required="true"
+                    aria-invalid={showError("subject") || undefined}
+                    aria-describedby={
+                      showError("subject") ? "subject-error" : undefined
+                    }
+                    className={fieldStyle("subject")}
                   />
-                  {errors.subject && (
-                    <p className="text-sm text-destructive">{errors.subject}</p>
+                  {showError("subject") && (
+                    <p id="subject-error" className="text-sm text-destructive">
+                      {errors.subject}
+                    </p>
                   )}
                 </div>
 
@@ -241,13 +363,35 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={t("contact.messagePlaceholder")}
                     rows={6}
-                    className={errors.message ? "border-destructive" : ""}
+                    aria-required="true"
+                    aria-invalid={showError("message") || undefined}
+                    aria-describedby={
+                      showError("message") ? "message-error" : undefined
+                    }
+                    className={fieldStyle("message")}
                   />
-                  {errors.message && (
-                    <p className="text-sm text-destructive">{errors.message}</p>
+                  {showError("message") && (
+                    <p id="message-error" className="text-sm text-destructive">
+                      {errors.message}
+                    </p>
                   )}
+                </div>
+
+                {/* Honeypot anti-spam: invisible to humans, bots tend to fill it in */}
+                <div aria-hidden="true" className="sr-only">
+                  <Label htmlFor="website">Website</Label>
+                  <Input
+                    id="website"
+                    name="website"
+                    type="text"
+                    value={formData.website}
+                    onChange={handleChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
                 </div>
 
                 <Button
@@ -257,7 +401,10 @@ const Contact = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    t("contact.sending")
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      {t("contact.sending")}
+                    </>
                   ) : (
                     <>
                       <Send className="mr-2 h-5 w-5" />
