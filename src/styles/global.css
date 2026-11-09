@@ -616,6 +616,46 @@ html[data-season="invierno"].dark {
 
 .badge-open-to-work {
   animation: badgeGlow 2.4s ease-in-out infinite;
+  background-color: hsl(45 100% 95%);
+  border: 1px solid hsl(40 90% 50%);
+  color: hsl(32 80% 28%);
+}
+
+.dark .badge-open-to-work {
+  background-color: hsl(45 100% 50% / 0.18);
+  border-color: hsl(45 100% 50% / 0.8);
+  color: hsl(45 100% 72%);
+}
+
+/* Degradados de los nombres del badge: oscuros en modo claro, claros en oscuro. */
+.badge-role {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge-role-arktic {
+  background-image: linear-gradient(to right, hsl(200 90% 22%), hsl(190 85% 28%));
+}
+
+.badge-role-bbva {
+  background-image: linear-gradient(to right, #001391, #14549c);
+}
+
+.dark .badge-role-arktic {
+  background-image: linear-gradient(to right, hsl(190 90% 78%), hsl(185 80% 60%));
+}
+
+.dark .badge-role-bbva {
+  background-image: linear-gradient(to right, hsl(225 90% 75%), hsl(210 90% 68%));
+}
+
+.badge-separator {
+  color: hsl(32 25% 55%);
+}
+
+.dark .badge-separator {
+  color: hsl(45 30% 60%);
 }
 
 /* ── 9. Line clamp (fallback para Tailwind v4) ── */

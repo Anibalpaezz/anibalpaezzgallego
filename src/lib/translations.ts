@@ -65,7 +65,7 @@ export const translations = {
     hero: {
       greeting: "Hola, soy",
       subtitle:
-        "Desarrollador Full Stack, gestor de bases de datos e ingeniero informático",
+        "Desarrollador Full Stack, gestor de bases de datos y estudiante de Ingeniería Informática",
       description: "",
       currentlyWorking: "Actualmente trabajo en",
       cta: "Ver Mi Trabajo",
@@ -74,7 +74,7 @@ export const translations = {
     about: {
       title: "Sobre Mí",
       subtitle:
-        "Desarrollador web full-stack con experiencia práctica en frontend y backend. Técnico Superior en DAW y estudiante de Ingeniería Informática, he trabajado con tecnologías como React, Node.js, PostgreSQL y Supabase, desarrollando aplicaciones completas de principio a fin. Me adapto tanto a la capa visual como a la lógica de negocio y Bases de Datos, con especial interés en el diseño y gestión de Bases de Datos. Busco incorporarme a un equipo donde pueda aportar desde el primer día mientras sigo creciendo profesionalmente.",
+        "Soy desarrollador de software y estudiante de Ingeniería Informática en la UNED, con título en Desarrollo de Aplicaciones Web y experiencia en distintos ámbitos del desarrollo y la tecnología financiera. He desarrollado aplicaciones full-stack con React, Node.js, PostgreSQL y Supabase, participando tanto en el frontend como en la lógica de negocio y el diseño de bases de datos. Actualmente trabajo como analista técnico-funcional en proyectos de CIB para BBVA, donde combino el conocimiento técnico con el análisis funcional en sistemas de cumplimiento normativo, abuso de mercado y vigilancia de operaciones. Me interesa especialmente la aplicación de la tecnología al sector financiero y busco seguir creciendo en proyectos que combinen tecnología y negocio.",
       skills: "Habilidades y Tecnologías",
       dbTitle: "Especialización: Bases de Datos",
       dbDescription:
@@ -300,10 +300,17 @@ export const translations = {
       achievements: {},
     },
     work_experience3: {
-      title: "Desarrollador Junior — BBVA CIB",
-      period: "Junio 2026 - Actualidad",
+      title: "Analista Técnico-Funcional — BBVA CIB",
+      period: "Septiembre 2026 - Actualidad",
       description:
-        "Desarrollador full-stack en Banco BBVA, trabajando con React, TypeScript, Node.js y PostgreSQL en un entorno corporativo de alto volumen.",
+        "Analista técnico-funcional en un proyecto de CIB para BBVA, con un rol híbrido entre el desarrollo técnico y el análisis funcional en sistemas críticos de cumplimiento normativo, abuso de mercado y vigilancia de operaciones.",
+      achievements: {},
+    },
+    work_experience4: {
+      title: "Becario Técnico-Funcional — BBVA CIB",
+      period: "Junio 2026 - Septiembre 2026",
+      description:
+        "Prácticas en un proyecto de CIB para BBVA, con un rol híbrido entre el desarrollo técnico y el análisis funcional en sistemas críticos de cumplimiento normativo, abuso de mercado y vigilancia de operaciones.",
       achievements: {},
     },
     education: {
@@ -425,7 +432,7 @@ export const translations = {
     about: {
       title: "About Me",
       subtitle:
-        "Full-stack web developer with hands-on experience in both frontend and backend. Holding a Higher Degree in Web Application Development and currently studying Computer Engineering, I have worked with technologies such as React, Node.js, PostgreSQL and Supabase, building complete applications from start to finish. I adapt equally well to the visual layer, business logic, and databases, with a particular interest in database design and management. I am looking to join a team where I can contribute from day one while continuing to grow professionally.",
+        "I'm a software developer and Computer Engineering student at UNED, with a degree in Web Application Development and experience across software development and financial technology. I have built full-stack applications with React, Node.js, PostgreSQL and Supabase, working on everything from the frontend to business logic and database design. I currently work as a technical-functional analyst on CIB projects for BBVA, combining technical knowledge with functional analysis in regulatory compliance, market abuse and trade surveillance systems. I am particularly interested in applying technology to the financial sector, and I want to keep growing in projects that bring technology and business together.",
       skills: "Skills & Technologies",
       dbTitle: "Specialization: Databases",
       dbDescription:
@@ -650,10 +657,17 @@ export const translations = {
       achievements: {},
     },
     work_experience3: {
-      title: "Junior Developer — BBVA CIB",
-      period: "June 2026 - Present",
+      title: "Technical-Functional Analyst — BBVA CIB",
+      period: "September 2026 - Present",
       description:
-        "Full-stack developer at Banco BBVA, working with React, TypeScript, Node.js and PostgreSQL in a high-volume corporate environment.",
+        "Technical-functional analyst on a CIB project for BBVA, in a hybrid role spanning technical development and functional analysis in critical regulatory compliance, market abuse and trade surveillance systems.",
+      achievements: {},
+    },
+    work_experience4: {
+      title: "Technical-Functional Intern — BBVA CIB",
+      period: "June 2026 - September 2026",
+      description:
+        "Internship on a CIB project for BBVA, in a hybrid role spanning technical development and functional analysis in critical regulatory compliance, market abuse and trade surveillance systems.",
       achievements: {},
     },
     education: {
@@ -774,7 +788,7 @@ export const translations = {
     about: {
       title: "À Propos de Moi",
       subtitle:
-        "Développeur web full-stack avec une expérience pratique en frontend et backend. Titulaire d'un BTS Développement d'Applications Web et actuellement étudiant en Ingénierie Informatique, j'ai travaillé avec des technologies telles que React, Node.js, PostgreSQL et Supabase, en développant des applications complètes de bout en bout. Je m'adapte aussi bien à la couche visuelle qu'à la logique métier et aux bases de données, avec un intérêt particulier pour la conception et la gestion de bases de données. Je cherche à intégrer une équipe où je puisse contribuer dès le premier jour tout en continuant à évoluer professionnellement.",
+        "Je suis développeur logiciel et étudiant en ingénierie informatique à l'UNED, titulaire d'un diplôme en développement d'applications web et doté d'une expérience dans le développement logiciel et la technologie financière. J'ai développé des applications full-stack avec React, Node.js, PostgreSQL et Supabase, en intervenant aussi bien sur le frontend que sur la logique métier et la conception de bases de données. Je travaille actuellement comme analyste technico-fonctionnel sur des projets CIB pour BBVA, où je combine connaissances techniques et analyse fonctionnelle dans des systèmes de conformité réglementaire, d'abus de marché et de surveillance des opérations. Je m'intéresse particulièrement à l'application de la technologie au secteur financier et je souhaite continuer à progresser sur des projets qui allient technologie et métier.",
       skills: "Compétences et Technologies",
       dbTitle: "Spécialisation : Bases de données",
       dbDescription:
@@ -1003,10 +1017,17 @@ export const translations = {
       achievements: {},
     },
     work_experience3: {
-      title: "Développeur Junior — BBVA CIB",
-      period: "Juin 2026 - Présent",
+      title: "Analyste technico-fonctionnel — BBVA CIB",
+      period: "Septembre 2026 - Aujourd'hui",
       description:
-        "Développeur full-stack à la Banco BBVA, travaillant avec React, TypeScript, Node.js et PostgreSQL dans un environnement d'entreprise à fort volume.",
+        "Analyste technico-fonctionnel sur un projet CIB pour BBVA, avec un rôle hybride entre développement technique et analyse fonctionnelle dans des systèmes critiques de conformité réglementaire, d'abus de marché et de surveillance des opérations.",
+      achievements: {},
+    },
+    work_experience4: {
+      title: "Stagiaire technico-fonctionnel — BBVA CIB",
+      period: "Juin 2026 - Septembre 2026",
+      description:
+        "Stage sur un projet CIB pour BBVA, avec un rôle hybride entre développement technique et analyse fonctionnelle dans des systèmes critiques de conformité réglementaire, d'abus de marché et de surveillance des opérations.",
       achievements: {},
     },
     education: {
@@ -1128,7 +1149,7 @@ export const translations = {
     about: {
       title: "Über Mich",
       subtitle:
-        "Full-Stack-Webentwickler mit praktischer Erfahrung in Frontend und Backend. Mit einem Abschluss als Techniker für Webapplikationsentwicklung und einem laufenden Studium der Informatik habe ich mit Technologien wie React, Node.js, PostgreSQL und Supabase gearbeitet und vollständige Anwendungen von Grund auf entwickelt. Ich passe mich sowohl der visuellen Ebene als auch der Geschäftslogik und Datenbanken an, mit besonderem Interesse an Datenbankdesign und -verwaltung. Ich möchte einem Team beitreten, in dem ich vom ersten Tag an einen Beitrag leisten und gleichzeitig professionell wachsen kann.",
+        "Ich bin Softwareentwickler und Student der Informatik an der UNED, mit einem Abschluss in Webanwendungsentwicklung und Erfahrung in der Softwareentwicklung und im Bereich Finanztechnologie. Ich habe Full-Stack-Anwendungen mit React, Node.js, PostgreSQL und Supabase entwickelt und dabei sowohl das Frontend als auch die Geschäftslogik und das Datenbankdesign verantwortet. Derzeit arbeite ich als technisch-funktionaler Analyst in CIB-Projekten für BBVA, wo ich technisches Wissen mit funktionaler Analyse in Systemen für regulatorische Compliance, Marktmissbrauch und Handelsüberwachung verbinde. Besonders interessiert mich die Anwendung von Technologie im Finanzsektor, und ich möchte mich in Projekten weiterentwickeln, die Technik und Geschäft verbinden.",
       skills: "Fähigkeiten und Technologien",
       dbTitle: "Spezialisierung: Datenbanken",
       dbDescription:
@@ -1360,10 +1381,17 @@ export const translations = {
       achievements: {},
     },
     work_experience3: {
-      title: "Junior-Entwickler — BBVA CIB",
-      period: "Juni 2026 - Heute",
+      title: "Technisch-funktionaler Analyst — BBVA CIB",
+      period: "September 2026 - Heute",
       description:
-        "Full-Stack-Entwickler bei Banco BBVA, der mit React, TypeScript, Node.js und PostgreSQL in einer stark frequentierten Unternehmensumgebung arbeitet.",
+        "Technisch-funktionaler Analyst in einem CIB-Projekt für BBVA mit einer hybriden Rolle zwischen technischer Entwicklung und funktionaler Analyse in kritischen Systemen für regulatorische Compliance, Marktmissbrauch und Handelsüberwachung.",
+      achievements: {},
+    },
+    work_experience4: {
+      title: "Praktikant (technisch-funktional) — BBVA CIB",
+      period: "Juni 2026 - September 2026",
+      description:
+        "Praktikum in einem CIB-Projekt für BBVA mit einer hybriden Rolle zwischen technischer Entwicklung und funktionaler Analyse in kritischen Systemen für regulatorische Compliance, Marktmissbrauch und Handelsüberwachung.",
       achievements: {},
     },
     education: {
@@ -1481,7 +1509,7 @@ export const translations = {
     about: {
       title: "关于我",
       subtitle:
-        "具備前端與後端實務經驗的全端網頁開發者。擁有網頁應用程式開發高級技術文憑，目前就讀資訊工程學系。曾使用 React、Node.js、PostgreSQL 及 Supabase 等技術，獨立開發完整應用程式。能靈活應對視覺介面、商業邏輯與資料庫等各層面，尤其對資料庫設計與管理抱有濃厚興趣。期望加入一個能從第一天起就發揮所長、同時持續精進的專業團隊。",
+        "我是一名软件开发工程师，同时也是 UNED 计算机工程专业的学生，拥有 Web 应用开发学位，并在软件开发与金融科技领域积累了经验。我曾使用 React、Node.js、PostgreSQL 和 Supabase 开发全栈应用，参与前端、业务逻辑与数据库设计。目前我在 BBVA 的 CIB 项目中担任技术功能分析师，将技术能力与功能分析相结合，服务于合规监管、市场滥用与交易监控系统。我尤其关注技术在企业金融领域的应用，并希望在技术与业务结合的项目中持续成长。",
       skills: "技能和技术",
       dbTitle: "专业方向：数据库",
       dbDescription:
@@ -1699,10 +1727,17 @@ export const translations = {
       achievements: {},
     },
     work_experience3: {
-      title: "初级开发人员 — BBVA CIB",
-      period: "2026年6月 - 至今",
+      title: "技术功能分析师 — BBVA CIB",
+      period: "2026年9月 - 至今",
       description:
-        "BBVA 银行的全端开发人员，在高流量企业环境中使用 React、TypeScript、Node.js 和 PostgreSQL。",
+        "在 BBVA 的 CIB 项目中担任技术功能分析师，角色兼具技术开发与功能分析，服务于合规监管、市场滥用与交易监控等关键系统。",
+      achievements: {},
+    },
+    work_experience4: {
+      title: "技术功能实习生 — BBVA CIB",
+      period: "2026年6月 - 2026年9月",
+      description:
+        "在 BBVA 的 CIB 项目中实习，角色兼具技术开发与功能分析，服务于合规监管、市场滥用与交易监控等关键系统。",
       achievements: {},
     },
     education: {
